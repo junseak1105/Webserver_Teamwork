@@ -1,0 +1,14 @@
+# 더미 데이터 생성
+DELIMITER $$
+DROP PROCEDURE IF EXISTS loopInsert$$
+
+CREATE PROCEDURE loopInsert()
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    WHILE i <= 100 DO
+        INSERT INTO board(title , content, writer)
+          VALUES(concat('제목',i), concat('내용',i), '작성자1');
+        SET i = i + 1;
+    END WHILE;
+END$$
+DELIMITER $$
