@@ -3,18 +3,22 @@
     ini_set( "display_errors", 1 );
 
     include "include/db.php";
+    include "include/common_function.php";
+    // //게시글 페이지 갯수 연산, 20개당 한페이지
+    // $sql = "select count(*) from post";
+    // $result = mysqli_query($conn,$sql);
+    // $post_count = mysqli_fetch_array($result);
+    // $post_per_page = 20; //페이지당 원하는 게시글 수
+    // $post_page_no_selected = intval(isset($_GET['post_page_no_selected']) ? $_GET['post_page_no_selected'] : "");
+    // $post_page_no_selected = $post_page_no_selected * $post_per_page; 
 
-    //게시글 페이지 갯수 연산, 20개당 한페이지
-    $sql = "select count(*) from post";
-    $result = mysqli_query($conn,$sql);
-    $post_count = mysqli_fetch_array($result);
-    $post_per_page = 20; //페이지당 원하는 게시글 수
-    $post_page_no_selected = isset($_GET['post_page_no_selected']) ? $_GET['post_page_no_selected'] : "";
-    $post_page_no_selected = $post_page_no_selected * $post_per_page; 
+    // $post_page_no = $post_count[0]/20; //게시글 페이지 갯수
 
-    $post_page_no = $post_count[0]/20; //게시글 페이지 갯수
 
-    $sql = "select * from post order by idx limit $post_page_no_selected,$post_per_page;";
+    $post_page_no_selected = intval(isset($_GET['post_page_no_selected']) ? $_GET['post_page_no_selected'] : ""); //선택된 페이지 숫자
+    list($list_page_no_selected,$list_page_no) = page_count("post",20,$post_page_no_selected);
+
+    $sql = "select * from post order by idx limit $list_page_no_selected,$list_page_no;";
     //echo $sql;
     $result = mysqli_query($conn,$sql);
     
@@ -51,7 +55,7 @@
         <tr>
             <?php
                 $i = 0;
-                while($i<$post_page_no){
+                while($i<$list_page_no){
                     echo '<td><a href="admin_post.php?post_page_no_selected='.$i.'">' . $i+1 . '</a></td>';
                     $i++;
                 }
