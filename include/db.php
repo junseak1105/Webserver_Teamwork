@@ -1,6 +1,6 @@
 <?php
 $conn = mysqli_connect(
-    'jhk.n-e.kr', // localhost
+    'jhk.n-e.kr', // IP
     'dsu_webserver_prj', // 아이디
     'webserver_prj_jhk', // 비밀번호
     'webserver_classprj' // 데이터베이스

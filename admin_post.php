@@ -4,35 +4,30 @@
 
     include "include/db.php";
     include "include/common_function.php";
-    // //게시글 페이지 갯수 연산, 20개당 한페이지
-    // $sql = "select count(*) from post";
-    // $result = mysqli_query($conn,$sql);
-    // $post_count = mysqli_fetch_array($result);
-    // $post_per_page = 20; //페이지당 원하는 게시글 수
-    // $post_page_no_selected = intval(isset($_GET['post_page_no_selected']) ? $_GET['post_page_no_selected'] : "");
-    // $post_page_no_selected = $post_page_no_selected * $post_per_page; 
-
-    // $post_page_no = $post_count[0]/20; //게시글 페이지 갯수
 
 
     $post_page_no_selected = intval(isset($_GET['post_page_no_selected']) ? $_GET['post_page_no_selected'] : ""); //선택된 페이지 숫자
-    list($list_page_no_selected,$list_page_no) = page_count("post",20,$post_page_no_selected);
+    $query_where = "";
+    list($list_page_no_selected,$list_page_no,$list_less_then_length) = page_count("post",20,$post_page_no_selected,"",$query_where);
 
     $sql = "select * from post order by idx limit $list_page_no_selected,$list_page_no;";
     //echo $sql;
     $result = mysqli_query($conn,$sql);
-    
     
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<title>
-</title>
+    <?php 
+        include "include/head.php";
+    ?>
 </head>
 <body>
+    <?php
+	    include "include/nav_main.php"; 
+	    include "include/sidenav.php";
+    ?>
     <div>
     <table border="1">
         <tr>
@@ -63,6 +58,8 @@
         </tr>
     </table>
     </div>
+    
+    <?php include "include/footer.php" ?>
 </body>
 </html>
 <?php
@@ -78,7 +75,7 @@ mysqli_close($conn);
 
     function delete_post(post_idx){
         if(confirm("게시글을 삭제하시겠습니까??")==true){
-            location.href="delete_post.php?post_idx="+post_idx;
+            location.href="dbfunction/delete_post.php?post_idx="+post_idx;
         }else{
             return;
         }
