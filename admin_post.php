@@ -5,14 +5,27 @@
     include "include/db.php";
     include "include/common_function.php";
 
+    //검색값 설정
+    $sb_val = isset($_GET['sb_val']) ? $_GET['sb_val'] : "";
+    if($sb_val == ""){
+        $query_where="";
+    }else{
+        $query_where = "where title like '%$sb_val%' or content like '%$sb_val%' or writer_id like '%$sb_val%'";
+    };
 
+    //페이지 설정
     $post_page_no_selected = intval(isset($_GET['post_page_no_selected']) ? $_GET['post_page_no_selected'] : ""); //선택된 페이지 숫자
-    $query_where = "";
-    $list_length = 20;
-    list($list_page_no_selected,$list_page_no,$list_less_then_length) = page_count("post",$list_length,$post_page_no_selected,"",$query_where);
-
-    $sql = "select * from post order by idx limit $list_page_no_selected,$list_page_no;";
+    $list_length = 20;//페이지당 출력 길이
+    list($list_page_no_selected,$list_page_no,$list_less_then_length) = page_count("post",$list_length,$post_page_no_selected,$query_where);
+    
+    //페이지 하나 이하 처리
+    if($list_less_then_length == "true"){
+        $sql = "select * from post $query_where order by idx";
+    }else{
+        $sql = "select * from post $query_where order by idx limit $list_page_no_selected,$list_page_no;";
+    }
     //echo $sql;
+    //쿼리 실행
     $result = mysqli_query($conn,$sql);
     
 ?>
@@ -30,6 +43,10 @@
 	    include "include/sidenav.php";
     ?>
     <div>
+    <div>
+        <input id="searchbox"/>
+        <button id="btn_sb">검색</button>
+    </div>
     <table border="1">
         <tr>
             <th>글제목</th>
@@ -71,6 +88,10 @@ mysqli_close($conn);
             var idx = this.value;
             delete_post(idx);
         });
+        $("#btn_sb").on("click",function(){
+            var sb_val = $('#searchbox').val();
+            search(sb_val);
+        });
     });
 
     function delete_post(idx){
@@ -79,6 +100,9 @@ mysqli_close($conn);
         }else{
             return;
         }
-        
     };
+
+    function search(sb_val){
+        location.href="admin_post.php?sb_val="+sb_val;
+    }
 </script>
