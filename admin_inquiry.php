@@ -11,9 +11,9 @@
     }else{
         $query_where = "where qa_status = '$cb_ans'";
     }
-    
+    $list_length = 20;
     $inquiry_page_no_selected = intval(isset($_GET['inquiry_page_no_selected']) ? $_GET['inquiry_page_no_selected'] : ""); //선택된 페이지 숫자
-    list($list_page_no_selected,$list_page_no,$list_less_then_length) = page_count("inquiry",20,$inquiry_page_no_selected,$query_where);
+    list($list_page_no_selected,$list_page_no,$list_less_then_length) = page_count("inquiry",$list_length,$inquiry_page_no_selected,$query_where);
     
 ?>
 
@@ -119,7 +119,7 @@
     }
     function submit_qa_ans(qa_idx,qa_ans){
         if(confirm("답변을 작성하시겠습니까?")==true){
-            location.href="dbfunction/subimt_inquiry_answer.php?qa_idx="+qa_idx+"&qa_ans="+qa_ans;
+            location.href="include/subimt_inquiry_answer.php?qa_idx="+qa_idx+"&qa_ans="+qa_ans;
         }else{
             return;
         }
