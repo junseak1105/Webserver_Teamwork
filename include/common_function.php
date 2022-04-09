@@ -69,8 +69,7 @@ function inquiry_N_count(){
 }
 // 전체 방문자수 fetch 끝
 
-// 삭제 처리문 모음
-
+// 삭제 처리문 모음 시작
 function db_delete($func,$db,$idx,$prevPage){
     include "db.php";
     if($db == "post"){
@@ -89,5 +88,9 @@ function db_delete($func,$db,$idx,$prevPage){
         $conn->close();
     }
 }
+//삭제 처리문 모음 끝
+
+//검색 처리문 모음 시작
+//검색 처리문 모음 끝
 
 ?>

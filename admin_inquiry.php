@@ -5,16 +5,35 @@
     include "include/db.php";
     include "include/common_function.php";
 
+    //검색값 설정
     $cb_ans = isset($_GET['cb_ans']) ? $_GET['cb_ans'] : "";
     if($cb_ans == "All"){
         $query_where = "where 1=1";
     }else{
         $query_where = "where qa_status = '$cb_ans'";
     }
-    $list_length = 20;
+    //페이지설정
+    $list_length = 20;//페이지당 출력 길이
     $inquiry_page_no_selected = intval(isset($_GET['inquiry_page_no_selected']) ? $_GET['inquiry_page_no_selected'] : ""); //선택된 페이지 숫자
     list($list_page_no_selected,$list_page_no,$list_less_then_length) = page_count("inquiry",$list_length,$inquiry_page_no_selected,$query_where);
     
+    //페이지 하나 이하 처리
+    if($list_less_then_length == "true"){
+        if($cb_ans == "All"){
+            $sql = "select * from inquiry order by idx desc;";
+        }else{
+            $sql = "select * from inquiry where qa_status = '$cb_ans' order by idx desc;";
+        }
+    }else{
+        if($cb_ans == "All"){
+            $sql = "select * from inquiry order by idx desc limit $list_page_no_selected,$list_page_no;";
+        }else{
+            $sql = "select * from inquiry where qa_status = '$cb_ans' order by idx desc limit $list_page_no_selected,$list_page_no;";
+        }
+    }
+    //쿼리 실행
+    $result = mysqli_query($conn,$sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -44,21 +63,6 @@
         </tr>
         
         <?php
-        if($list_less_then_length == "true"){
-            if($cb_ans == "All"){
-                $sql = "select * from inquiry order by idx desc;";
-            }else{
-                $sql = "select * from inquiry where qa_status = '$cb_ans' order by idx desc;";
-            }
-        }else{
-            if($cb_ans == "All"){
-                $sql = "select * from inquiry order by idx desc limit $list_page_no_selected,$list_page_no;";
-            }else{
-                $sql = "select * from inquiry where qa_status = '$cb_ans' order by idx desc limit $list_page_no_selected,$list_page_no;";
-            }
-        }
-        
-        $result = mysqli_query($conn,$sql);
         while($row = mysqli_fetch_array($result)){
             echo '<tr><td>' . $row[ 'userID' ] . '</td><td>'. $row[ 'qa_category' ] . '</td><td>'. $row['qa_subject']. '</td><td>'. $row['qa_datetime'] 
             . '</td><td>'. $row['qa_status']. ' </td><td><button class="btn_qa_ans" value='.$row['idx'].'>답변하기</button></td></tr>';
