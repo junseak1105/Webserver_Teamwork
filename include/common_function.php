@@ -1,7 +1,7 @@
 <?php
 error_reporting( E_ALL );
 ini_set( "display_errors", 1 );
-
+include "db.php";
 //게시글 페이지 갯수 연산 시작
 function page_count($tablename,$list_length,$list_no_selected,$list_where){ //파라미터는 테이블 명, 페이지당 원하는 게시글 수,선택된 페이지 숫자,조건값where
     include "db.php";
@@ -20,5 +20,47 @@ function page_count($tablename,$list_length,$list_no_selected,$list_where){ //�
     return array($list_page_no_selected,floor($list_page_no),$list_less_then_length);
 };
 //게시글 페이지 갯수 연산 끝
+
+// 오늘 방문자수 fetch 시작
+function visit_today(){
+    include "db.php";
+    $currdt = date("Y-m-d H:i:s"); 
+	$query = "select count(*) as count from stat_visit where DATE(regdate) = DATE('$currdt')";
+	$data = $conn->query($query)->fetch_array();
+	$today_visit_count = $data['count'];
+    echo $today_visit_count;
+};
+// 오늘 방문자수 fetch 끝
+
+// 전체 방문자수 fetch 시작
+function visit_total(){
+    include "db.php";
+    $currdt = date("Y-m-d H:i:s"); 
+    $query = "select count(*) as count from stat_visit";
+    $data = $conn->query($query)->fetch_array();
+    $total_visit_count = $data['count'];
+    echo $total_visit_count;
+}
+// 전체 방문자수 fetch 끝
+
+// 문의사항 처리 완료 수 fetch 시작
+function inquiry_Y_count(){
+    include "db.php";
+	$query = "select count(*) as count from inquiry where qa_status = 'Y'";
+	$data = $conn->query($query)->fetch_array();
+	$inquiry_Y_count = $data['count'];
+    echo $inquiry_Y_count;
+};
+// 오늘 방문자수 fetch 끝
+
+// 문의사항 처리 미완료 수 fetch 시작
+function inquiry_N_count(){
+    include "db.php";
+    $query = "select count(*) as count from inquiry where qa_status = 'N'";
+    $data = $conn->query($query)->fetch_array();
+    $inquiry_N_count = $data['count'];
+    echo $inquiry_N_count;
+}
+// 전체 방문자수 fetch 끝
 
 ?>

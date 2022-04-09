@@ -2,7 +2,7 @@
     error_reporting( E_ALL );
     ini_set( "display_errors", 1 );
 
-    include "../include/db.php";
+    include "db.php";
     
     $prevPage = $_SERVER['HTTP_REFERER'];
     $post_idx = isset($_GET['post_idx']) ? $_GET['post_idx'] : "";

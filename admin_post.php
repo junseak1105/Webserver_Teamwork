@@ -75,7 +75,7 @@ mysqli_close($conn);
 
     function delete_post(post_idx){
         if(confirm("게시글을 삭제하시겠습니까??")==true){
-            location.href="dbfunction/delete_post.php?post_idx="+post_idx;
+            location.href="include/delete_post.php?post_idx="+post_idx;
         }else{
             return;
         }
