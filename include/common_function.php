@@ -63,4 +63,24 @@ function inquiry_N_count(){
 }
 // 전체 방문자수 fetch 끝
 
+// 삭제 처리문 모음
+function db_delete($func,$idx){
+    include "db.php";
+    if($func == "post"){
+        $sql = "delete from post where idx = $idx;";
+    }elseif($func == "member"){
+        $sql = "delete from member where idx = $idx;";
+    }
+    
+    if ($conn->query($sql) === TRUE) {
+        echo "Record deleted successfully";
+        header('location:'.$prevPage);
+        $conn->close();
+    } else {
+        echo "Error deleting record: " . $conn->error;
+        header('location:'.$prevPage);
+        $conn->close();
+    }
+}
+
 ?>
