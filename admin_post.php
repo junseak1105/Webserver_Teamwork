@@ -8,7 +8,8 @@
 
     $post_page_no_selected = intval(isset($_GET['post_page_no_selected']) ? $_GET['post_page_no_selected'] : ""); //선택된 페이지 숫자
     $query_where = "";
-    list($list_page_no_selected,$list_page_no,$list_less_then_length) = page_count("post",20,$post_page_no_selected,"",$query_where);
+    $list_length = 20;
+    list($list_page_no_selected,$list_page_no,$list_less_then_length) = page_count("post",$list_length,$post_page_no_selected,"",$query_where);
 
     $sql = "select * from post order by idx limit $list_page_no_selected,$list_page_no;";
     //echo $sql;
@@ -58,8 +59,7 @@
         </tr>
     </table>
     </div>
-    
-    <?php include "include/footer.php" ?>
+    <?php include "include/footer.php"; ?>
 </body>
 </html>
 <?php
@@ -68,14 +68,14 @@ mysqli_close($conn);
 <script>
     $(document).ready(function(){
         $(".btn_delete").on("click",function(){
-            var post_idx = this.value;
-            delete_post(post_idx);
-        })
-    })
+            var idx = this.value;
+            delete_post(idx);
+        });
+    });
 
-    function delete_post(post_idx){
+    function delete_post(idx){
         if(confirm("게시글을 삭제하시겠습니까??")==true){
-            location.href="dbfunction/delete_post.php?post_idx="+post_idx;
+            location.href="include/common_function.php?func=db_delete&db=post&idx="+idx;
         }else{
             return;
         }
