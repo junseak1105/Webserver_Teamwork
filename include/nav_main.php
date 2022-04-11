@@ -1,6 +1,5 @@
 <nav>
 <div class="topnav">
-    <a onclick="openNav();">sidebar</a>
     <a class="active" href="index.php">Home</a>
     <a href="#news">cat1</a>
     <a href="#contact">cat2</a>

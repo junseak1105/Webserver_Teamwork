@@ -14,8 +14,6 @@
 <head><?php include "include/head.php"; ?></head>
 <body>
 <?php
-	include "include/nav_main.php"; 
-	include "include/sidenav.php";
   include_once "include/visitor_count.php" //추후 index.php에만 적용
 ?>
 <div>

@@ -38,10 +38,6 @@
     ?>
 </head>
 <body>
-    <?php
-	    include "include/nav_main.php"; 
-	    include "include/sidenav.php";
-    ?>
     <div>
     <div>
         <input id="searchbox"/>

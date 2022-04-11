@@ -3,5 +3,8 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	<?php
+	include "include/nav_main.php"; 
+	?>
 
 

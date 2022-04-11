@@ -40,10 +40,6 @@
 <html>
 <head><?php include "include/head.php"; ?></head>
 <body>
-<?php
-	include "include/nav_main.php"; 
-	include "include/sidenav.php";
-?>
     <div>
     <span>
         <select id="cb_ans" value = "All" onChange="refresh(this.value);">
