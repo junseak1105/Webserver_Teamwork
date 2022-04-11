@@ -45,6 +45,7 @@
         <input id="searchbox"/>
         <button id="btn_sb">검색</button>
     </div>
+    
     <table border="1">
         <tr>
             <th>이름</th>
