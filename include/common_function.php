@@ -6,6 +6,10 @@ $func = isset($_GET['func']) ? $_GET['func'] : "";
 
 if($func == "db_delete"){
     db_delete($func,$_GET['db'],$_GET['idx'],$_SERVER['HTTP_REFERER']);
+}else if($func == "db_update"){
+    db_update($func,$_GET['db'],$_GET['idx'],$_SERVER['HTTP_REFERER']);
+}else if($func == "db_insert"){
+    db_insert($func,$_GET['db'],$_SERVER['HTTP_REFERER']);
 };
 
 
@@ -13,6 +17,7 @@ if($func == "db_delete"){
 function page_count($tablename,$list_length,$list_no_selected,$list_where){ //파라미터는 테이블 명, 페이지당 원하는 게시글 수,선택된 페이지 숫자,조건값where
     include "db.php";
     $sql = "select count(*) from $tablename $list_where";
+    //echo $sql;
     $result = mysqli_query($conn,$sql);
     $list_count = mysqli_fetch_array($result);
     $list_page_no_selected = $list_no_selected * $list_length; 
@@ -72,11 +77,7 @@ function inquiry_N_count(){
 // 삭제 처리문 모음 시작
 function db_delete($func,$db,$idx,$prevPage){
     include "db.php";
-    if($db == "post"){
-        $sql = "delete from post where idx = $idx;";
-    }elseif($db == "member"){
-        $sql = "delete from member where idx = $idx;";
-    }
+    $sql = "delete from $db where idx = $idx;";
     
     if ($conn->query($sql) === TRUE) {
         echo "Record deleted successfully";
@@ -90,7 +91,47 @@ function db_delete($func,$db,$idx,$prevPage){
 }
 //삭제 처리문 모음 끝
 
-//검색 처리문 모음 시작
-//검색 처리문 모음 끝
+//update 수정 처리문 시작
+function db_update($func,$db,$idx,$prevPage){
+    include "db.php";
+    if($db == "commoncode"){
+        $co_code = $_GET['co_code'];
+        $co_name = $_GET['co_name'];
+        $sql = "update $db set co_code = '$co_code',co_name = '$co_name' where idx = $idx";
+        echo $sql;
+    }
+    
+    if ($conn->query($sql) === TRUE) {
+        echo "Record deleted successfully";
+        header('location:'.$prevPage);
+        $conn->close();
+    } else {
+        echo "Error deleting record: " . $conn->error;
+        header('location:'.$prevPage);
+        $conn->close();
+    }
+}
+//update 수정 처리문 끝
+//insert 추가 처리문 시작
+function db_insert($func,$db,$prevPage){
+    include "db.php";
+    if($db == "commoncode"){
+        $co_code = $_GET['co_code'];
+        $co_name = $_GET['co_name'];
+        $sql = "insert into commoncode(co_code,co_name) values('$co_code','$co_name')";
+        echo $sql;
+    }
+    
+    if ($conn->query($sql) === TRUE) {
+        echo "Record deleted successfully";
+        header('location:'.$prevPage);
+        $conn->close();
+    } else {
+        echo "Error deleting record: " . $conn->error;
+        header('location:'.$prevPage);
+        $conn->close();
+    }
+}
+//insert 추가 처리문 끝
 
 ?>
