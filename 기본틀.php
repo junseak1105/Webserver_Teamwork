@@ -21,6 +21,7 @@
     <?php include "include/footer.php" ?>
 </body>
 </html>
+
 <?php
 mysqli_close($conn);
 ?>
