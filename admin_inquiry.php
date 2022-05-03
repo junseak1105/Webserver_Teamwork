@@ -9,6 +9,9 @@
     $cb_ans = isset($_GET['cb_ans']) ? $_GET['cb_ans'] : "";
     if($cb_ans == "All"){
         $query_where = "where 1=1";
+    }else if($cb_ans == ""){
+        $cb_ans ="N";
+        $query_where = "where qa_status = '$cb_ans'";
     }else{
         $query_where = "where qa_status = '$cb_ans'";
     }
@@ -42,7 +45,7 @@
 <body>
     <div>
     <span>
-        <select id="cb_ans" value = "All" onChange="refresh(this.value);">
+        <select id="cb_ans" value = "N" onChange="refresh(this.value);">
             <option value="All">전체</option>
             <option value="N">답변미완료</option>
             <option value="Y">답변완료</option>
