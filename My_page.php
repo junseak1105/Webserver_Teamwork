@@ -11,7 +11,7 @@ $query_where = "";
 
 //페이지 설정
 $member_page_no_selected = intval(isset($_GET['member_page_no_selected']) ? $_GET['member_page_no_selected'] : ""); //선택된 페이지 숫자
-$list_length = 20; //페이지당 출력 길이
+$list_length = 10; //페이지당 출력 길이
 list($list_page_no_selected, $list_page_no, $list_less_then_length) = page_count("post", $list_length, $member_page_no_selected, $query_where);
 
 
@@ -55,9 +55,19 @@ $result_write = mysqli_query($conn, $sql);
                 echo "<tr><td>아이디</td><td>" . $row['userID'] . "</td></tr>";
                 echo "<tr><td>이메일</td><td>" . $row['userEmail'] . "</td></tr>";
                 echo "<tr><td>비밀번호</td><td>" . $row['userPW'] . "</td></tr>";
+                $userID = $row['userID'];
+
             }
             ?>
         </table>
+        <form action="revise.php" method="post">
+            <?php
+            echo "$userID";
+                echo "<input type='hidden' name= 'userID' value='$userID'>"
+            ?>
+
+            <input type="submit" value="개인정보 수정">
+        </form>
     </div>
 
     <div id="tab02">
@@ -76,9 +86,12 @@ $result_write = mysqli_query($conn, $sql);
             <div id="tab11">
                 <table border="1" style="border-collapse: collapse" width="70%">
                     <?php
+                    $count = 1;
+                    echo "<tr><td>글 번호</td><td> 제목 </td><td> 작성일 </td><td> 좋아요 </td></tr>";
                     while ($row = mysqli_fetch_array($result_write)) {
-                        echo "<tr><td>제목</td><td>" . $row['title'] . "</td></tr>";
-                        echo "<tr><td>내용</td><td>" . $row['content'] . "</td></tr>";
+
+                        echo "<tr><td>" . $row['idx'] . "</td><td>" . $row['title'] . "</td><td>" . $row['date'] . "</td><td>" . $row['recommend_Y'] . "</td></tr>";
+                        $count++;
                     }
                     ?>
                 </table>
@@ -89,6 +102,7 @@ $result_write = mysqli_query($conn, $sql);
                         $i = 0;
                         while ($i < $list_page_no) {
                             echo '<td><a href="my_page.php?member_page_no_selected=' . $i . '">' . $i + 1 . '</a></td>';
+
                             $i++;
                         }
                         ?>
