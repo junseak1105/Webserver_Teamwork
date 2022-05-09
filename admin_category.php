@@ -38,32 +38,27 @@
 </head>
 <body>
     <div>
-    <div>
-        <input id="searchbox"/>
-        <button id="btn_sb">검색</button>
-    </div>
-    <table >
-        <thead>
+    
+    <table>
             <tr>
                 <th >공통코드</th>
                 <th >코드내용</th>
                 <th >버튼</th>
             </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><input id="co_code_add"></td>
-            <td><input id="co_name_add"></td>
-            <td><button class="btn_add">추가</button></td>
-        </tr>
-        <?php
-        while($row = mysqli_fetch_array($result)){
-            echo '<tr><td><input id="code_row_'.$row['idx'].'" value=' . $row[ 'co_code' ] . '></td><td><input id=name_row_'.$row['idx'].' value='. $row[ 'co_name' ] . '></td><td>
-            <button class="btn_edit" value='.$row['idx'].'>수정</button><button class="btn_delete" value='.$row['idx'].'>삭제</button>
-            </td></tr>';
-        }
-        ?>
-        </tbody>
+        <div>
+            <tr>
+                <td><input class="category_inputbox" id="co_code_add"></td>
+                <td><input class="category_inputbox" id="co_name_add"></td>
+                <td><button class="btn_add">추가</button></td>
+            </tr>
+            <?php
+            while($row = mysqli_fetch_array($result)){
+                echo '<tr><td><input class="category_inputbox" id="code_row_'.$row['idx'].'" value=' . $row[ 'co_code' ] . '></td><td><input class="category_inputbox" id=name_row_'.$row['idx'].' value='. $row[ 'co_name' ] . '></td><td>
+                <button class="btn_edit" value='.$row['idx'].'>수정</button><button class="btn_delete" value='.$row['idx'].'>삭제</button>
+                </td></tr>';
+            }
+            ?>
+        </div>
     </table>
     <table>
         <tr>
@@ -75,6 +70,10 @@
                 }
             ?>
         </tr>
+        <div class="category_searchbox">
+            <input class="category_searchbox1" id="searchbox"/>
+            <button class="btn_search" id="btn_sb">검색</button>
+        </div>
     </table>
     </div>
     

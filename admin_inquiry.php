@@ -45,22 +45,23 @@
 <body>
     <div>
     <span>
-        <select id="cb_ans" value = "N" onChange="refresh(this.value);">
+        <select class="cb_ans" id="cb_ans" value = "N" onChange="refresh(this.value);">
             <option value="All">전체</option>
             <option value="N">답변미완료</option>
             <option value="Y">답변완료</option>
         </select>
     <input type="hidden" id="cb_ans_val" value='<?php echo $_GET["cb_ans"]; ?>'/>
-    <table border="1">
-        <tr>
-            <th>작성자</th>
-            <th>질문유형</th>
-            <th>제목</th>
-            <th>문의 일자</th>
-            <th>답변여부</th>
-            <th>답변하기</th>
-        </tr>
-        
+    <table class="type1" border="1">
+        <thead>
+            <tr>
+                <th>작성자</th>
+                <th>질문유형</th>
+                <th>제목</th>
+                <th>문의 일자</th>
+                <th>답변여부</th>
+                <th>답변하기</th>
+            </tr>
+        </thead>
         <?php
         while($row = mysqli_fetch_array($result)){
             echo '<tr><td>' . $row[ 'userID' ] . '</td><td>'. $row[ 'qa_category' ] . '</td><td>'. $row['qa_subject']. '</td><td>'. $row['qa_datetime'] 
@@ -68,17 +69,19 @@
         }
         ?>
     </table>
-    <table>
-        <tr>
-            <?php
-                $i = 0;
-                while($i<$list_page_no){
-                    echo '<td><a href="admin_inquiry.php?inquiry_page_no_selected='.$i.'&cb_ans='.$cb_ans.'">' . $i+1 . '</a></td>';
-                    $i++;
-                }
-            ?>
-        </tr>
-    </table>
+    <div class="page1">
+        <table class="page2">
+            <tr>
+                <?php
+                    $i = 0;
+                    while($i<$list_page_no){
+                        echo '<td><a href="admin_inquiry.php?inquiry_page_no_selected='.$i.'&cb_ans='.$cb_ans.'">' . $i+1 . '</a></td>';
+                        $i++;
+                    }
+                ?>
+            </tr>
+        </table>
+    </div>
     </div>
     <!--팝업 레이어-->
     <div class="qa_ans_popup_layer" id="qa_ans_popup_layer" style="display: none;">

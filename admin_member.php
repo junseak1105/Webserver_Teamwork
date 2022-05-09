@@ -37,20 +37,18 @@
 </head>
 <body>
     <div>
-    <div>
-        <input id="searchbox"/>
-        <button id="btn_sb">검색</button>
-    </div>
     
-    <table border="1">
-        <tr>
-            <th>이름</th>
-            <th>ID</th>
-            <th>PW</th>
-            <th>Email</th>
-            <th>삭제</th>
-        </tr>
-        
+    
+    <table class="type1"border="1">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>ID</th>
+                <th>PW</th>
+                <th>Email</th>
+                <th>삭제</th>
+            </tr>
+        </thead>
         <?php
         while($row = mysqli_fetch_array($result)){
             echo '<tr><td>' . $row[ 'userName' ] . '</td><td>'. $row[ 'userID' ] . '</td><td>'. $row['userPW']. '</td><td>'. $row['userEmail'] . '</td><td>
@@ -59,17 +57,23 @@
         }
         ?>
     </table>
-    <table>
-        <tr>
-            <?php
-                $i = 0;
-                while($i<$list_page_no){
-                    echo '<td><a href="admin_member.php?member_page_no_selected='.$i.'">' . $i+1 . '</a></td>';
-                    $i++;
-                }
-            ?>
-        </tr>
-    </table>
+    <div class="page1">
+        <table class="page2">
+            <tr>
+                <?php
+                    $i = 0;
+                    while($i<$list_page_no){
+                        echo '<td><a href="admin_member.php?member_page_no_selected='.$i.'">' . $i+1 . '</a></td>';
+                        $i++;
+                    }
+                ?>
+            </tr>
+            <div class="member_searchbox">
+                <input id="searchbox"/>
+                <button class="btn_search" id="btn_sb">검색</button>
+            </div>
+        </table>
+    </div>
     </div>
     
     <?php include "include/footer.php" ?>
