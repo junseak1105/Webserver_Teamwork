@@ -11,7 +11,25 @@
 <html>
 <title>꿀템공유사이트 - 글 쓰기</title>
 
-<head><?php include "include/head.php"; ?></head>
+<head><?php include "include/head.php"; ?>
+<script>
+  function check_input() {
+      if (!document.user_board_form.subject.value)
+      {
+          alert("제목을 입력하세요!");
+          document.user_board_form.subject.focus();
+          return;
+      }
+      if (!document.user_board_form.content.value)
+      {
+          alert("내용을 입력하세요!");    
+          document.user_board_form.content.focus();
+          return;
+      }
+      document.user_board_form.submit();
+   }
+</script>
+</head>
 
 <body>
 	<?php
@@ -23,7 +41,7 @@
                 게시판 > 글 쓰기
             </h1>
             <form  name="board_form" method="post" action="board_insert.php" enctype="multipart/form-data">
-                <ul id="board_form">	
+                <ul id="user_board_form", style="list-style: none;">	
 	    		    <li>
 	    			    <span class="col1">제목 : </span>
 	    			    <span class="col2"><input name="subject" type="text"></span>
@@ -39,7 +57,7 @@
 			            <span class="col2"><input type="file" name="upfile"></span>
 			        </li>
 	    	        </ul>
-	    	    <ul class="buttons">
+	    	    <ul class="buttons", style="list-style: none;">
 				    <li><button type="button" onclick="check_input()">완료</button></li>
 				    <li><button type="button" onclick="location.href='user_board_view.php'">목록</button></li>
 			    </ul>
