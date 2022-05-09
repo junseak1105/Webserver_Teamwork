@@ -6,7 +6,6 @@ ini_set("display_errors", 1);
 include "include/db.php";
 include "include/common_function.php";
 
-
 $query_where = "";
 
 //페이지 설정
@@ -55,18 +54,19 @@ $result_write = mysqli_query($conn, $sql);
                 echo "<tr><td>아이디</td><td>" . $row['userID'] . "</td></tr>";
                 echo "<tr><td>이메일</td><td>" . $row['userEmail'] . "</td></tr>";
                 echo "<tr><td>비밀번호</td><td>" . $row['userPW'] . "</td></tr>";
-                $userID = $row['userID'];
-
+                $userPW = $row['userPW'];
+                $idx = $row['idx'];
             }
             ?>
         </table>
         <form action="revise.php" method="post">
             <?php
-            echo "$userID";
-                echo "<input type='hidden' name= 'userID' value='$userID'>"
+            echo "$idx";
+            echo "<input type='hidden' name= 'idx' value='$idx'>";
+            echo "<input type='hidden' name= 'userPW' value='$userPW'>";
             ?>
 
-            <input type="submit" value="개인정보 수정">
+            <input type="submit" value="비밀번호 수정">
         </form>
     </div>
 
