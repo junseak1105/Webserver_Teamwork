@@ -18,50 +18,48 @@
 		include "include/sidenav.php";
 	?>
 <section>
-	<div id="main_img_bar">
-        <img src="./img/main_img.png">
-    </div>
    	<div id="board_box">
 	    <h3 class="title">
 			게시판 > 내용보기
 		</h3>
 
 		<!-- db 연결 중 -->
-<?php
-	$num  = $_GET["num"];
-	$page  = $_GET["page"];
+		<?php
+			$num  = $_GET["num"];
+			$page  = $_GET["page"];
 
-	$con = mysqli_connect("jhk.n-e.kr", "dsu_webserver_prj", "webserver_prj_jhk", "sample");
-	$sql = "select * from board where num=$num";
-	$result = mysqli_query($con, $sql);
+			$con = mysqli_connect("jhk.n-e.kr", "dsu_webserver_prj", "webserver_prj_jhk", "sample");
+			$sql = "select * from board where num=$num";
+			$result = mysqli_query($con, $sql);
 
-	$row = mysqli_fetch_array($result);
-	$id      = $row["id"];
-	$name      = $row["name"];
-	$regist_day = $row["regist_day"];
-	$subject    = $row["subject"];
-	$content    = $row["content"];
-	$file_name    = $row["file_name"];
-	$file_type    = $row["file_type"];
-	$file_copied  = $row["file_copied"];
-	$hit          = $row["hit"];
+			$row = mysqli_fetch_array($result);
+			$title      = $row["title"]; //제목
+			$content    = $row["content"]; //내용
+			$date = $row["date"]; //날짜
+			$hit          = $row["hit"]; //조회수
+			$recommend_Y = $row["recommend_Y"]; //추천수
+			$writer_id      = $row["writer_id"]; //아이디
 
-	$content = str_replace(" ", "&nbsp;", $content);
-	$content = str_replace("\n", "<br>", $content);
+			/*$file_name    = $row["file_name"]; //첨부파일
+			$file_type    = $row["file_type"]; //파일 타입
+			$file_copied  = $row["file_copied"];*/
 
-	$new_hit = $hit + 1;
-	$sql = "update board set hit=$new_hit where num=$num";   
-	mysqli_query($con, $sql);
-?>		
+			$content = str_replace(" ", "&nbsp;", $content);
+			$content = str_replace("\n", "<br>", $content);
 
-	    <ul id="view_content">
+			$new_hit = $hit + 1;
+			$sql = "update board set hit=$new_hit where num=$num";   
+			mysqli_query($con, $sql);
+		?>		
 
-			<!-- <li>
+	    <table id="view_content">
+
+			<tr>
 				<span class="col1"><b>제목 :</b> <?=$subject?></span>
 				<span class="col2"><?=$name?> | <?=$regist_day?></span>
-			</li> -->
+			</tr>
 
-			<li>
+			<tr>
 				<?php
 					if($file_name) {
 						$real_name = $file_copied;
@@ -73,14 +71,14 @@
 			           	}
 				?>
 				<?=$content?>
-			</li>		
-	    </ul>
-	    <ul class="buttons">
-				<li><button onclick="location.href='user_board_list.php?page=<?=$page?>'">목록</button></li>
-				<li><button onclick="location.href='user_board_modify_form.php?num=<?=$num?>&page=<?=$page?>'">수정</button></li>
-				<li><button onclick="location.href='user_board_delete.php?num=<?=$num?>&page=<?=$page?>'">삭제</button></li>
-				<li><button onclick="location.href='user_board_form.php'">글쓰기</button></li>
-		</ul>
+			</tr>		
+	    </table>
+	    <table class="buttons">
+				<tr><button onclick="location.href='user_board_list.php?page=<?=$page?>'">목록</button></tr>
+				<tr><button onclick="location.href='user_board_modify_form.php?num=<?=$num?>&page=<?=$page?>'">수정</button></tr>
+				<tr><button onclick="location.href='user_board_delete.php?num=<?=$num?>&page=<?=$page?>'">삭제</button></tr>
+				<tr><button onclick="location.href='user_board_form.php'">글쓰기</button></tr>
+		</table>
 	</div> <!-- board_box -->
 </section> 
 <footer>

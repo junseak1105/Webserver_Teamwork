@@ -40,27 +40,31 @@
             <h1 id="board_title">
                 게시판 > 글 쓰기
             </h1>
-            <form  name="board_form" method="post" action="board_insert.php" enctype="multipart/form-data">
-                <ul id="user_board_form", style="list-style: none;">	
-	    		    <li>
+            <form  name="user_board_form" method="post" action="board_insert.php" enctype="multipart/form-data">
+                <table id="user_board_form">
+
+	    		    <tr>
 	    			    <span class="col1">제목 : </span>
 	    			    <span class="col2"><input name="subject" type="text"></span>
-	    		    </li>	    	
-	    		    <li id="text_area">	
+	    		    </tr>	
+
+	    		    <tr id="text_area">	
 	    			    <span class="col1">내용 : </span>
 	    			    <span class="col2">
 	    				    <textarea name="content"></textarea>
 	    			    </span>
-	    		    </li>
-	    		    <li>
+	    		    </tr>
+
+	    		    <tr>
 			            <span class="col1"> 첨부 파일</span>
 			            <span class="col2"><input type="file" name="upfile"></span>
-			        </li>
-	    	        </ul>
-	    	    <ul class="buttons", style="list-style: none;">
-				    <li><button type="button" onclick="check_input()">완료</button></li>
-				    <li><button type="button" onclick="location.href='user_board_view.php'">목록</button></li>
-			    </ul>
+			        </tr>
+	    	       </table>
+
+	    	    <table class="buttons">
+				    <tr><button type="button" onclick="check_input()">완료</button></tr>
+				    <tr><button type="button" onclick="location.href='user_board_view.php'">목록</button></tr>
+			    </table>
 	        </form>
         </div> 
     </section> 

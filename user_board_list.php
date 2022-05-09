@@ -5,6 +5,29 @@
     include "include/db.php";
     include "include/common_function.php";
     
+    //검색값 설정
+    $sb_val = isset($_GET['sb_val']) ? $_GET['sb_val'] : "";
+    if($sb_val == ""){
+        $query_where="";
+    }else{
+        $query_where = "where title like '%$sb_val%' or content like '%$sb_val%' or writer_id like '%$sb_val%'";
+    };
+
+    //페이지 설정
+    $post_page_no_selected = intval(isset($_GET['post_page_no_selected']) ? $_GET['post_page_no_selected'] : ""); //선택된 페이지 숫자
+    $list_length = 20;//페이지당 출력 길이
+    list($list_page_no_selected,$list_page_no,$list_less_then_length) = page_count("post",$list_length,$post_page_no_selected,$query_where);
+    
+    //페이지 하나 이하 처리
+    if($list_less_then_length == "true"){
+        $sql = "select * from post $query_where order by idx";
+    }else{
+        $sql = "select * from post $query_where order by idx limit $list_page_no_selected,$list_page_no;";
+    }
+    //echo $sql;
+    //쿼리 실행
+    $result = mysqli_query($conn,$sql);
+    
 ?>
 
 <!DOCTYPE html>
@@ -21,36 +44,40 @@
             <h1 id="user_board_title">
                 게시판 > 글 목록
             </h1>
-            <ul id="user_board_list">
-                <li>
-                    <span class="col1">번호</span>
-                    <span class="col2">제목</span>
-                    <span class="col3">글쓴이</span>
-                    <span class="col4">첨부</span>
-                    <span class="col5">등록일</span>
-                    <span class="col6">조회</span>
-                </li>
-                <li>
-                    <span class="col1"><?=$number?></span>
-                    <span class="col2"><a href="user_board_view.php?num=<?=$num?>&page=<?=$page?>"><?=$subject?></a></span>
-                    <span class="col3"><?=$name?></span>
-                    <span class="col4"><?=$file_image?></span>
-                    <span class="col5"><?=$regist_day?></span>
-                    <span class="col6"><?=$hit?></span>
-                </li>   
-            </ul>
+            <table border="1">
+                <tr>
+                    <th>번호</th>
+                    <th>글제목</th>
+                    <th>조회수</th>
+                    <th>작성일자</th>
+                    <th>추천수</th>
+                    <th>작성자</th>
+                </tr>
+                
+                <?php
+                while($row = mysqli_fetch_array($result)){
+                    echo '<tr><td>' .
+                    $row[ 'idx' ] . '</td><td>'. 
+                    $row[ 'title' ] . '</td><td>'. 
+                    $row[ 'hit' ] . '</td><td>'. 
+                    $row['date']. '</td><td>'.
+                    $row['recommend_Y']. '</td><td>'. 
+                    $row['writer_id'];
+                }
+                ?>
 
-            <ul id="page_num">  
-            </ul> <!-- page -->      
+            </table>
 
-            <ul class="buttons">
-                <li><button onclick="location.href='user_board_list.php'">목록</button></li>
-                <li><button onclick="location.href='user_board_form.php'">글쓰기</button>
+            <table id="page_num">  
+            </table> <!-- page -->      
+
+            <table class="buttons">
+                <tr><button onclick="location.href='user_board_list.php'">목록</button></tr>
+                <tr><button onclick="location.href='user_board_form.php'">글쓰기</button>
                     <a href="javascript:alert('로그인 후 이용해 주세요!')"><button>글쓰기</button></a>
-                </li>
-            </ul>
-            
-            </form>
+                </tr>
+            </table>
+
         </div> 
     </section> 
     <?php include "include/footer.php" ?>
