@@ -372,4 +372,390 @@ body {
 /*admin_main.php 도넛차트 시작*/
 
 
+<<<<<<< Updated upstream
 /*admin_main.php 도넛차트 끝*/
+=======
+/*admin_main.php 도넛차트 끝*/
+
+/* admin_main.php 상단부분 */
+.head_side {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.head_side_item {
+  word-spacing: 10px;
+}
+.head_side_item a:link, a:visited, a:active {
+  color:gray;
+  text-decoration: none;
+}
+
+.head_side_item a:hover {
+  color: black;
+  text-decoration: none;
+}
+/* admin_main.php 상단부분 끝 */
+
+
+
+/* 테이블 type1 css */
+table.type1 {
+  border-collapse: collapse;
+  text-align: center;
+  line-height: 1.5;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+
+table.type1 thead th {
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  color: #fff;
+  background: rgb(150, 130, 130);
+}
+
+table.type1 tbody th {
+  width: 150px;
+  padding: 10px;
+}
+
+table.type1 td {
+  width: 350px;
+  padding: 10px;
+  vertical-align: top;
+}
+
+table.type1 td.post_delete {
+  width: 150px;
+  padding: 10px;
+  vertical-align: top;
+}
+/* 테이블 type1 css 끝 */
+
+/* 페이징 css */
+.page1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+table.page2 a:link, a:visited, a:active {
+  color: rgba(6, 29, 134, 0.747);
+  text-decoration: none;
+}
+table.page2 a:hover{
+  color: orange;
+}
+
+.post_searchbox {
+  display: flex;
+  position: absolute;
+  left: 72%;
+}
+
+.category_searchbox {
+  display: flex;
+  position: absolute;
+  left: 3px;
+}
+
+.category_searchbox1 {
+  width: 390px;
+}
+
+.member_searchbox {
+  display: flex;
+  position: absolute;
+  right: 4%;
+}
+/* 페이징 css 끝 */
+
+/* 버튼 기본 css */
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  
+  background: var(--button-bg-color);
+  color: var(--button-color);
+  
+  margin: 0;
+  padding: 0.5rem 1rem;
+  
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  
+  border: none;
+  border-radius: 4px;
+  
+  display: inline-block;
+  width: auto;
+  
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  
+  cursor: pointer;
+  
+  transition: 0.5s;
+}
+
+button:active, button:hover, button:focus {
+  background: var(--button-hover-bg-color);
+  outline: 0;
+}
+button:disabled {
+  opacity: 0.5;
+}
+/* 버튼 기본 css 끝 */
+
+/* 버튼 개별 css */
+button.btn_search {
+  --button-bg-color: #312dee;
+  --button-hover-bg-color: #5451ee;
+  color: white;
+  margin-left: 10px;
+}
+button.btn_delete {
+  --button-bg-color: red;
+  --button-hover-bg-color: #e75463;
+}
+
+button.btn_add {
+  --button-bg-color: rgb(52, 238, 83);
+  --button-hover-bg-color: rgb(28, 221, 60);
+  margin-left: 5px;
+  margin-top: 5px;
+}
+button.btn_edit {
+  --button-bg-color: rgb(216, 213, 213);
+  --button-hover-bg-color: #eee;
+  margin-right: 10px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+button.btn_qa_ans {
+  --button-bg-color: rgb(216, 213, 213);
+  --button-hover-bg-color: #eee;
+}
+/* 버튼 개별 css 끝 */
+
+.category_inputbox {
+  padding: 10px;
+}
+/* nav_main.php 작성 */
+.topnav {
+  background-color: #333;
+  font-size: 17px;
+  color: #f2f2f2;
+  padding: 14px 16px;
+}
+
+.topnav a {
+  text-decoration: none;
+  color: black;
+}
+.topnav a.active {
+  padding: 20px 20px;
+  background-color: #04AA6D;
+  color: white;
+}
+
+ul, ol, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.category > li {
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  width: 100px;
+  padding: 14px 16px;
+}
+
+ul.category > li:hover {
+  background: #fff;
+  color: black;
+}
+
+ul.category > li ul.subitem {
+  display: none;
+  position: absolute;
+  top:50px; 
+  left:0;
+}
+
+ul.category > li ul.subitem > li {
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  width: 100px;
+  padding: 14px 16px;
+}
+
+ul.category > li:hover ul.subitem { 
+  display:block; 
+  background: #ddd;
+}
+
+ul.category > li ul.subitem > li:hover { 
+  background:#fff; 
+}
+
+/* nav_main.php 끝 */
+
+/* inquiry 상단 선택박스 */
+.cb_ans {
+  position: absolute;
+  padding: 5px;
+}
+
+
+
+
+/* main.php 시작 */
+
+.h_title {
+  position: relative;
+  left: 15%;
+}
+
+li.img_wrapper {
+  width: 10%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 추천 아이템 */
+
+.recommend_list {
+  width: 70%;
+  height: 500px;
+  overflow: hidden;
+  border: 1px solid #888;
+  margin: 10px auto;
+  padding: 5px;
+}
+
+.recommend_list:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.recommend_list li {
+  float: left;
+  border: 1px solid #888;
+  margin: 44px;
+}
+
+.recommend_list li a {
+  display: block;
+  color: black;
+  text-decoration: none;
+}
+
+.recommend_list li a b {
+  display: block;
+  padding: 5px;
+  line-height: 1.5;
+}
+
+/* 최신 게시물 */
+
+
+.post_list {
+  width: 70%;
+  border: 1px solid #888;
+  margin: 10px auto;
+  padding: 5px;
+}
+
+.post_list:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.post_list li a {
+  display: block;
+  color: black;
+  text-decoration: none;
+}
+
+.post_list li a b {
+  display: block;
+  padding: 5px;
+  line-height: 1.5;
+}
+
+table.main_post {
+  border-collapse: collapse;
+}
+
+table.main_post tr{
+  border-bottom: 1px solid rgb(175, 175, 175);
+  width: auto;
+}
+
+table.main_post tr.main_post_tr {
+  border-bottom:1px solid #5451ee;
+  width: 100%;
+}
+
+table.main_post th {
+  width: 50px;
+  white-space: nowrap;
+  padding: 3px;
+}
+
+table.main_post th.main_post_category {
+  width: 100px;
+}
+table.main_post th.main_post_title {
+  width: 900px;
+}
+table.main_post th.main_post_writer {
+  width: 100px;
+}
+
+table.main_post th.main_post_date {
+  width: 80px;
+}
+
+table.main_post td {
+  text-align: center;
+  padding: 3px;
+}
+
+table.main_post td.main_post_title {
+  display: inline-block;
+  text-align: left;
+  width: 850px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+}
+
+table.main_post td.main_post_title a{
+  color: black;
+  text-decoration: none;
+}
+>>>>>>> Stashed changes
