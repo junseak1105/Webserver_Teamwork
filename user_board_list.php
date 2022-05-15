@@ -46,26 +46,33 @@
             </h1>
             <table border="1">
                 <tr>
-                    <th>번호</th>
                     <th>글제목</th>
-                    <th>조회수</th>
+                    <th>작성자</th>
                     <th>작성일자</th>
                     <th>추천수</th>
-                    <th>작성자</th>
                 </tr>
                 
                 <?php
                 while($row = mysqli_fetch_array($result)){
                     echo '<tr><td>' .
-                    $row[ 'idx' ] . '</td><td>'. 
                     $row[ 'title' ] . '</td><td>'. 
-                    $row[ 'hit' ] . '</td><td>'. 
+                    $row['writer_id'] . '</td><td>'.
                     $row['date']. '</td><td>'.
-                    $row['recommend_Y']. '</td><td>'. 
-                    $row['writer_id'];
+                    $row['recommend_Y'];
                 }
                 ?>
 
+            </table>
+            <table>
+                <tr>
+                    <?php
+                        $i = 0;
+                        while($i<$list_page_no){
+                            echo '<td><a href="user_board_list.php?post_page_no_selected='.$i.'">' . $i . '</a></td>';
+                            $i++;
+                        }
+                    ?>
+                </tr>
             </table>
 
             <table id="page_num">  
@@ -74,8 +81,6 @@
             <table class="buttons">
                 <tr><button onclick="location.href='user_board_list.php'">목록</button></tr>
                 <tr><button onclick="location.href='user_board_form.php'">글쓰기</button>
-                    <a href="javascript:alert('로그인 후 이용해 주세요!')"><button>글쓰기</button></a>
-                </tr>
             </table>
 
         </div> 

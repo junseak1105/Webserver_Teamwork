@@ -81,10 +81,7 @@
 		</table>
 	</div> <!-- board_box -->
 </section> 
-<footer>
     <?php include "footer.php";?>
-</footer>
-
 </html>
 
 <?php

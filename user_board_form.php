@@ -4,7 +4,27 @@
 
     include "include/db.php";
     include "include/common_function.php";
-    
+
+    //검색값 설정
+    $sb_val = isset($_GET['sb_val']) ? $_GET['sb_val'] : "";
+    if($sb_val == ""){
+        $query_where="";
+    }else{
+        $query_where = "where userID like '%$sb_val%' or userName like '%$sb_val%' or userEmail like '%$sb_val%'";
+    };
+    //페이지 설정
+    $member_page_no_selected = intval(isset($_GET['member_page_no_selected']) ? $_GET['member_page_no_selected'] : ""); //선택된 페이지 숫자
+    $list_length = 20; //페이지당 출력 길이
+    list($list_page_no_selected,$list_page_no,$list_less_then_length) = page_count("member",$list_length,$member_page_no_selected,$query_where);
+
+    //페이지 하나 이하 처리
+    if($list_less_then_length == "true"){
+        $sql = "select * from member $query_where order by idx";
+    }else{
+        $sql = "select * from member order by idx limit $list_page_no_selected,$list_length;";
+    }
+    //쿼리 실행
+    $result = mysqli_query($conn,$sql);
 ?>
 
 <!DOCTYPE html>
@@ -36,35 +56,34 @@
 		include "include/sidenav.php";
 	?>
     <section>
-        <div id="board_box">
-            <h1 id="board_title">
-                게시판 > 글 쓰기
-            </h1>
-            <form  name="user_board_form" method="post" action="board_insert.php" enctype="multipart/form-data">
-                <table id="user_board_form">
+        <div>
+            <table id="board_title">
+                <tr>
+                    게시판 > 글 쓰기
+                </tr>
+            </table>
 
+            <form  name="user_board_form" method="post" action="user_board_insert.php">
+                <table id="user_board_form">
+                    <tr>
+                        <th>닉네임 : </th>
+                        <th><?=$userName?></th>
+                    </tr>
 	    		    <tr>
-	    			    <span class="col1">제목 : </span>
-	    			    <span class="col2"><input name="subject" type="text"></span>
+	    			    <th>제목 : </th>
+	    			    <th><input name="subject" type="text"></th>
 	    		    </tr>	
 
 	    		    <tr id="text_area">	
-	    			    <span class="col1">내용 : </span>
-	    			    <span class="col2">
-	    				    <textarea name="content"></textarea>
-	    			    </span>
+	    			    <th>내용 : </th>
+	    			    <th> <textarea name="content"></textarea> </th>
 	    		    </tr>
-
-	    		    <tr>
-			            <span class="col1"> 첨부 파일</span>
-			            <span class="col2"><input type="file" name="upfile"></span>
-			        </tr>
 	    	       </table>
 
 	    	    <table class="buttons">
-				    <tr><button type="button" onclick="check_input()">완료</button></tr>
-				    <tr><button type="button" onclick="location.href='user_board_view.php'">목록</button></tr>
+				    <tr><button type="button" onclick="check_input()">등록</button></tr>
 			    </table>
+
 	        </form>
         </div> 
     </section> 
