@@ -7,8 +7,6 @@ $idx = $_POST['idx'];
 $userPW = $_POST['userPW'];
 $new_userPW = $_POST['new_userPW'];
 $new_userPW_confirm = $_POST['new_userPW_confirm'];
-
-echo "$idx";
 $sql_user = "select * from member where idx = $idx";
 
 $result_user = mysqli_query($conn, $sql_user);
@@ -28,8 +26,8 @@ while ($row = mysqli_fetch_array($result_user)) {
                 echo "window.location.href='../revise.php';</script>";
             }else{
                 echo "<script>alert('비밀번호 변경이 완료되었습니다..');";
-                mysqli_query($conn, "update member SET userPW = '$userPW' WHERE idx = '$idx'");
-                echo "window.location.href='/my_page.php';</script>";
+                mysqli_query($conn, "update member SET userPW = '$new_userPW' WHERE idx = '$idx'");
+                echo "window.location.href='/my_page_main.php';</script>";
 
             }
         }
