@@ -57,17 +57,11 @@
 	?>
     <section>
         <div>
-            <table id="user_board_title">
+            <table id="board_title">
                 <tr>
                     게시판 > 글 쓰기
                 </tr>
             </table>
-
-            <script> /* 세션에서 닉네임 가져오기 */
-                echo $_SESSION['userName'];
-                /*if (isset($_SESSION['userName']) == false){
-                }*/
-            </script>
 
             <form  name="user_board_form" method="post" action="user_board_insert.php">
                 <table id="user_board_form">
@@ -77,14 +71,14 @@
                     </tr>
 	    		    <tr>
 	    			    <th>제목 : </th>
-	    			    <th><input name="title" type="text"></th>
+	    			    <th><input name="subject" type="text"></th>
 	    		    </tr>	
 
 	    		    <tr id="text_area">	
 	    			    <th>내용 : </th>
 	    			    <th> <textarea name="content"></textarea> </th>
 	    		    </tr>
-	    	    </table>
+	    	       </table>
 
 	    	    <table class="buttons">
 				    <tr><button type="button" onclick="check_input()">등록</button></tr>
