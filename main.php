@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include "include/head.php"; ?>
+    <?php 
+        error_reporting( E_ALL );
+        ini_set( "display_errors", 1 );
+        include "include/head.php";
+        include "include/db.php"; 
+        include "include/common_function.php";
+    ?>
 </head>
 <body>
 <div>
@@ -18,32 +24,35 @@
                     <th >추천수</th>
                 </tr>
                 <?php
-                    $i=1;
-                    while($i<11) {
-                        echo "  <tr>       
-                                    <td>$i</td>
-                                    <td >[category]</td>
-                                    <td class='main_post_title'><a href='#'><b>제목$i</b></a></td> 
-                                    <td >작성자</td>
-                                    <td >시간</td>
-                                    <td >$i</td>
-                                    <td >$i</td>
-                              </tr> ";
+                    $sql = 'select * from post order by idx desc limit 0,10';
+                    $result = mysqli_query($conn,$sql);
+                    $i = 1;
+                    while($row = mysqli_fetch_array($result)){
+                        echo '<tr>
+                        <td>' .$i. '</td>
+                        <td>'. $row[ 'category' ] . '</td>
+                        <td>'. $row['title']. '</td>
+                        <td>'. $row['writer_id'] . '</td>
+                        <td>'. $row['date']. '</td>
+                        <td>'. $row['hit']. '</td>
+                        <td>'. $row['recommend_Y']. '</td>
+                        </tr>';
                         $i++;
                     }
                 ?>
             </table>
         </ul>
     </div>
+        <a href="#">더보기</a>
     <div>
         <h2 class="h_title">추천 아이템</h2>
         <ul class="recommend_list">
             <?php
-                $i = 0;
-                while ($i<12) {
-                    echo "<li class='img_wrapper'> <a href='#'> <img src='images/test$i.jpg'> <b> 제목 </b> </a> </li>";
-                    $i++;
-                } 
+                $sql = 'select * from post order by recommend_Y desc limit 0,10';
+                $result = mysqli_query($conn,$sql);
+                while($row = mysqli_fetch_array($result)){
+                    echo '<li class="img_wrapper"> <a href="#"> <img src=images/'.$row['image'].'> <b> '.$row['title'].' </b> </a> </li>';
+                }
             ?>
         </ul>
     </div>
