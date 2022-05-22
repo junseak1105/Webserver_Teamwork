@@ -4,6 +4,7 @@
 
     include "include/db.php";
     include "include/common_function.php";
+    include "chk_login.php";
 
     //검색값 설정
     $sb_val = isset($_GET['sb_val']) ? $_GET['sb_val'] : "";
@@ -25,6 +26,16 @@
     }
     //쿼리 실행
     $result = mysqli_query($conn,$sql);
+
+
+?>
+
+<?php 
+    //개발용 임시 세션 넣어둔 것
+    $_SESSION["userID"] = 'testID10';
+    $_SESSION["userPW"] = 'testID10';
+    $_SESSION["userName"] = 'testID10';
+    $userID = $_SESSION['userID'];
 ?>
 
 <!DOCTYPE html>
@@ -34,10 +45,10 @@
 <head><?php include "include/head.php"; ?>
 <script>
   function check_input() {
-      if (!document.user_board_form.subject.value)
+      if (!document.user_board_form.title.value)
       {
           alert("제목을 입력하세요!");
-          document.user_board_form.subject.focus();
+          document.user_board_form.title.focus();
           return;
       }
       if (!document.user_board_form.content.value)
@@ -57,31 +68,39 @@
 	?>
     <section>
         <div>
-            <table id="board_title">
-                <tr>
-                    게시판 > 글 쓰기
-                </tr>
+            <table id="user_board_title">
+                <h1>
+                    추천 게시판 > 글 쓰기
+                </h1>
             </table>
 
-            <form  name="user_board_form" method="post" action="user_board_insert.php">
-                <table id="user_board_form">
+            <form  name="user_board_form" method="post" action="user_board_insert.php" enctype="multipart/form-data">
+                <table>
                     <tr>
+                        <?php
+                            $userName = $_SESSION['userName']; //세션에서 닉네임 가져오기
+                        ?>
                         <th>닉네임 : </th>
-                        <th><?=$userName?></th>
+                        <th><?=$userName?></th> <!-- 닉네임 넣기 --> 
                     </tr>
 	    		    <tr>
-	    			    <th>제목 : </th>
-	    			    <th><input name="subject" type="text"></th>
+	    			    <th class="col1">제목 : </th>
+	    			    <th class="col2"><input name="title" type="text"></th>
 	    		    </tr>	
 
 	    		    <tr id="text_area">	
-	    			    <th>내용 : </th>
-	    			    <th> <textarea name="content"></textarea> </th>
+	    			    <th class="col1">내용 : </th>
+	    			    <th class="col2"> <textarea name="content" rows="10" cols="60"></textarea> </th>
 	    		    </tr>
+                    <tr>
+                        <th class="col1">첨부 파일</th>
+                        <th class="col2"><input type="file" name="upfile"></th>
+                    </tr>
 	    	       </table>
 
 	    	    <table class="buttons">
-				    <tr><button type="button" onclick="check_input()">등록</button></tr>
+				    <tr><button type="summit" onclick="check_input()">등록</button></tr> <!-- 게시물 등록 버튼 -->
+                    <tr><button type="button" onclick="location.href='user_board_list.php'">목록</button></tr>
 			    </table>
 
 	        </form>
