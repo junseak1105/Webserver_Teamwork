@@ -5,20 +5,18 @@
 
     include "include/db.php";
     include "include/common_function.php";
-    include "chk_login.php";
 
-    /* 로그인 확인 용
+    //개발용 임시 세션 넣어둔 것
+    $_SESSION["userID"] = 'userid1';
+    $_SESSION["userPW"] = 'userpw1';
+    $_SESSION["userName"] = 'userName1';
+    $userID = $_SESSION['userID'];
+    $userName = $_SESSION['userName'];
+
     if (isset($_SESSION["userID"])) $userid = $_SESSION["userID"];
     else $userID = "";
     if (isset($_SESSION["userName"])) $username = $_SESSION["userName"];
     else $userName = "";
-    */
-
-    //개발용 임시 세션 넣어둔 것
-    $_SESSION["userID"] = 'testID10';
-    $_SESSION["userPW"] = 'testID10';
-    $_SESSION["userName"] = 'testID10';
-    $userID = $_SESSION['userID'];
 
     if ( !$userID )
     {
@@ -42,7 +40,7 @@
 	$upload_dir = './data/'; // 파일 서버 저장 경로
 	
 	$sql = "insert into post (title, content, date, hit, recommend_Y, recommend_N, writer_id, image) "; //DB 순서대로
-	$sql .= "values('$title', '$content', '$date', 0, 0, 0, '$userID', 0)";
+	$sql .= "values('$title', '$content', '$date', 0, 0, 0, '$userName', 0)";
 
 	mysqli_query($conn, $sql); 
 

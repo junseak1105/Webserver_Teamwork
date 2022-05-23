@@ -4,8 +4,7 @@
 
     include "include/db.php";
     include "include/common_function.php";
-    include "chk_login.php";
-
+    
     //검색값 설정
     $sb_val = isset($_GET['sb_val']) ? $_GET['sb_val'] : "";
     if($sb_val == ""){
@@ -32,10 +31,11 @@
 
 <?php 
     //개발용 임시 세션 넣어둔 것
-    $_SESSION["userID"] = 'testID10';
-    $_SESSION["userPW"] = 'testID10';
-    $_SESSION["userName"] = 'testID10';
+    $_SESSION["userID"] = 'userid1';
+    $_SESSION["userPW"] = 'userpw1';
+    $_SESSION["userName"] = 'userName1';
     $userID = $_SESSION['userID'];
+    $userName = $_SESSION['userName'];
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +57,7 @@
           document.user_board_form.content.focus();
           return;
       }
-      document.user_board_form.submit();
+      document.user_board_form.submit(); //form name="user_board_form"으로 서밋 그럼 폼에 액션이 동작
    }
 </script>
 </head>
@@ -77,11 +77,17 @@
             <form  name="user_board_form" method="post" action="user_board_insert.php" enctype="multipart/form-data">
                 <table>
                     <tr>
-                        <?php
-                            $userName = $_SESSION['userName']; //세션에서 닉네임 가져오기
-                        ?>
                         <th>닉네임 : </th>
                         <th><?=$userName?></th> <!-- 닉네임 넣기 --> 
+                    </tr>
+                    <tr>
+                        <th class="col1">카테고리 : </th>
+                        <th class="col2">
+                            <select>
+                                <option value="recommend_PD">추천 제품</option>
+                                <option value="sale">특가 정보</option>
+                            </select>
+                        </th>
                     </tr>
 	    		    <tr>
 	    			    <th class="col1">제목 : </th>
@@ -99,7 +105,7 @@
 	    	       </table>
 
 	    	    <table class="buttons">
-				    <tr><button type="summit" onclick="check_input()">등록</button></tr> <!-- 게시물 등록 버튼 -->
+				    <tr><button type="button" onclick="check_input()">등록</button></tr> <!-- 게시물 등록 버튼 -->
                     <tr><button type="button" onclick="location.href='user_board_list.php'">목록</button></tr>
 			    </table>
 

@@ -4,7 +4,6 @@
 
     include "include/db.php";
     include "include/common_function.php";
-    include "chk_login.php";
 
     
     //검색값 설정
@@ -64,7 +63,7 @@
                     <?php
                     while($row = mysqli_fetch_array($result)){
                         echo '<tr>
-                                <td class="title"><a href="user_board_view.php?'. $row['idx'] .'">' . $row[ 'title' ] .'</td>
+                                <td class="title"><a href="user_board_view.php?idx='. $row['idx'] .'">' . $row[ 'title' ] .'</td>
                                 <td>'. $row['writer_id'] . '</td>
                                 <td>'. $row['date']. '</td>
                                 <td>'. $row['recommend_Y']. '</td>
@@ -92,7 +91,7 @@
             </table> <!-- page -->    
 
             <table class="buttons">
-                <tr><button onclick="location.href='user_board_form.php'">글쓰기</button>
+                <tr><button onclick="location.href='user_board_form.php'">글쓰기</button></tr>
                 <tr><button onclick="location.href='user_board_list.php'">목록</button></tr>
             </table>
 

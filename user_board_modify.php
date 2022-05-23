@@ -4,12 +4,9 @@
 
     include "include/db.php";
     include "include/common_function.php";
-    include "chk_login.php";
 
 
-    /*$idx = $_POST["idx"];
-    echo "$idx";*/
-    $idx='711';
+    $idx = $_POST["idx"];
 
     //개발용 임시 세션 넣어둔 것
     $_SESSION["userID"] = 'testID10';
