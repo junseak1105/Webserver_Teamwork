@@ -3,11 +3,6 @@
 <head>
 <?php 
         include "include/head.php";
-        session_start();
-        if($_SESSION['userID']!=""){
-            Header("Location: ./index.php");
-        }
-
 ?>
 </head>
 <body>
@@ -20,7 +15,7 @@
                         <input type="text" name="user_id" class="inph" id="userID">
                     </td>
                     <td rowspan="2" align="center">
-                        <button id="login_form_submit"> 로그인 </button>
+                        <button type="submit" id="login_form_submit"> 로그인 </button>
                     </td>
                 </tr>
                 <tr>
@@ -39,16 +34,31 @@
 </body>
 </html>
 <script>
-     $('#login_form_submit').click(function(e){
+    $('#login_form button[type=submit]').click(function(e){
         e.preventDefault();
         
-        let userID = $('#userID').val();
+        let userId = $('#userID').val();
         let userPW = $('#userPW').val();
+        $.ajax({
+            url: './chk_login.php',
+            data: {
+                userId: userId,
+                userPwd: userPW
+            },
+            type: "POST",
+            dataType: "json",
+            success: function(data){
+                if(data.returnMsg)
+                	alert("로그인 성공");
+                    $_SESSION['userID']=data.userID;
+                    location.href="./index.php";
+                else
+                    alert("로그인 실패");
+            }, 
+            error: function(err){
+				alert(err);
+            }
+        });
+    })
 
-        login_chk(userID,userPW);
-    });
-
-    function login_chk(userID,userPW){
-        location.href="chk_login.php?userID="+userID+"&userPW="+userPW+"";
-    }
 </script>
