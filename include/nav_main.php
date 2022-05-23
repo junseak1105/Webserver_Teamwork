@@ -18,6 +18,7 @@
                 <ul class="category_about_item subitem">
                   <li><a href="my_page_main.php">내 프로필</a></li>
                   <li><a href="my_page_write.php">내 글 관리</a></li>
+                  <li><a href="my_page_prefer.php">내 좋아요 목록</a></li>
                   <li><a href="my_page_inquiry.php">내 문의사항</a></li>
                 </ul>
             </li>   
