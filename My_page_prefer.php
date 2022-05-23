@@ -11,17 +11,19 @@ $query_where = "";
 //페이지 설정
 $member_page_no_selected = intval(isset($_GET['member_page_no_selected']) ? $_GET['member_page_no_selected'] : ""); //선택된 페이지 숫자
 $list_length = 10; //페이지당 출력 길이
-list($list_page_no_selected, $list_page_no, $list_less_then_length) = page_count("post", $list_length, $member_page_no_selected, $query_where);
+list($list_page_no_selected, $list_page_no, $list_less_then_length) = page_count("prefer", $list_length, $member_page_no_selected, $query_where);
 
 
 //페이지 하나 이하 처리
 if ($list_less_then_length == "true") {
-    $sql = "select * from post $query_where order by idx";
+
+    $sql_prefer = "select post.idx, title, writer_id from prefer, post where prefer.postidx = post.idx and prefer.useridx = 5";
 } else {
-    $sql = "select * from post order by idx limit $list_page_no_selected,$list_length;";
+    $sql_prefer = "select post.idx, title, writer_id from prefer, post 
+                                  where prefer.postidx = post.idx and prefer.useridx = 5
+                                  limit $list_page_no_selected,$list_length;";
 }
 
-$sql_prefer = "select post.idx, title, writer_id from prefer, post where prefer.postidx = post.idx and prefer.useridx = 5";
 $result_prefer = mysqli_query($conn, $sql_prefer);
 
 ?>
