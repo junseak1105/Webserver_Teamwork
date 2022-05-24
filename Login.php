@@ -3,24 +3,27 @@
 <head>
 <?php 
         include "include/head.php";
+        if($_SESSION['userID']!=""){
+            Header("Location: ./index.php");
+        }
 ?>
 </head>
 <body>
     <div>
         <h1 align="center">로그인</h1>
-        <form id = "login_form">
+        <form id = "login_form" action="chk_login.php">
             <table align="center" border="0" cellspacing="0" width="300">
                 <tr>
                     <td width="150" colspan="1">
-                        <input type="text" name="user_id" class="inph" id="userID">
+                        <input type="text" name="userID" class="inph" id="userID">
                     </td>
                     <td rowspan="2" align="center">
-                        <button type="submit" id="login_form_submit"> 로그인 </button>
+                        <input type="button" id="login_form_submit" onclick="login_(this.form)" value="로그인"> </input>
                     </td>
                 </tr>
                 <tr>
                     <td width="150" colspan="1">
-                        <input type="password" name="user_pw" class="inph" id="userPW">
+                        <input type="password" name="userPW" class="inph" id="userPW">
                     </td>
                 </tr>
                 <tr>
@@ -34,31 +37,16 @@
 </body>
 </html>
 <script>
-    $('#login_form button[type=submit]').click(function(e){
-        e.preventDefault();
-        
-        let userId = $('#userID').val();
-        let userPW = $('#userPW').val();
-        $.ajax({
-            url: './chk_login.php',
-            data: {
-                userId: userId,
-                userPwd: userPW
-            },
-            type: "POST",
-            dataType: "json",
-            success: function(data){
-                if(data.returnMsg)
-                	alert("로그인 성공");
-                    $_SESSION['userID']=data.userID;
-                    location.href="./index.php";
-                else
-                    alert("로그인 실패");
-            }, 
-            error: function(err){
-				alert(err);
-            }
-        });
-    })
-
+    function login_(form_) {
+			if (form_.userID.value == "") {
+				alert("아이디를 입력하시오");
+				form_.userID.focus();
+				return false;
+			} else if (form_.userPW.value == "") {
+				alert("비밀번호를 입력하시오");
+				form_.userPW.focus();
+				return false;
+			}
+			form_.submit();
+		}
 </script>

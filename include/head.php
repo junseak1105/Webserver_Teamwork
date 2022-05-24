@@ -8,6 +8,8 @@ session_start();
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 	<?php
 	include "include/nav_main.php"; 
+	//세션 확인
+	
 	?>
 
 
