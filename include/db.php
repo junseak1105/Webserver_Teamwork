@@ -9,7 +9,7 @@ $conn = mysqli_connect(
 // $conn = mysqli_connect(
 //     'localhost',
 //     'root',
-//     '',
+//     '1234',
 //     'dgnr'
 // );
 // 한글깨짐 현상 관련
