@@ -14,10 +14,12 @@
                     <li><a href="#news2">contact2</a></li>
                 </ul>
             </li>
-            <li class="category_about"> cat3
+            <li class="category_about"> 마이페이지
                 <ul class="category_about_item subitem">
-                  <li><a href="#news">about1</a></li>
-                  <li><a href="#news2">about2</a></li>
+                  <li><a href="my_page_main.php">내 프로필</a></li>
+                  <li><a href="my_page_write.php">내 글 관리</a></li>
+                  <li><a href="my_page_prefer.php">내 좋아요 목록</a></li>
+                  <li><a href="my_page_inquiry.php">내 문의사항</a></li>
                 </ul>
             </li>   
         </ul>
