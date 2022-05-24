@@ -40,8 +40,6 @@
 
 <!DOCTYPE html>
 <html>
-<title>꿀템공유사이트 - 글 쓰기</title>
-
 <head><?php include "include/head.php"; ?>
 <script>
   function check_input() {
@@ -67,48 +65,25 @@
 		include "include/sidenav.php";
 	?>
     <section>
-        <div>
-            <table id="user_board_title">
-                <h1>
-                    추천 게시판 > 글 쓰기
-                </h1>
-            </table>
-
-            <form  name="user_board_form" method="post" action="user_board_insert.php" enctype="multipart/form-data">
-                <table>
-                    <tr>
-                        <th>닉네임 : </th>
-                        <th><?=$userName?></th> <!-- 닉네임 넣기 --> 
-                    </tr>
-                    <tr>
-                        <th class="col1">카테고리 : </th>
-                        <th class="col2">
-                            <select>
-                                <option value="recommend_PD">추천 제품</option>
-                                <option value="sale">특가 정보</option>
-                            </select>
-                        </th>
-                    </tr>
-	    		    <tr>
-	    			    <th class="col1">제목 : </th>
-	    			    <th class="col2"><input name="title" type="text"></th>
-	    		    </tr>	
-
-	    		    <tr id="text_area">	
-	    			    <th class="col1">내용 : </th>
-	    			    <th class="col2"> <textarea name="content" rows="10" cols="60"></textarea> </th>
-	    		    </tr>
-                    <tr>
-                        <th class="col1">첨부 파일</th>
-                        <th class="col2"><input type="file" name="upfile"></th>
-                    </tr>
-	    	       </table>
-
-	    	    <table class="buttons">
-				    <tr><button type="button" onclick="check_input()">등록</button></tr> <!-- 게시물 등록 버튼 -->
-                    <tr><button type="button" onclick="location.href='user_board_list.php'">목록</button></tr>
-			    </table>
-
+        <div class="user_board">
+            <h1>추천 게시판 > 글 쓰기</h1>
+            <form class="user_board_form" name="user_board_form" method="post" action="user_board_insert.php" enctype="multipart/form-data">
+                <div class="user_board_title">
+                    <select class="user_board_category">
+                        <option value="">카테고리 선택</option>
+                        <option value="recommend_PD">추천 제품</option>
+                        <option value="sale">특가 정보</option>
+                    </select>
+                    <input class="user_board_input" name="title" type="text" placeholder="제목">
+                </div>
+                <div class="text_area">
+                    <b>첨부 파일</b>
+                    <input type="file" name="upfile">
+                    <br>
+	    			<textarea class="user_board_content" name="content" rows="30" placeholder="내용"></textarea>       
+                    <button class="btn_user_board" type="button" onclick="check_input()">등록</button> <!-- 게시물 등록 버튼 -->
+                    <button>취소</button>
+                </div>
 	        </form>
         </div> 
     </section> 

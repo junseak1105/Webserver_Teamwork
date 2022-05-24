@@ -9,10 +9,11 @@
     $idx = $_POST["idx"];
 
     //개발용 임시 세션 넣어둔 것
-    $_SESSION["userID"] = 'testID10';
-    $_SESSION["userPW"] = 'testID10';
-    $_SESSION["userName"] = 'testID10';
+    $_SESSION["userID"] = 'userid1';
+    $_SESSION["userPW"] = 'userpw1';
+    $_SESSION["userName"] = 'userName1';
     $userID = $_SESSION['userID'];
+    $userName = $_SESSION['userName'];
 
     if ( !$userID )
     {

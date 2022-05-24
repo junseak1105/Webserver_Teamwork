@@ -373,3 +373,251 @@ body {
 
 
 /*admin_main.php 도넛차트 끝*/
+
+
+/*user_board_form.php 시작 */
+.user_board {
+  width: 80%;
+  margin: auto;
+}
+
+form.user_board_form {
+  border: 2px solid#888;
+  border-top: 2px solid#f36303;
+  border-bottom: 2px solid#f36303;
+  padding: 50px;
+  margin-bottom: 50px;
+}
+
+.user_board_title {
+  white-space: nowrap;
+  margin-bottom: 20px;
+}
+
+form.user_board_form input.user_board_input {
+  width: 45%;
+  line-height: 35px;
+  height: 35px;
+}
+
+.user_board_category{
+  height: 35px;
+}
+
+.text_area {
+  border-top: 2px solid#f36303;
+  margin-bottom: 50px;
+  padding: 10px;
+}
+
+.user_board_content {
+  margin-top: 10px;
+  width: 100%;
+  resize: vertical;
+}
+
+.text_area button {
+  position: relative;
+  float: right;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 70px;
+  height: 50px;
+}
+
+/*user_board_form.php 시작 */
+
+
+/*user_board_list.php 시작 */
+
+.user_board_list {
+  width: 80%;
+  margin: auto;
+}
+
+.user_board_list h1{
+  border-bottom: 2px solid#f36303;
+}
+
+table.board_list {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 5px;
+  border-bottom: 2px solid#f36303;
+}
+
+table.board_list thead th {
+  width: 3%;
+  margin-bottom: 5px;
+}
+
+table.board_list thead th.title {
+  width: 50%;
+}
+
+table.board_list thead th.category {
+  width: 6%;
+}
+
+table.board_list thead th.date {
+  width: 6%;
+}
+
+table.board_list thead tr {
+  border-bottom: 1px solid#f36303;
+}
+
+table.board_list tbody tr {
+  border-bottom: 1px solid rgb(202, 200, 200);
+}
+
+table.board_list tbody td {
+  text-align: center;
+  height: 30px;
+}
+
+table.board_list tbody th.title {
+  text-align: left;
+}
+
+table.board_list tbody th.title a{
+  color: #111;
+  text-decoration: none;
+}
+
+.btn_wirte_area {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button.btn_write {
+  width: 100px;
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.user_board_searchbox {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.user_board_searchbox select {
+  width: 100px;
+  height: 35px;
+  margin-left: 10px;
+}
+
+.user_board_searchbox input {
+  line-height: 35px;
+  width: 300px;
+  height: 35px;
+  margin-left: 10px;
+}
+
+.user_board_searchbox button {
+  height: 35px;
+  margin-left: 10px;
+}
+
+/*user_board_list.php 끝 */
+
+/* user_board_view.php 시작 */
+
+.user_board_box {
+  width: 80%;
+  margin: auto;
+}
+
+.user_board_box h1{
+  border-bottom: 2px solid#f36303;
+  height: 50px;
+}
+
+.user_board_box b{
+  font-size:17px;
+}
+
+.btn_modify_area{
+  display: flex;
+  justify-content: right;
+  border-bottom: 1px solid#f36303;
+}
+
+button.btn_modify {
+  width: 100px;
+  height: 40px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+button.btn_list {
+  width: 100px;
+  height: 40px;
+}
+
+.view_board_title {
+  width: 100%;
+  border-bottom: 1px solid#888;
+}
+
+.view_board_content {
+  display: table;
+  height: auto;
+  min-height: 500px;
+}
+
+.view_board_content span {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 20px;
+  word-break: break-all;
+}
+
+
+.view_board_title td.id{
+  width: 5%;
+  text-align: center;
+  border-right: 1px solid#888;
+  padding: 5px;
+}
+
+.view_board_title td.data {
+  text-align: left;
+  padding: 5px;
+}
+
+.view_board_title td.hit{
+  width: 5%;
+  text-align: center;
+  padding: 5px;
+}
+
+.view_board_title td.recommend{
+  width: 5%;
+  text-align: center;
+  border-left: 1px solid#888;
+  padding: 5px;
+}
+
+button.btn_up, button.btn_down {
+  border: none;
+}
+
+button.btn_up:hover, button.btn_down:hover{
+  cursor: pointer;
+}
+
+button.btn_up, button.btn_down img {
+  width: 70px;
+  height: 70px;
+}
+
+.user_board_updown {
+  display: flex;
+  justify-content: center;
+}
+
+/* user_board_view.php 끝 */

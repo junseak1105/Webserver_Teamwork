@@ -27,8 +27,6 @@
 
 <!DOCTYPE html>
 <html>
-<title>꿀템공유사이트 - 내용 보기</title>
-
 <head><?php include "include/head.php"; ?></head>
 
 <body>
@@ -36,35 +34,33 @@
 		include "include/sidenav.php";
 	?>
 <section>
-   	<div id="user_board_box">
-   		
-	    <table id="user_board_title">
-	    	<h1>
-	    		추천 게시판 > 내용 보기
-	    	</h1>
-	    </table>
-
-	    <table id="view_content">
-			<tr>
-				<th class="col1"><b>제목 :</b> <?=$title?></th>
-				<th class="col2"> | <?=$writer_id?> | <?=$data?> | 추천 <?=$recommend_Y?> </th>
-			</tr>
-			<tr>
-				<th><?=$content?></th>
-			</tr>		
-	    </table>
-		<table class="buttons">
-    		<tr>
-    			<form method="post" action="user_board_view_like.php">
-    				<button type='submit' value='추천' name='recommend_Y'>추천</button>
-					<button type='submit' value='비추' name='recommend_N'>비추</button>
-				</form>
-			</tr>
+   	<div class="user_board_box" id="user_board_box">
+	    <h1> 추천 게시판 > 내용 보기 </h1>
+		<div class="btn_modify_area">
 			<form method="post" action="user_board_modify_form.php">
-				<tr><button type='submit' value="<?=$idx?>" name='idx'>수정</button></tr>
+				<button class="btn_modify" type='submit' value="<?=$idx?>" name='idx'>수정</button>
 			</form>
-			<tr><button onclick="location.href='user_board_list.php'">목록</button></tr>
+			<button class="btn_list" onclick="location.href='user_board_list.php'">목록</button>
+		</div>
+		<table class="view_board_title">
+			<b>[카테고리]</b> 
+			<b> <?=$title?></b>
+			<tr class="view_board_title_tr">
+				<td class="id"><?=$writer_id?></td>
+				<td class="data"><?=$data?></td>
+				<td class="hit">조회 32</td>
+				<td class="recommend">추천 <?=$recommend_Y?></td>
+			</tr>
 		</table>
+		<div class="view_board_content">
+			<span> <?=$content?></span>
+		</div>
+		<div class="user_board_updown">
+    		<form method="post" action="user_board_view_like.php">
+    			<button class="btn_down" type='submit' value='추천' name='recommend_Y' ><img src="images/up.png"></button>
+				<button class="btn_down" type='submit' value='비추' name='recommend_N'><img src="images/down.png"></button>
+			</form>
+		</div>
 	</div> <!-- board_box -->
 </section> 
     <?php include "include/footer.php";?>

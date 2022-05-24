@@ -32,8 +32,6 @@
 ?>
 <!DOCTYPE html>
 <html>
-<title>꿀템공유사이트 - 글목록</title>
-<link rel="stylesheet" type="text/css" href="style.css">
 <head>
     <?php 
         include "include/head.php"; 
@@ -44,26 +42,30 @@
         include "include/sidenav.php";
     ?>
     <section>
-        <div id="user_board_box">
-            <table id="user_board_title">
-                <h1>
-                추천 게시판 > 글 목록
-                </h1>
-            </table>
+        <div class="user_board_list" id="user_board_box">
+            <h1>추천 게시판 > 글 목록</h1>
+            
             <form method="POST" action="user_board_view">
-                <table border="1">
-                    <tr>
-                        <th>글제목</th>
-                        <th>작성자</th>
-                        <th>작성일자</th>
-                        <th>추천수</th>
-                        <th>조회수</th>
-                        <input type="hidden" name="idx" value="<?=$idx?>">
-                    </tr>
+                <table class="board_list">
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th class="category">카테고리</th>
+                            <th class="title">제목</th>
+                            <th>작성자</th>
+                            <th class="date">작성일</th>
+                            <th>추천수</th>
+                            <th>조회수</th>
+                            <input type="hidden" name="idx" value="<?=$idx?>">
+                        </tr>
+                    </thead>
+                    <tbody>
                     <?php
                     while($row = mysqli_fetch_array($result)){
                         echo '<tr>
-                                <td class="title"><a href="user_board_view.php?idx='. $row['idx'] .'">' . $row[ 'title' ] .'</td>
+                                <td>번호</td>
+                                <td>카테고리</td>
+                                <th class="title"><a href="user_board_view.php?idx='. $row['idx'] .'">' . $row[ 'title' ] .'</th>
                                 <td>'. $row['writer_id'] . '</td>
                                 <td>'. $row['date']. '</td>
                                 <td>'. $row['recommend_Y']. '</td>
@@ -72,31 +74,44 @@
                             //idx 넘기는 것 안뎀
                     }
                     ?>
+                    </tbody>
                 </table>
             </form>
+            <div class="btn_wirte_area">
+                <button class="btn_write"onclick="location.href='user_board_form.php'">글쓰기</button>
+            </div>
+            <div class="page1">
+                <table class="page2" id="page">
+                    <tr>
+                        <?php
+                            $i = 0;
+                            while($i<=$list_page_no){
+                                echo '<td><a href="user_board_list.php?post_page_no_selected='.$i.'">' . $i . '</a></td>';
+                                $i++;
+                            }
+                        ?>
+                    </tr>
+                </table>
+            </div>
+            <div class="user_board_searchbox" id="search_box"> <!-- 게시글 검색 창 -->
+                <select>
+                    <option value="">전체</option>
+                    <option value="1">가전제품</option>
+                    <option value="2">생활용품</option>
+                    <option value="3">생필품</option>
+                </select>
+                <select>
+                    <option value="title">제목</option>
+                    <option value="name">글쓴이</option>
+                </select>
+                <input type="text" name="search" required="required">
+                <button>검색</button>
+            </div>
+                
             
-            <table id="page">
-                <tr>
-                    <?php
-                        $i = 0;
-                        while($i<=$list_page_no){
-                            echo '<td><a href="user_board_list.php?post_page_no_selected='.$i.'">' . $i . '</a></td>';
-                            $i++;
-                        }
-                    ?>
-                </tr>
-            </table>
 
-            <table id="page_num"> 
-            </table> <!-- page -->    
-
-            <table class="buttons">
-                <tr><button onclick="location.href='user_board_form.php'">글쓰기</button></tr>
-                <tr><button onclick="location.href='user_board_list.php'">목록</button></tr>
-            </table>
-
-        </div> 
-    </section> 
+        </div>
+    </section>
     <?php include "include/footer.php" ?>
 </body>
 </html>
