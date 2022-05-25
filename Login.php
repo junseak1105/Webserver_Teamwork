@@ -7,36 +7,25 @@
         if($_SESSION['userID']!=""){
             Header("Location: ./index.php");
         }
-
 ?>
 </head>
-<body>
-    <div>
-        <h1 align="center">로그인</h1>
-        <form id = "login_form" action="chk_login.php">
-            <table align="center" border="0" cellspacing="0" width="300">
-                <tr>
-                    <td width="150" colspan="1">
-                        <input type="text" name="userID" class="inph" id="userID">
-                    </td>
-                    <td rowspan="2" align="center">
-                        <input type="button" id="login_form_submit" onclick="login_(this.form)" value="로그인"> </input>
-                    </td>
-                </tr>
-                <tr>
-                    <td width="150" colspan="1">
-                        <input type="password" name="userPW" class="inph" id="userPW">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3" align="left" class="register">
-                        <a href="/Web/register.php">회원가입</a>
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </div>
-</body>
+    <body>
+        <div>
+            <h2 class="login_header">Login</h2>
+            <form class="login_form" action="" method="POST">
+                <div class="login_inputbox">
+                    <input id="userID" type="text" name="userID" placeholder="아이디">
+                    <label for="userID">아이디</label>
+                </div>
+                <div class="login_inputbox">
+                    <input id="userPW" type="password" name="userPW" placeholder="비밀번호">
+                    <label for="userPW">비밀번호</label>
+                </div>
+                <div class="login_register"><a href="register.php">회원가입</a></div>
+                <input class="btn_login" type="submit" onclick="login_(this.form)" value="로그인">
+            </form>
+        </div>
+    </body>
 </html>
 <script>
     function login_(form_) {
