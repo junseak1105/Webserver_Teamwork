@@ -11,8 +11,11 @@
 </style>
 <!DOCTYPE html>
 <html>
-<head><?php include "include/head.php"; 
-        include "include/admin_head_side.php"?></head>
+<head>
+  <?php 
+    include "include/head.php"; 
+    include "include/admin_head_side.php"?>
+</head>
 <body>
 <?php
   include_once "include/visitor_count.php" //추후 index.php에만 적용
