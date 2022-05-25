@@ -9,10 +9,10 @@
         include "include/common_function.php";
     ?>
 </head>
-<body>
+<body style="overflow-x:hidden; overflow-y:auto;">
 <div>
         <h2 class="h_title">최신 게시글</h2>
-        <ul class="post_list">
+        <div class="post_list">
             <table class="main_post">
                 <tr class='main_post_tr'>
                     <th >번호</th>
@@ -31,9 +31,9 @@
                         echo '<tr>
                         <td>' .$i. '</td>
                         <td>'. $row[ 'category' ] . '</td>
-                        <td><a href="user_board_view.php?idx='. $row['idx'] .'">'. $row['title']. '</a></td>
+                        <td class="main_post_td_title"><a href="user_board_view.php?idx='. $row['idx'] .'"><b>'. $row['title']. '</b></a></td>
                         <td>'. $row['writer_id'] . '</td>
-                        <td>'. $row['date']. '</td>
+                        <td class="main_post_td_date">'. $row['date']. '</td>
                         <td>'. $row['hit']. '</td>
                         <td>'. $row['recommend_Y']. '</td>
                         </tr>';
@@ -41,10 +41,10 @@
                     }
                 ?>
             </table>
-        </ul>
-    </div>
-        <a href="./user_board_list.php">더보기</a>
-    <div>
+            <div class="main_post_more">
+                <a href="./user_board_list.php">더보기</a>
+            </div>
+        </div>
         <h2 class="h_title">추천 아이템</h2>
         <ul class="recommend_list">
             <?php

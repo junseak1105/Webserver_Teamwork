@@ -1,17 +1,17 @@
 <nav>
+    <div class="index_head">
+        <a href="./admin_main.php">어드민페이지</a>
+        <a href="./Login.php">로그인</a>
+        <a href="./register.php">회원가입</a>
+    </div>
 <div class="topnav">
-    <ul class="category">
-        <a class="active" href="index.php">Home</a>   
-            <li class="category_news"> cat1
-                <ul class="category_news_item subitem">
-                    <li><a href="#news">news1</a></li>
-                    <li><a href="#news2">news2</a></li>
-                </ul>
-            </li>
-            <li class="category_contact"> cat2
+    <div class="topnav2">
+        <ul class="category">
+            <a class="active" href="index.php">Home</a>   
+            <li class="category_contact"> 게시판
                 <ul class="category_contact_item subitem">
-                    <li><a href="#news">contact1</a></li>
-                    <li><a href="#news2">contact2</a></li>
+                    <li><a href="user_board_list.php">전체 게시판</a></li>
+                    <li><a href="#news2">category</a></li>
                 </ul>
             </li>
             <li class="category_about"> 마이페이지
@@ -23,5 +23,6 @@
                 </ul>
             </li>   
         </ul>
+    </div>
 </div>
 </nav>

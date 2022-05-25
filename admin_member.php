@@ -32,8 +32,8 @@
 <html>
 <head>
     <?php 
-        include "include/head.php";
-    ?>
+        include "include/head.php"; 
+        include "include/admin_head_side.php"?>
 </head>
 <body>
     <div>
