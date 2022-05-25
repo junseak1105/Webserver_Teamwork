@@ -4,28 +4,6 @@
 
     include "include/db.php";
     include "include/common_function.php";
-    
-    //검색값 설정
-    $sb_val = isset($_GET['sb_val']) ? $_GET['sb_val'] : "";
-    if($sb_val == ""){
-        $query_where="";
-    }else{
-        $query_where = "where userID like '%$sb_val%' or userName like '%$sb_val%' or userEmail like '%$sb_val%'";
-    };
-    //페이지 설정
-    $member_page_no_selected = intval(isset($_GET['member_page_no_selected']) ? $_GET['member_page_no_selected'] : ""); //선택된 페이지 숫자
-    $list_length = 20; //페이지당 출력 길이
-    list($list_page_no_selected,$list_page_no,$list_less_then_length) = page_count("member",$list_length,$member_page_no_selected,$query_where);
-
-    //페이지 하나 이하 처리
-    if($list_less_then_length == "true"){
-        $sql = "select * from member $query_where order by idx";
-    }else{
-        $sql = "select * from member order by idx limit $list_page_no_selected,$list_length;";
-    }
-    //쿼리 실행
-    $result = mysqli_query($conn,$sql);
-
 
 ?>
 
@@ -69,10 +47,14 @@
             <h1>추천 게시판 > 글 쓰기</h1>
             <form class="user_board_form" name="user_board_form" method="post" action="user_board_insert.php" enctype="multipart/form-data">
                 <div class="user_board_title">
-                    <select class="user_board_category">
-                        <option value="">카테고리 선택</option>
-                        <option value="recommend_PD">추천 제품</option>
-                        <option value="sale">특가 정보</option>
+                    <select id = "user_board_category" name = "category">
+                    <?php
+                        $sql_ca = "select * from category where co_code = 'ca_Post';";
+                        $result_ca = mysqli_query($conn,$sql_ca);
+                        while($row_ca=mysqli_fetch_array($result_ca)){
+                            echo '<option value="'.$row_ca['ca_name'].'">'.$row_ca['ca_name'].'</option>';
+                        }
+                    ?>
                     </select>
                     <input class="user_board_input" name="title" type="text" placeholder="제목">
                 </div>

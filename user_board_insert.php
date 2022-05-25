@@ -30,6 +30,7 @@
     }
 
     $title = $_POST["title"]; //form에서 제목 가져오기
+    $category = $_POST["category"]; //form에서 제목 가져오기
     $content = $_POST["content"]; // 내용 가져오기
 
 	$title = htmlspecialchars($title, ENT_QUOTES);
@@ -39,8 +40,8 @@
 
 	$upload_dir = './data/'; // 파일 서버 저장 경로
 	
-	$sql = "insert into post (title, content, date, hit, recommend_Y, recommend_N, writer_id, image) "; //DB 순서대로
-	$sql .= "values('$title', '$content', '$date', 0, 0, 0, '$userName', 0)";
+	$sql = "insert into post(title, category, content, date, hit, recommend_Y, recommend_N, writer_id, image) values('$title','$category', '$content', '$date', 0, 0, 0, '$userName', 0);";
+    echo $sql;
 
 	mysqli_query($conn, $sql); 
 
@@ -48,7 +49,7 @@
 
 	echo "
 	   <script>
-	    location.href = 'user_board_list.php';
+	    location.href = './user_board_list.php';
 	   </script>
 	";
 ?>
