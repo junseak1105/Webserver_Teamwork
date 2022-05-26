@@ -104,7 +104,7 @@
                     <tr>
                         <td><?php echo $row[ 'idx' ]; ?></td>
                         <td><?php echo $row[ 'category' ]; ?></td>
-                        <td class="title"><a href="user_board_view.php?idx='<?php echo $row['idx']?>'"><?php echo $row[ 'title' ]?></td>
+                        <th class="title"><a href="user_board_view.php?idx='<?php echo $row['idx']?>'"><?php echo $row[ 'title' ]?></th>
                         <td><?php echo $row['writer_id']; ?></td>
                         <td><?php echo $row['date']; ?></td>
                         <td><?php echo $row['recommend_Y']; ?></td>

@@ -5,7 +5,6 @@ ini_set("display_errors", 1);
 
 include "include/db.php";
 include "include/common_function.php";
-include "include/head.php";
 $query_where = "";
 //echo $_SESSION['userID'];
 //페이지 설정
@@ -30,6 +29,11 @@ $result_prefer = mysqli_query($conn, $sql_prefer);
 
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <?php 
+        include "include/head.php"; 
+    ?>
+</head>
 <body>
 <!-- 내가 좋아요 누른 글 조회 -->
 <table border="1" style="border-collapse: collapse" width="70%">
