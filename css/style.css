@@ -333,7 +333,6 @@ body {
   left: 0;
   bottom: 0;
   z-index: 1001;
-  ;
   background: rgba(0, 0, 0, 0.5);
 }
 
@@ -343,6 +342,99 @@ body {
 
 
 /*admin_main.php 도넛차트 끝*/
+
+
+/* admin 공용 시작 */
+
+button.btn_admin_delete {
+  background-color: transparent;
+  border: none;
+}
+
+button.btn_admin_delete:hover {
+  cursor: pointer;
+}
+
+img.ic_close {
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+}
+
+.admin_table {
+  width: 1000px;
+  margin: auto;
+  border: 2px solid#888;
+  border-collapse: collapse;
+}
+
+.admin_table thead th {
+  height: 50px;
+  background-color: skyblue;
+}
+
+.admin_table thead th.admin_table_hit {
+  width: 110px;
+}
+
+.admin_table thead th.admin_table_date {
+  width: 150px;
+}
+
+.admin_table thead th.admin_table_id {
+  width: 150px;
+}
+
+.admin_table thead th.admin_table_delete {
+  width: 70px;
+}
+
+.admin_table thead th.admin_table_category {
+  width: 80px;
+}
+.admin_table thead th.admin_table_datetime{
+  width: 200px;
+}
+.admin_table thead th.admin_table_status {
+  width: 70px;
+}
+.admin_table thead th.admin_table_ans {
+  width: 100px;
+}
+
+.admin_table tbody td {
+  height: 50px;
+  text-align: center;
+}
+
+.admin_table tbody th {
+  text-align: left;
+  padding: 10px;
+}
+
+.admin_table tbody tr:hover{
+  background-color: rgb(214, 214, 214);
+}
+
+/* admin 공용 끝 */
+
+
+/* 전체 공용 */
+
+/* paper <-- 페이징 */
+.paper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.paper p a{
+  color: #111;
+  text-decoration: none;
+}
+/* 전체 공용 끝 */
 
 /* admin_main.php */
 .head_side {
@@ -374,69 +466,36 @@ body {
 
 /* admin_main.php 끝 */
 
-
-
-/* 테이블 type1 css */
-table.type1 {
-  border-collapse: collapse;
-  text-align: center;
-  line-height: 1.5;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
-}
-
-table.type1 thead th {
-  width: 150px;
-  padding: 10px;
-  font-weight: bold;
-  vertical-align: top;
-  color: #fff;
-  background: rgb(150, 130, 130);
-}
-
-table.type1 tbody th {
-  width: 150px;
-  padding: 10px;
-}
-
-table.type1 td {
-  width: 350px;
-  padding: 10px;
-  vertical-align: top;
-}
-
-table.type1 td.post_delete {
-  width: 150px;
-  padding: 10px;
-  vertical-align: top;
-}
-/* 테이블 type1 css 끝 */
-
-/* 페이징 css */
-.page1 {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-size: 15px;
-}
-
-table.page2 a:link, a:visited, a:active {
-  color: rgba(6, 29, 134, 0.747);
-  text-decoration: none;
-}
-table.page2 a:hover{
-  color: orange;
-}
+/* admin_post.php 시작 */
 
 .post_searchbox {
-  display: flex;
-  position: absolute;
-  left: 72%;
+  text-align: center;
+  margin-bottom: 30px;
 }
+
+/* admin_post.php 끝 */
+
+/* admin_inquiry.php 시작 */
+.btn_qa_ans {
+  border: none;
+  width: 100%;
+  height: 50px;
+  background-color: #888;
+}
+
+.btn_qa_ans:hover {
+  cursor: pointer;
+}
+
+/* admin_inquiry.php 끝 */
+
+
+/* admin_category.php 시작 */
+
+.admin_category {
+}
+
+/* admin_category.php 끝 */
 
 .category_searchbox {
   display: flex;
@@ -456,7 +515,7 @@ table.page2 a:hover{
 /* 페이징 css 끝 */
 
 /* 버튼 기본 css */
-button {
+/* button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -492,7 +551,7 @@ button:active, button:hover, button:focus {
 }
 button:disabled {
   opacity: 0.5;
-}
+} */
 /* 버튼 기본 css 끝 */
 
 /* 버튼 개별 css */
@@ -501,10 +560,6 @@ button.btn_search {
   --button-hover-bg-color: #5451ee;
   color: white;
   margin-left: 10px;
-}
-button.btn_delete {
-  --button-bg-color: red;
-  --button-hover-bg-color: #e75463;
 }
 
 button.btn_add {
@@ -638,10 +693,10 @@ li.img_wrapper {
   width: 10%;
 }
 
-img {
+/* img {
   max-width: 100%;
   height: auto;
-}
+} */
 
 /* 추천 아이템 */
 
@@ -814,15 +869,14 @@ form.user_board_form input.user_board_input {
   margin: auto;
 }
 
-.user_board_list h1{
-  border-bottom: 2px solid#f36303;
-}
+
 
 table.board_list {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 5px;
   border-bottom: 2px solid#f36303;
+  border-top: 2px solid#f36303;
 }
 
 table.board_list thead th {
@@ -911,7 +965,7 @@ button.btn_write {
 }
 
 .user_board_box h1{
-  border-bottom: 2px solid#f36303;
+  
   height: 50px;
 }
 
@@ -923,6 +977,7 @@ button.btn_write {
   display: flex;
   justify-content: right;
   border-bottom: 1px solid#f36303;
+  border-top: 2px solid#f36303;
 }
 
 button.btn_modify {

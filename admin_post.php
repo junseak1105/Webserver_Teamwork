@@ -51,46 +51,48 @@
         include "include/admin_head_side.php"?>
 </head>
 <body>
-        <table class="type1" border="1">
+        <table class="admin_table" border="1">
         <thead>    
             <tr>   
-                <th>글제목</th>
-                <th>조회수</th>
-                <th>작성일자</th>
-                <th>작성자</th>
-                <th>삭제</th>
+                <th class="admin_table_title">글제목</th>
+                <th class="admin_table_id">작성자</th>
+                <th class="admin_table_date">작성일자</th>
+                <th class="admin_table_hit">조회수</th>
+                <th class="admin_table_delete">삭제</th>
             </tr>
         </thead>
         <tbody>
             <?php
             while($row = mysqli_fetch_array($result)){
-                echo '<tr><th>' . $row[ 'title' ] . '</th><td>'. $row[ 'hit' ] . '</td><td>'. $row['date']. '</td><td>'. $row['writer_id'] . '</td>
-                <td class="post_delete">
-                <button class="btn_delete" value='.$row['idx'].'></button>
-                </td></tr>';
+                echo '<tr class="table_hober">
+                        <th>' . $row[ 'title' ] . '</th>
+                        <td>'. $row['writer_id'] . '</td>
+                        <td>'. $row['date']. '</td>
+                        <td>'. $row[ 'hit' ] . '</td>
+                        <td class="post_delete">
+                        <button class="btn_admin_delete" value='.$row['idx'].'><img class="ic_close" src="images/ic_close.png"></button>
+                        </td>
+                    </tr>';
             }
             ?>
         </tbody>
         </table>
-        <div class="page1">
-            <table class="page2">
-            <tr>
-                
+        <div class="paper">
+            <p>
                 <?php
                     $i = $startPage;
-                    echo '<td><a href="admin_post.php?startPage='.($startPage-10).'">이전</a></td>';
+                    echo '<a href="admin_post.php?startPage='.($startPage-10).'">이전</a>';
                     while($i<$endPage){
-                        echo '<td><a href="admin_post.php?post_page_no_selected='.$i.'&startPage='.$startPage.'">' . $i . '</a></td>';
+                        echo '<a href="admin_post.php?post_page_no_selected='.$i.'&startPage='.$startPage.'">' . $i . '</a>';
                         $i++;
                     }
-                    echo '<td><a href="admin_post.php?startPage='.($endPage+10).'">다음</a></td>';
+                    echo '<a href="admin_post.php?startPage='.($endPage+10).'">다음</a>';
                 ?>
-            </tr>
-            </table>
-            <div class="post_searchbox">
-                <input id="searchbox"/>
-                <button class="btn_search" id="btn_sb">검색</button>
-            </div>
+            </p>
+        </div>
+        <div class="post_searchbox">
+            <input id="searchbox"/>
+            <button class="btn_search" id="btn_sb">검색</button>
         </div>
     
     <?php include "include/footer.php"; ?>

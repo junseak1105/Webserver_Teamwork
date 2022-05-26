@@ -122,34 +122,34 @@
             <div class="btn_wirte_area">
                 <button class="btn_write"onclick="location.href='user_board_form.php'">글쓰기</button>
             </div>
-            <p class="pager">
+            <div class="paper">
+                <p>
+                    <?php
+                        /* paging : 이전 페이지 */
+                        if($page <= 1){
+                    ?>
+                    <a href="user_board_list.php?page=1">이전</a>
+                    <?php } else{ ?>
+                    <a href="user_board_list.php?page=<?php echo ($page-1); ?>">이전</a>
+                    <?php };?>
 
-            <?php
-                /* paging : 이전 페이지 */
-                if($page <= 1){
-            ?>
-            <a href="user_board_list.php?page=1">이전</a>
-            <?php } else{ ?>
-            <a href="user_board_list.php?page=<?php echo ($page-1); ?>">이전</a>
-            <?php };?>
+                    <?php
+                    /* pager : 페이지 번호 출력 */
+                    for($print_page = $s_pageNum; $print_page <= $e_pageNum; $print_page++){
+                    ?>
+                    <a href="user_board_list.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
+                    <?php };?>
 
-            <?php
-            /* pager : 페이지 번호 출력 */
-            for($print_page = $s_pageNum; $print_page <= $e_pageNum; $print_page++){
-            ?>
-            <a href="user_board_list.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
-            <?php };?>
-
-            <?php
-            /* paging : 다음 페이지 */
-            if($page >= $total_page){
-            ?>
-            <a href="user_board_list.php?page=<?php echo $total_page; ?>">다음</a>
-            <?php } else{ ?>
-            <a href="user_board_list.php?page=<?php echo ($page+1); ?>">다음</a>
-            <?php };?>
-
-</p>
+                    <?php
+                    /* paging : 다음 페이지 */
+                    if($page >= $total_page){
+                    ?>
+                    <a href="user_board_list.php?page=<?php echo $total_page; ?>">다음</a>
+                    <?php } else{ ?>
+                    <a href="user_board_list.php?page=<?php echo ($page+1); ?>">다음</a>
+                    <?php };?>
+                </p>
+            </div>
                 
             
 
