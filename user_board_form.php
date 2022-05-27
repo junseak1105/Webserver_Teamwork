@@ -60,7 +60,7 @@
                 </div>
                 <div class="text_area">
                     <b>첨부 파일</b>
-                    <input type="file" name="upfile">
+                    <input type="file" name="imgFile">
                     <br>
 	    			<textarea class="user_board_content" name="content" rows="30" placeholder="내용"></textarea>       
                     <button class="btn_user_board" type="button" onclick="check_input()">등록</button> <!-- 게시물 등록 버튼 -->

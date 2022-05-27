@@ -12,10 +12,13 @@
 	$row = mysqli_fetch_row($result);
 
 	$title = $row[1];
-	$writer_id = $row[8];
-	$data = $row[4];
-	$recommend_Y = $row[6];
+	$category = $row[2];
 	$content = $row[3];
+	$data = $row[4];
+	$hit = $row[5];
+	$recommend_Y = $row[6];
+	$writer_id = $row[8];
+	$image = $row[9];
 
 	//개발용 임시 세션 넣어둔 것
 	$_SESSION["userID"] = 'userid1';
@@ -40,19 +43,21 @@
 			<form method="post" action="user_board_modify_form.php">
 				<button class="btn_modify" type='submit' value="<?=$idx?>" name='idx'>수정</button>
 			</form>
+			<button class="btn_list" onclick="location.href='user_board_list.php'">삭제</button>
 			<button class="btn_list" onclick="location.href='user_board_list.php'">목록</button>
 		</div>
 		<table class="view_board_title">
-			<b>[카테고리]</b> 
+			<b>[<?=$category?>]</b> 
 			<b> <?=$title?></b>
 			<tr class="view_board_title_tr">
-				<td class="id"><?=$writer_id?></td>
-				<td class="data"><?=$data?></td>
-				<td class="hit">조회 32</td>
+				<td class="id">작성자: <?=$writer_id?></td>
+				<td class="data">작성일: <?=$data?></td>
+				<td class="hit">조회수<?=$hit?></td>
 				<td class="recommend">추천 <?=$recommend_Y?></td>
 			</tr>
 		</table>
 		<div class="view_board_content">
+			<img src='<?=$image?>'>
 			<span> <?=$content?></span>
 		</div>
 		<div class="user_board_updown">

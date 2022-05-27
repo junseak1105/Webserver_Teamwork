@@ -5,6 +5,9 @@
     include "include/db.php";
     include "include/common_function.php";
     
+    $category_val = isset($_POST["category_val"])? $_POST["category_val"] : "";
+    $sb_val =isset($_POST["sb_val"])? $_POST["sb_val"] : "";
+
     $query = "select count(*) as count from post";
     $data = $conn->query($query)->fetch_array();
     $num = $data['count']; //조회된 값 갯수
@@ -46,7 +49,15 @@
     $start = ($page - 1) * $list_num;
 
     /* paging : 쿼리 작성 - limit 몇번부터, 몇개 */
-    $sql = "select * from post order by idx desc limit $start, $list_num ;";
+    $sql = "select * from post ";
+    if($category_val != "" && $sb_val != ""){
+        $sql = $sql."where category = '$category_val' and (content like '%$sb_val%' or title like '%$sb_val%') ";
+    }else if($category_val != ""){
+        $sql = $sql."where category = '$category_val' ";
+    }else{
+        $sql = $sql."where content like '%$sb_val%' or title like '%$sb_val%' ";
+    }
+    $sql = $sql."order by idx desc limit $start, $list_num ;";
 
     /* paging : 쿼리 전송 */
     $result = mysqli_query($conn, $sql);
@@ -69,8 +80,8 @@
         <div class="user_board_list" id="user_board_box">
             <h1>추천 게시판 > 글 목록</h1>
             
-            <div class="user_board_searchbox" id="search_box"> <!-- 게시글 검색 창 -->
-                <select id = "select_box">
+            <form class="user_board_searchbox" id="search_box" method="post" action="user_board_list.php"> <!-- 게시글 검색 창 -->
+                <select name="category_val" id = "select_box">
                     <option value="">전체</option>
                     <?php
                         $sql_ca = "select * from category where co_code = 'ca_Post';";
@@ -80,9 +91,9 @@
                         }
                     ?>
                 </select>
-                <input id="searchbox"/>
-                <button class="btn_search" id="btn_sb">검색</button>
-            </div>
+                <input id="searchbox" name="sb_val"/>
+                <button type="submit" class="btn_search" id="btn_sb">검색</button>
+            </form>
             <form method="POST" action="user_board_view">
                 <table class="board_list">
                     <thead>
@@ -158,19 +169,6 @@
     <?php include "include/footer.php" ?>
 </body>
 </html>
-<script>
-    $(document).ready(function(){
-        $("#btn_sb").on("click",function(){
-            var sb_val = $('#searchbox').val();
-            var category_val = $("#select_box option:selected").val();
-            search(sb_val,category_val);
-        });
-    });
-
-    function search(sb_val,category_val){
-        location.href="user_board_list.php?startPage=<?=$startPage?>&sb_val="+sb_val+"&category="+category_val+"";
-    }
-</script>
 <?php
 mysqli_close($conn);
 ?>

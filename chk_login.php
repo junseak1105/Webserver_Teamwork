@@ -6,8 +6,8 @@
  
     header("Content-Type: application/json"); // json 으로 return 할 것이기 때문에
 
-    $userID = $_GET["userID"];
-    $userPW = $_GET["userPW"];
+    $userID = $_POST["userID"];
+    $userPW = $_POST["userPW"];
     
     $sql = "SELECT IF( EXISTS(
         SELECT userID,userPW
@@ -21,6 +21,7 @@
         $userID=$row[1];
     }
     mysqli_close($conn);
+    echo $ReturnMsg;
     if ($ReturnMsg){
         $_SESSION['userID']=$userID;
         Header("Location: ./index.php");

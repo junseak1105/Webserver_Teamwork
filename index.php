@@ -51,7 +51,7 @@
                 $sql = 'select * from post order by recommend_Y desc limit 0,10';
                 $result = mysqli_query($conn,$sql);
                 while($row = mysqli_fetch_array($result)){
-                    echo '<li class="img_wrapper"> <a href="user_board_view.php?idx='. $row['idx'] .'"> <img src=images/'.$row['image'].'> <b> '.$row['title'].' </b> </a> </li>';
+                    echo '<li class="img_wrapper"> <a href="user_board_view.php?idx='. $row['idx'] .'"> <img src='.$row['image'].'> <b> '.$row['title'].' </b> </a> </li>';
                 }
             ?>
         </ul>

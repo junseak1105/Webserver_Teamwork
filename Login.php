@@ -12,7 +12,7 @@
     <body>
         <div>
             <h2 class="login_header">Login</h2>
-            <form class="login_form" action="" method="POST">
+            <form class="login_form" action="chk_login.php" method="POST">
                 <div class="login_inputbox">
                     <input id="userID" type="text" name="userID" placeholder="아이디">
                     <label for="userID">아이디</label>
