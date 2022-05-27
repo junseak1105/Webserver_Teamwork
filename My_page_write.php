@@ -5,7 +5,6 @@ ini_set("display_errors", 1);
 
 include "include/db.php";
 include "include/common_function.php";
-include "include/head.php";
 $query_where = "";
 //echo $_SESSION['userID'];
 //페이지 설정
@@ -32,31 +31,44 @@ $result_write = mysqli_query($conn, $sql);
 
 <!DOCTYPE html>
 <html lang="en">
-<body>
-<table border="1" style="border-collapse: collapse" width="70%">
-    <?php
-    $count = 1;
-    echo "<tr><td>글 번호</td><td> 제목 </td><td> 작성일 </td><td> 좋아요 </td></tr>";
-    while ($row = mysqli_fetch_array($result_write)) {
-
-        echo "<tr><td>" . $row['idx'] . "</td><td>" . $row['title'] . "</td><td>" . $row['date'] . "</td><td>" . $row['recommend_Y'] . "</td></tr>";
-        $count++;
-    }
+<head>
+    <?php 
+        include "include/head.php"; 
     ?>
-</table>
+</head>
+<body>
+    <div class="my_page_write">
+    <h2>마이페이지 > 내 글 관리</h2>
+        <table class="my_page_write_list">
+            <?php
+            $count = 1;
+            echo "<thead><tr><th>번호</th><th class='title'>제목</th><th>작성일</th><th>추천</th></tr></thead>";
+            while ($row = mysqli_fetch_array($result_write)) {
+                echo "
+                <tbody>
+                    <tr>
+                        <td>" . $row['idx'] . "</td>
+                        <th class='title'><a href=''>" . $row['title'] . "</th>
+                        <td>" . $row['date'] . "</td><td>" . $row['recommend_Y'] . "</td>
+                    </tr>
+                </tbody>";
+                $count++;
+            }
+            ?>
+        </table>
+        <table>
+            <tr>
+                <?php
+                $i = 0;
+                while ($i < $list_page_no) {
+                    echo '<td><a href="my_page_write.php?member_page_no_selected=' . $i . '">' . $i . '</a></td>';
 
-<table>
-    <tr>
-        <?php
-        $i = 0;
-        while ($i < $list_page_no) {
-            echo '<td><a href="my_page_write.php?member_page_no_selected=' . $i . '">' . $i + 1 . '</a></td>';
-
-            $i++;
-        }
-        ?>
-    </tr>
-</table>
+                    $i++;
+                }
+                ?>
+            </tr>
+        </table>
+    </div>
 </body>
 <?php include "include/footer.php"; ?>
 </html>

@@ -55,21 +55,27 @@
             <option value="Y">답변완료</option>
         </select>
     <input type="hidden" id="cb_ans_val" value='<?php echo $_GET["cb_ans"]; ?>'/>
-    <table class="type1" border="1">
+    <table class="admin_table" border="1">
         <thead>
             <tr>
-                <th>작성자</th>
-                <th>질문유형</th>
-                <th>제목</th>
-                <th>문의 일자</th>
-                <th>답변여부</th>
-                <th>답변하기</th>
+                <th class="admin_table_title">제목</th>
+                <th class="admin_table_category">질문유형</th>
+                <th class="admin_table_id">작성자</th>
+                <th class="admin_table_datetime">문의 일자</th>
+                <th class="admin_table_status">답변여부</th>
+                <th class="admin_table_ans">답변하기</th>
             </tr>
         </thead>
         <?php
         while($row = mysqli_fetch_array($result)){
-            echo '<tr><td>' . $row[ 'userID' ] . '</td><td>'. $row[ 'qa_category' ] . '</td><td>'. $row['qa_subject']. '</td><td>'. $row['qa_datetime'] 
-            . '</td><td>'. $row['qa_status']. ' </td><td><button class="btn_qa_ans" value='.$row['idx'].'>답변하기</button></td></tr>';
+            echo '<tr>
+                    <td>'. $row['qa_subject']. '</td>
+                    <td>'. $row[ 'qa_category' ] . '</td>                    
+                    <td>' . $row[ 'userID' ] . '</td>
+                    <td>'. $row['qa_datetime'] . '</td>
+                    <td>'. $row['qa_status']. ' </td>
+                    <td class="admin_table_ans_data"><button class="btn_qa_ans" value='.$row['idx'].'>답변하기</button></td>
+                </tr>';
         }
         ?>
     </table>
@@ -91,7 +97,7 @@
     <div class="qa_ans_popup_layer" id="qa_ans_popup_layer" style="display: none;">
         <div class="popup_box">
             <div style="height: 10px; width: 375px; float: top;">
-            <a href="javascript:closePop();"><img src="/images/ic_close.svg" class="m_header-banner-close" width="50px" height="50px"  ;></a>
+            <a href="javascript:closePop();"><img src="images/ic_close.png" class="m_header-banner-close" width="50px" height="50px"  ;></a>
             </div>
             <!--팝업 컨텐츠 영역-->
             <div class="popup_cont">

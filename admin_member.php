@@ -36,27 +36,31 @@
         include "include/admin_head_side.php"?>
 </head>
 <body>
-    <div>
-    
-    
-    <table class="type1"border="1">
+    <table class="admin_table" border="1">
         <thead>
             <tr>
-                <th>이름</th>
-                <th>ID</th>
-                <th>PW</th>
-                <th>Email</th>
-                <th>삭제</th>
+                <th class="admin_table_name">이름</th>
+                <th class="admin_table_id">ID</th>
+                <th class="admin_table_pw">PW</th>
+                <th class="admin_table_email">Email</th>
+                <th class="admin_table_delete">삭제</th>
             </tr>
         </thead>
+        <tbody>
         <?php
         while($row = mysqli_fetch_array($result)){
-            echo '<tr><td>' . $row[ 'userName' ] . '</td><td>'. $row[ 'userID' ] . '</td><td>'. $row['userPW']. '</td><td>'. $row['userEmail'] . '</td><td>
-            <button class="btn_delete" value='.$row['idx'].'></button>
-            </td></tr>';
-        }
+            echo '<tr>
+                    <td>' . $row[ 'userName' ] . '</td>
+                    <td>'. $row[ 'userID' ] . '</td>
+                    <td>'. $row['userPW']. '</td>
+                    <td>'. $row['userEmail'] . '</td>
+                    <td> <button class="btn_admin_delete" value='.$row['idx'].'><img class="ic_close" src="images/ic_close.png"></button> </td>
+                </tr>';
+            }
         ?>
+        </tbody>
     </table>
+
     <div class="page1">
         <table class="page2">
             <tr>
