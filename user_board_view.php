@@ -26,11 +26,7 @@
 	$sql = "update post set hit = '$hit' where idx=$idx";
 	mysqli_query($conn,$sql);
 
-	//개발용 임시 세션 넣어둔 것
-	$_SESSION["userID"] = 'userid1';
-    $_SESSION["userPW"] = 'userpw1';
-    $_SESSION["userName"] = 'userName1';
-    $userID = $_SESSION['userID'];
+    $userID = $_COOKIE["userID"];
     $userName = $_SESSION['userName'];
 ?>
 

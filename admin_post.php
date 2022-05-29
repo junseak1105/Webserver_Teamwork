@@ -1,46 +1,67 @@
 <?php 
-    error_reporting( E_ALL );
-    ini_set( "display_errors", 1 );
+error_reporting( E_ALL );
+ini_set( "display_errors", 1 );
+session_start();
+include "include/db.php";
+include "include/common_function.php";
+$category_val = isset($_POST["category_val"])? $_POST["category_val"] : "";
+    $sb_val =isset($_POST["sb_val"])? $_POST["sb_val"] : "";
+  $query = "select count(*) as count from post";
+  $data = $conn->query($query)->fetch_array();
+  $num = $data['count']; //조회된 값 갯수
+  // //페이징,검색 끝
+  /* paging : 한 페이지 당 데이터 개수 */
+  $list_num = 20;
 
-    include "include/db.php";
-    include "include/common_function.php";
+  /* paging : 한 블럭 당 페이지 수 */
+  $page_num = 10;
 
-    //검색값 설정
-    $sb_val = isset($_GET['sb_val']) ? $_GET['sb_val'] : "";
-    if($sb_val == ""){
-        $query_where="";
-    }else{
-        $query_where = "where title like '%$sb_val%' or content like '%$sb_val%' or writer_id like '%$sb_val%'";
-    };
+  /* paging : 현재 페이지 */
+  $page = isset($_GET["page"])? $_GET["page"] : 1;
 
-    //페이지 설정
-    $post_page_no_selected = intval(isset($_GET['post_page_no_selected']) ? $_GET['post_page_no_selected'] : ""); //선택된 페이지 숫자
+  /* paging : 전체 페이지 수 = 전체 데이터 / 페이지당 데이터 개수, ceil : 올림값, floor : 내림값, round : 반올림 */
+  $total_page = ceil($num / $list_num);
+  // echo "전체 페이지 수 : ".$total_page;
 
-    if(isset($_GET['startPage'])){
-        $startPage = (Int)$_GET['startPage'];
-        if ($startPage<0){
-            $startPage=1;
-        }
-    }else{
-        $startPage=1;
-    }
-    $endPage = $startPage+10;
+  /* paging : 전체 블럭 수 = 전체 페이지 수 / 블럭 당 페이지 수 */
+  $total_block = ceil($total_page / $page_num);
 
-    $list_length = 20;//페이지당 출력 길이
-    list($list_page_no_selected,$list_page_no,$list_less_then_length) = page_count("post",$list_length,$post_page_no_selected,$query_where);
-    
-    //페이지 하나 이하 처리
-    if($list_less_then_length == "true"){
-        $sql = "select * from post $query_where order by idx";
-    }elseif($post_page_no_selected != null){
-        $sql = "select * from post $query_where order by idx limit $post_page_no_selected,$list_page_no;";
-    }else{
-        $sql = "select * from post $query_where order by idx limit $startPage,$list_page_no;";
-    }
-    //echo $sql;
-    //쿼리 실행
-    $result = mysqli_query($conn,$sql);
-    
+  /* paging : 현재 블럭 번호 = 현재 페이지 번호 / 블럭 당 페이지 수 */
+  $now_block = ceil($page / $page_num);
+
+  /* paging : 블럭 당 시작 페이지 번호 = (해당 글의 블럭번호 - 1) * 블럭당 페이지 수 + 1 */
+  $s_pageNum = ($now_block - 1) * $page_num + 1;
+  // 데이터가 0개인 경우
+  if($s_pageNum <= 0){
+      $s_pageNum = 1;
+  };
+
+  /* paging : 블럭 당 마지막 페이지 번호 = 현재 블럭 번호 * 블럭 당 페이지 수 */
+  $e_pageNum = $now_block * $page_num;
+  // 마지막 번호가 전체 페이지 수를 넘지 않도록
+  if($e_pageNum > $total_page){
+      $e_pageNum = $total_page;
+  };
+
+  /* paging : 시작 번호 = (현재 페이지 번호 - 1) * 페이지 당 보여질 데이터 수 */
+  $start = ($page - 1) * $list_num;
+
+  /* paging : 쿼리 작성 - limit 몇번부터, 몇개 */
+  $sql = "select * from post ";
+  if($category_val != "" && $sb_val != ""){
+      $sql = $sql."where category = '$category_val' and (content like '%$sb_val%' or title like '%$sb_val%') ";
+  }else if($category_val != ""){
+      $sql = $sql."where category = '$category_val' ";
+  }else{
+      $sql = $sql."where content like '%$sb_val%' or title like '%$sb_val%' ";
+  }
+  $sql = $sql."order by idx desc limit $start, $list_num ;";
+
+  /* paging : 쿼리 전송 */
+  $result = mysqli_query($conn, $sql);
+
+  /* paging : 글번호 */
+  $cnt = $start + 1;
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +72,20 @@
         include "include/admin_head_side.php"?>
 </head>
 <body>
+<form class="user_board_searchbox" id="search_box" method="post" action="admin_post.php"> <!-- 게시글 검색 창 -->
+                <select name="category_val" id = "select_box">
+                    <option value="">전체</option>
+                    <?php
+                        $sql_ca = "select * from category where co_code = 'ca_Post';";
+                        $result_ca = mysqli_query($conn,$sql_ca);
+                        while($row_ca=mysqli_fetch_array($result_ca)){
+                            echo '<option value="'.$row_ca['ca_name'].'">'.$row_ca['ca_name'].'</option>';
+                        }
+                    ?>
+                </select>
+                <input id="searchbox" name="sb_val" value="<?=$sb_val?>"/>
+                <button type="submit" class="btn_search" id="btn_sb">검색</button>
+            </form>
         <table class="admin_table" border="1">
         <thead>    
             <tr>   
@@ -78,22 +113,33 @@
         </tbody>
         </table>
         <div class="paper">
-            <p>
-                <?php
-                    $i = $startPage;
-                    echo '<a href="admin_post.php?startPage='.($startPage-10).'">이전</a>';
-                    while($i<$endPage){
-                        echo '<a href="admin_post.php?post_page_no_selected='.$i.'&startPage='.$startPage.'">' . $i . '</a>';
-                        $i++;
-                    }
-                    echo '<a href="admin_post.php?startPage='.($endPage+10).'">다음</a>';
-                ?>
-            </p>
-        </div>
-        <div class="post_searchbox">
-            <input id="searchbox"/>
-            <button class="btn_search" id="btn_sb">검색</button>
-        </div>
+                <p>
+                    <?php
+                        /* paging : 이전 페이지 */
+                        if($page <= 1){
+                    ?>
+                    <a href="user_board_list.php?page=1">이전</a>
+                    <?php } else{ ?>
+                    <a href="user_board_list.php?page=<?php echo ($page-1); ?>">이전</a>
+                    <?php };?>
+
+                    <?php
+                    /* pager : 페이지 번호 출력 */
+                    for($print_page = $s_pageNum; $print_page <= $e_pageNum; $print_page++){
+                    ?>
+                    <a href="user_board_list.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
+                    <?php };?>
+
+                    <?php
+                    /* paging : 다음 페이지 */
+                    if($page >= $total_page){
+                    ?>
+                    <a href="user_board_list.php?page=<?php echo $total_page; ?>">다음</a>
+                    <?php } else{ ?>
+                    <a href="user_board_list.php?page=<?php echo ($page+1); ?>">다음</a>
+                    <?php };?>
+                </p>
+            </div>
     
     <?php include "include/footer.php"; ?>
 </body>

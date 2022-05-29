@@ -7,9 +7,9 @@
     include "include/db.php";
     include "include/common_function.php";
 
-    $userID = $_SESSION['userID'];
+    $userID = $_COOKIE["userID"];
 
-    if (isset($_SESSION["userID"])) $userid = $_SESSION["userID"];
+    if (isset($_COOKIE["userID"])) $userid = $_COOKIE["userID"];
     else $userID = "";
 
     $title = $_POST["title"]; //form에서 제목 가져오기

@@ -53,7 +53,6 @@
                     <td>' . $row[ 'userName' ] . '</td>
                     <td>'. $row[ 'userID' ] . '</td>
                     <td>'. $row['userPW']. '</td>
-                    <td>'. $row['userEmail'] . '</td>
                     <td> <button class="btn_admin_delete" value='.$row['idx'].'><img class="ic_close" src="images/ic_close.png"></button> </td>
                 </tr>';
             }

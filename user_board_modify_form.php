@@ -6,11 +6,7 @@
     include "include/common_function.php";
 ?>
 <?php
-	//개발용 임시 세션 넣어둔 것
-	$_SESSION["userID"] = 'testID10';
-	$_SESSION["userPW"] = 'testID10';
-	$_SESSION["userName"] = 'testID10';
-	$userID = $_SESSION['userID'];
+	$userID = $_COOKIE["userID"];
 
 	$idx = $_POST['idx'];
 

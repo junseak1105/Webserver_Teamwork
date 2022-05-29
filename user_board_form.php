@@ -4,16 +4,10 @@
 
     include "include/db.php";
     include "include/common_function.php";
-
 ?>
 
 <?php 
-    //개발용 임시 세션 넣어둔 것
-    $_SESSION["userID"] = 'userid1';
-    $_SESSION["userPW"] = 'userpw1';
-    $_SESSION["userName"] = 'userName1';
-    $userID = $_SESSION['userID'];
-    $userName = $_SESSION['userName'];
+    $userID = $_COOKIE["userID"];
 ?>
 
 <!DOCTYPE html>
