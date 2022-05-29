@@ -1,13 +1,11 @@
 <?php
 include "include/db.php";
 include "include/common_function.php";
-
-$sql_user = "select * from member where idx = 5";
-$idx = $_POST['idx'];
+$userID = $_COOKIE["userID"];
 $userPW = $_POST['userPW'];
 $new_userPW = $_POST['new_userPW'];
 $new_userPW_confirm = $_POST['new_userPW_confirm'];
-$sql_user = "select * from member where idx = $idx";
+$sql_user = "select * from member where userID = '$userID'";
 
 $result_user = mysqli_query($conn, $sql_user);
 
@@ -26,7 +24,7 @@ while ($row = mysqli_fetch_array($result_user)) {
                 echo "window.location.href='../revise.php';</script>";
             }else{
                 echo "<script>alert('비밀번호 변경이 완료되었습니다..');";
-                mysqli_query($conn, "update member SET userPW = '$new_userPW' WHERE idx = '$idx'");
+                mysqli_query($conn, "update member SET userPW = '$new_userPW' WHERE userID = '$userID'");
                 echo "window.location.href='/my_page_main.php';</script>";
 
             }
