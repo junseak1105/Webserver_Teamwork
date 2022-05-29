@@ -19,23 +19,7 @@
 <!DOCTYPE html>
 <html>
 <head><?php include "include/head.php"; ?>
-<script>
-  function check_input() {
-      if (!document.user_board_form.title.value)
-      {
-          alert("제목을 입력하세요!");
-          document.user_board_form.title.focus();
-          return;
-      }
-      if (!document.user_board_form.content.value)
-      {
-          alert("내용을 입력하세요!");    
-          document.user_board_form.content.focus();
-          return;
-      }
-      document.user_board_form.submit(); //form name="user_board_form"으로 서밋 그럼 폼에 액션이 동작
-   }
-</script>
+
 </head>
 
 <body>
@@ -73,7 +57,23 @@
 </body>
 
 </html>
-
+<script>
+  function check_input() {
+      if (!document.user_board_form.title.value)
+      {
+          alert("제목을 입력하세요!");
+          document.user_board_form.title.focus();
+          return;
+      }
+      if (!document.user_board_form.content.value)
+      {
+          alert("내용을 입력하세요!");    
+          document.user_board_form.content.focus();
+          return;
+      }
+      document.user_board_form.submit(); //form name="user_board_form"으로 서밋 그럼 폼에 액션이 동작
+   }
+</script>
 <?php
 mysqli_close($conn);
 ?>

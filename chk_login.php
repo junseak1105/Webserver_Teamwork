@@ -6,27 +6,29 @@
  
     header("Content-Type: application/json"); // json 으로 return 할 것이기 때문에
 
-    $userID = $_POST["userID"];
-    $userPW = $_POST["userPW"];
+    $userID = 'testID2';//$_POST["userID"];
+    $userPW = 'testID2';//$_POST["userPW"];
     
     $sql = "SELECT IF( EXISTS(
         SELECT userID,userPW
         FROM member
-        WHERE userID='$userID' and userPW = '$userPW'), 'true', 'false') as returnMsg, userID from member where userID='$userID' and userPW='$userPW';";
+        WHERE userID='$userID' and userPW = '$userPW'), 'true', 'false') as returnMsg,(select co_code from member
+        WHERE userID='$userID' and userPW = '$userPW') as co_code;";
     
     
     $result = mysqli_query($conn,$sql);
     while($row = mysqli_fetch_array($result)){
         $ReturnMsg=$row[0];
-        $userID=$row[1];
+        $co_code=$row[1];
     }
     mysqli_close($conn);
-    echo $ReturnMsg;
-    if ($ReturnMsg){
+    //echo $ReturnMsg;
+    if ($ReturnMsg=="true"){
         $_SESSION['userID']=$userID;
+        $_SESSION['class']=$co_code;
         Header("Location: ./index.php");
     }else{
         Header("Location: ./Login.php");
     }
     //echo json_encode($response); // json 형식으로 echo 함.
-?>
+    ?>

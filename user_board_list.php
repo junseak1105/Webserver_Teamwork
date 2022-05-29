@@ -91,7 +91,7 @@
                         }
                     ?>
                 </select>
-                <input id="searchbox" name="sb_val"/>
+                <input id="searchbox" name="sb_val" value="<?=$sb_val?>"/>
                 <button type="submit" class="btn_search" id="btn_sb">검색</button>
             </form>
             <form method="POST" action="user_board_view">

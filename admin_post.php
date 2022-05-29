@@ -103,7 +103,7 @@ mysqli_close($conn);
 ?>
 <script>
     $(document).ready(function(){
-        $(".btn_delete").on("click",function(){
+        $(".btn_admin_delete").on("click",function(){
             var idx = this.value;
             delete_post(idx);
         });

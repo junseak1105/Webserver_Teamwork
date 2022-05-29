@@ -19,6 +19,12 @@
 	$recommend_Y = $row[6];
 	$writer_id = $row[8];
 	$image = $row[9];
+	mysqli_close($conn);
+
+	$hit= $hit+1;
+	include "include/db.php";
+	$sql = "update post set hit = '$hit' where idx=$idx";
+	mysqli_query($conn,$sql);
 
 	//개발용 임시 세션 넣어둔 것
 	$_SESSION["userID"] = 'userid1';
@@ -71,6 +77,3 @@
     <?php include "include/footer.php";?>
 </html>
 
-<?php
-mysqli_close($conn);
-?>

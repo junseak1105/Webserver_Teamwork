@@ -32,23 +32,7 @@
 <!DOCTYPE html>
 <html>
 <head><?php include "include/head.php"; ?>
-	<script>
-		function check_input() {
-			if (!document.user_board_form.title.value)
-				{
-					alert("제목을 입력하세요!");
-					document.user_board_form.title.focus();
-					return;
-				}
-				if (!document.user_board_form.content.value)
-					{
-						alert("내용을 입력하세요!");   
-						document.user_board_form.content.focus();
-						return;
-					}
-					document.user_board_modify.submit();
-				}
-	</script>
+	
 </head>
 
 </head>
@@ -56,9 +40,9 @@
 <section>
    	<div class="user_board">
 	    <h1 id="user_board_title">게시판 > 글 수정하기</h1>
-	    <form class="user_board_form" name="user_board_modify_form" method="post" action="user_board_modify.php" enctype="multipart/form-data">
+	    <form class="user_board_form" name="user_board_modify_form" method="post" action="user_board_modify.php?idx=<?=$idx?>" enctype="multipart/form-data">
 			<div class="user_board_title">
-                <select class="user_board_category" value = "<?=$category?>">
+                <select class="user_board_category" name = "category" value = "<?=$category?>">
 					<?php
                         $sql_ca = "select * from category where co_code = 'ca_Post';";
                         $result_ca = mysqli_query($conn,$sql_ca);
@@ -75,7 +59,7 @@
                 <br>
 	    		<textarea class="user_board_content" name="content" rows="30" placeholder="내용"><?=$content?></textarea>
 				<button>취소</button>
-				<button type="button" onclick="check_input()">수정</button>	 
+				<button class="btn_user_board" type="submit">수정</button> <!-- 게시물 등록 버튼 -->
 			</div>
 		</form>
 	    
@@ -85,7 +69,23 @@
     <?php include "include/footer.php";?>
 </body>
 </html>
-
+<script>
+		function check_input() {
+			if (!document.user_board_form.title.value)
+				{
+					alert("제목을 입력하세요!");
+					document.user_board_form.title.focus();
+					return;
+				}
+				if (!document.user_board_form.content.value)
+					{
+						alert("내용을 입력하세요!");   
+						document.user_board_form.content.focus();
+						return;
+					}
+					document.user_board_modify.submit();
+				}
+	</script>
 <?php
 mysqli_close($conn);
 ?>

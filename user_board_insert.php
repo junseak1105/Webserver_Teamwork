@@ -96,11 +96,11 @@
 
 	mysqli_close($conn);  // DB 연결 끊기
 
-	echo "
-	   <script>
-	    location.href = './user_board_list.php';
-	   </script>
-	";
+	// echo "
+	//    <script>
+	//     location.href = './user_board_list.php';
+	//    </script>
+	// ";
 ?>
 
   

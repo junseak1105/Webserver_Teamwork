@@ -16,6 +16,7 @@
     $title = $_POST["title"]; //form에서 제목 가져오기
     $category = $_POST["category"]; //form에서 제목 가져오기
     $content = $_POST["content"]; // 내용 가져오기
+	$idx = $_GET['idx'];
 
 	$title = htmlspecialchars($title, ENT_QUOTES);
 	$content = htmlspecialchars($content, ENT_QUOTES);
@@ -88,9 +89,9 @@
 	    echo "이미지 파일이 아닙니다.";
 	    exit;
     }
-        $sql = "update post set title=$title, category=$category, content=$content, date=$date, image=$resFile WHERE idx=$idx";
+        $sql = "update post set title='$title', category='$category', content='$content', date='$date', image='$resFile' WHERE idx=$idx";
     }else{
-        $sql = "update post set title=$title, category=$category, content=$content, date=$date WHERE idx=$idx";
+        $sql = "update post set title='$title', category='$category', content='$content', date='$date' WHERE idx=$idx";
     };
 
     echo $sql;

@@ -7,6 +7,8 @@
         include "include/head.php";
         include "include/db.php"; 
         include "include/common_function.php";
+        echo $_SESSION['userID'];
+        echo $_SESSION['class'];
     ?>
 </head>
 <body style="overflow-x:hidden; overflow-y:auto;">
