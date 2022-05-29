@@ -12,9 +12,9 @@
     $sql = "SELECT IF( EXISTS(
         SELECT userID,userPW
         FROM member
-        WHERE userID='$userID' and userPW = '$userPW'), 'true', 'false') as returnMsg,(select co_code from member
-        WHERE userID='$userID' and userPW = '$userPW') as co_code;";
-    //echo $sql;
+        WHERE userID='$userID' and userPW = md5('$userPW')), 'true', 'false') as returnMsg,(select co_code from member
+        WHERE userID='$userID' and userPW = md5('$userPW')) as co_code;";
+    
     
     $result = mysqli_query($conn,$sql);
     while($row = mysqli_fetch_array($result)){
@@ -22,10 +22,12 @@
         $co_code=$row[1];
     }
     mysqli_close($conn);
-    echo $ReturnMsg;
+    //echo $ReturnMsg;
     if ($ReturnMsg=="true"){
-        $_SESSION['userID']=$userID;
-        $_SESSION['class']=$co_code;
+        // $_SESSION['userID']=$userID;
+        // $_SESSION['class']=$co_code;
+        setcookie("userID", $userID, time() + 3600, "/");
+        setcookie("class", $co_code, time() + 3600, "/");
         Header("Location: ./index.php");
     }else{
         Header("Location: ./Login.php");

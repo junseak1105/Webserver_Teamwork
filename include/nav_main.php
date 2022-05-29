@@ -1,6 +1,7 @@
 <nav>
     <div class="index_head">
         <a href="./admin_main.php">어드민페이지</a>
+        <a href="#" onclick ="<?php $_SESSION['userID']="";$_SESSION['class']="";?>">로그아웃</a>
         <a href="./Login.php">로그인</a>
         <a href="./register.php">회원가입</a>
     </div>

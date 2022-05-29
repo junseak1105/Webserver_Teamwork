@@ -1,7 +1,7 @@
 <?php 
     error_reporting( E_ALL );
     ini_set( "display_errors", 1 );
-
+    session_start();
     include "include/db.php";
     include "include/common_function.php";
     

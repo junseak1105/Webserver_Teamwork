@@ -1,14 +1,17 @@
+<?
+header('P3P: CP="NOI CURa ADMa DEVa TAIa OUR DELa BUS IND PHY ONL UNI COM NAV INT DEM PRE"');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <?php 
         error_reporting( E_ALL );
         ini_set( "display_errors", 1 );
+        session_start();
         include "include/head.php";
         include "include/db.php"; 
         include "include/common_function.php";
-        echo $_SESSION['userID'];
-        echo $_SESSION['class'];
+        // echo $_COOKIE["userID"];
+        // echo $_COOKIE["class"];
     ?>
 </head>
 <body style="overflow-x:hidden; overflow-y:auto;">

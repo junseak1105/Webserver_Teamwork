@@ -8,7 +8,7 @@
 <body>
     <div>
         <h1 class="register_header">회원가입</h1>
-        <form method="post" action="">
+        <form method="post" action="register_function.php">
             <div class="register_inputbox">
                 <input id="userID" type="text" name="userID" placeholder="아이디">
                 <label for="userID"> 아이디 </label>
@@ -18,18 +18,8 @@
                 <label for="userPW">비밀번호</label>
             </div>
             <div class="register_inputbox">
-                <input id="data" type="text" name="data" placeholder="data">
-                <label for="data">Data</label>
-            </div>
-            <div class="register_item">
-                <b>관심 품목 <br></b>   
-                <div class="register_radiobox">
-                    <input type="radio" name="" value=""> item1
-                    <input type="radio" name="" value=""> item2
-                    <input type="radio" name="" value=""> item3
-                    <input type="radio" name="" value=""> item4 
-                    <input type="radio" name="" value=""> item5
-                </div>
+                <input id="userName" type="text" name="userName" placeholder="이름">
+                <label for="userName">이름</label>
             </div>
             <input class="btn_register" type="submit" value="가입하기" />
         </form>
