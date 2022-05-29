@@ -14,10 +14,10 @@ $list_length = 10; //페이지당 출력 길이
 list($list_page_no_selected, $list_page_no, $list_less_then_length) = page_count("post", $list_length, $member_page_no_selected, $query_where);
 
 //5자리에 받아올 거 넣으면 됨
-$sql_user = "select * from member where idx = 5";
+$sql_user = "select * from member where userID = 'testID1'";
 $result_user = mysqli_query($conn, $sql_user);
 
-$sql_inquiry = "select * from inquiry where idx = 5";
+$sql_inquiry = "select * from inquiry where userID = 'testID1'";
 $result_inquiry = mysqli_query($conn, $sql_inquiry);
 
 ?>

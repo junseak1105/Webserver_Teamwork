@@ -5,12 +5,11 @@ ini_set("display_errors", 1);
 
 include "include/db.php";
 $query_where = "";
-//echo $_SESSION['userID'];
-$userID = $_COOKIE["userID"];
+echo $_SESSION['userID'];
 
 //echo $sql;
 //5자리에 받아올 거 넣으면 됨
-$sql_user = "select * from member where userID = '$userID'";
+$sql_user = "select * from member where idx = 5";
 $result_user = mysqli_query($conn, $sql_user);
 
 ?>
@@ -30,6 +29,7 @@ $result_user = mysqli_query($conn, $sql_user);
             while ($row = mysqli_fetch_array($result_user)) {
                 echo "<tr><th>이름</th><td>" . $row['userName'] . "</td></tr>";
                 echo "<tr><th>아이디</th><td>" . $row['userID'] . "</td></tr>";
+                echo "<tr><th>이메일</th><td>" . $row['userEmail'] . "</td></tr>";
                 echo "<tr><th>비밀번호</th><td>" . $row['userPW'] . "</td></tr>";
                 $userPW = $row['userPW'];
                 $idx = $row['idx'];
@@ -40,7 +40,7 @@ $result_user = mysqli_query($conn, $sql_user);
             <form action="revise.php" method="post">
                 <?php
                 /*echo "$idx"; 없어도 되는 부분같은데 체크 바람*/
-                echo "<input type='hidden' name= 'userID' value='$userID'>";
+                echo "<input type='hidden' name= 'idx' value='$idx'>";
                 echo "<input type='hidden' name= 'userPW' value='$userPW'>";
                 ?>
                 <input type="submit" value="비밀번호 수정">
