@@ -4,7 +4,8 @@
 <?php 
         include "include/head.php";
         session_start();
-        if($_COOKIE["userID"]!=""){
+
+        if($_COOKIE["userID"]!= ""){
             Header("Location: ./index.php");
         }
 ?>

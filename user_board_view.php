@@ -26,8 +26,8 @@
 	$sql = "update post set hit = '$hit' where idx=$idx";
 	mysqli_query($conn,$sql);
 
-    $userID = $_COOKIE["userID"];
-    $userName = $_SESSION['userName'];
+	$userID = $_COOKIE["userID"];
+
 ?>
 
 <!DOCTYPE html>
@@ -41,13 +41,7 @@
 <section>
    	<div class="user_board_box" id="user_board_box">
 	    <h1> 추천 게시판 > 내용 보기 </h1>
-		<div class="btn_modify_area">
-			<form method="post" action="user_board_modify_form.php">
-				<button class="btn_modify" type='submit' value="<?=$idx?>" name='idx'>수정</button>
-			</form>
-			<button class="btn_list" onclick="location.href='user_board_delete.php?idx=<?=$idx?>'">삭제</button>
-			<button class="btn_list" onclick="location.href='user_board_list.php'">목록</button>
-		</div>
+		
 		<table class="view_board_title">
 			<b>[<?=$category?>]</b> 
 			<b> <?=$title?></b>
@@ -61,6 +55,17 @@
 		<div class="view_board_content">
 			<img src='<?=$image?>'>
 			<span> <?=$content?></span>
+		</div>
+		<div class="btn_modify_area">
+		<?php 
+            if(isset($_COOKIE['userID']) && ($_COOKIE['userID']) == $writer_id) {
+        ?>
+			<form method="post" action="user_board_modify_form.php">
+				<button class="btn_modify" type='submit' value="<?=$idx?>" name='idx'>수정</button>
+			</form>
+			<button class="btn_list" onclick="location.href='user_board_delete.php?idx=<?=$idx?>'">삭제</button>
+		<?php }?>
+			<button class="btn_list" onclick="location.href='user_board_list.php'">목록</button>
 		</div>
 		<div class="user_board_updown">
     		<form method="post" action="user_board_view_like.php">

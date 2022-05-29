@@ -1,9 +1,14 @@
 <nav>
     <div class="index_head">
+        <?php if(isset($_COOKIE['class']) && ($_COOKIE['class']) == "admin") {?>
         <a href="./admin_main.php">어드민페이지</a>
-        <a href="#" onclick ="<?php $_SESSION['userID']="";$_SESSION['class']="";?>">로그아웃</a>
+        <?php } if(isset($_COOKIE['userID']) && ($_COOKIE['userID']) !="") {?>        
+        <a href="Logout.php">로그아웃</a>
+        <?php } else { ?>
         <a href="./Login.php">로그인</a>
         <a href="./register.php">회원가입</a>
+        <?php } ?>
+
     </div>
 <div class="topnav">
     <div class="topnav2">
