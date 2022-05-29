@@ -6,15 +6,15 @@
  
     header("Content-Type: application/json"); // json 으로 return 할 것이기 때문에
 
-    $userID = 'testID2';//$_POST["userID"];
-    $userPW = 'testID2';//$_POST["userPW"];
+    $userID = $_POST["userID"];
+    $userPW = $_POST["userPW"];
     
     $sql = "SELECT IF( EXISTS(
         SELECT userID,userPW
         FROM member
         WHERE userID='$userID' and userPW = '$userPW'), 'true', 'false') as returnMsg,(select co_code from member
         WHERE userID='$userID' and userPW = '$userPW') as co_code;";
-    
+    //echo $sql;
     
     $result = mysqli_query($conn,$sql);
     while($row = mysqli_fetch_array($result)){
@@ -22,7 +22,7 @@
         $co_code=$row[1];
     }
     mysqli_close($conn);
-    //echo $ReturnMsg;
+    echo $ReturnMsg;
     if ($ReturnMsg=="true"){
         $_SESSION['userID']=$userID;
         $_SESSION['class']=$co_code;

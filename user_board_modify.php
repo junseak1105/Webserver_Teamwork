@@ -26,7 +26,7 @@
 	
 
 	//$_FILES에 담긴 배열 정보 구하기.
-    if(var_dump($_FILES)!=null){
+    if($_FILES['imgFile']['name']!=""){
         // php 내부 소스에서 html 태그 적용 - 선긋기
     echo "<hr>";
 
@@ -100,11 +100,9 @@
 
 	mysqli_close($conn);  // DB 연결 끊기
 
-	echo "
-	   <script>
-	    location.href = './user_board_list.php';
-	   </script>
-	";
+	
+    $prevPage = $_SERVER['HTTP_REFERER'];
+    header('location:'.$prevPage);
 ?>
 
   

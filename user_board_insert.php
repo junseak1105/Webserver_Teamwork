@@ -23,11 +23,11 @@
 
 	
 	//$_FILES에 담긴 배열 정보 구하기.
-    if(var_dump($_FILES)!=null){
-    var_dump($_FILES);
+    if($_FILES['imgFile']['name']!=""){
+    //	var_dump($_FILES);
 
     // php 내부 소스에서 html 태그 적용 - 선긋기
-    echo "<hr>";
+    //echo "<hr>";
 
     /*********************************************
     * 실제로 구축되는 페이지 내부.
@@ -90,17 +90,17 @@
     }
 }
     $sql = "insert into post(title, category, content, date, hit, recommend_Y, recommend_N, writer_id, image) values('$title','$category', '$content', '$date', 0, 0, 0, '$userID', '$resFile');";
-    echo $sql;
+    //echo $sql;
 
 	mysqli_query($conn, $sql); 
 
 	mysqli_close($conn);  // DB 연결 끊기
 
-	// echo "
-	//    <script>
-	//     location.href = './user_board_list.php';
-	//    </script>
-	// ";
+	echo "
+	   <script>
+	    location.href = './user_board_list.php';
+	   </script>
+	";
 ?>
 
   

@@ -48,7 +48,7 @@
                     <br>
 	    			<textarea class="user_board_content" name="content" rows="30" placeholder="내용"></textarea>       
                     <button class="btn_user_board" type="button" onclick="check_input()">등록</button> <!-- 게시물 등록 버튼 -->
-                    <button>취소</button>
+                    <button class="btn_user_board" type="button" onclick="location.href='user_board_list.php'">취소</button>
                 </div>
 	        </form>
         </div> 

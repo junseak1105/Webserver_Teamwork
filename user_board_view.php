@@ -49,7 +49,7 @@
 			<form method="post" action="user_board_modify_form.php">
 				<button class="btn_modify" type='submit' value="<?=$idx?>" name='idx'>수정</button>
 			</form>
-			<button class="btn_list" onclick="location.href='user_board_list.php'">삭제</button>
+			<button class="btn_list" onclick="location.href='user_board_delete.php?idx=<?=$idx?>'">삭제</button>
 			<button class="btn_list" onclick="location.href='user_board_list.php'">목록</button>
 		</div>
 		<table class="view_board_title">
@@ -76,4 +76,5 @@
 </section> 
     <?php include "include/footer.php";?>
 </html>
-
+<script>
+</script>
