@@ -3,7 +3,7 @@
 <head>
 <?php 
         include "include/head.php";
-        session_start();
+        //session_start();
 
         if($_COOKIE["userID"]!= ""){
             Header("Location: ./index.php");
