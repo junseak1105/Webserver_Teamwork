@@ -69,6 +69,7 @@
 		</div>
 		<div class="user_board_updown">
     		<form method="post" action="user_board_view_like.php">
+                <input type="hidden" value ="<?=$title?>" name="_title">
     			<button class="btn_down" type='submit' value='추천' name='recommend_Y' ><img src="images/up.png"></button>
 				<button class="btn_down" type='submit' value='비추' name='recommend_N'><img src="images/down.png"></button>
 			</form>

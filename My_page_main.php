@@ -5,7 +5,7 @@ ini_set("display_errors", 1);
 
 include "include/db.php";
 $query_where = "";
-//echo $_SESSION['userID'];
+echo $_SESSION['userID'];
 
 //echo $sql;
 //5자리에 받아올 거 넣으면 됨
