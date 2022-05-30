@@ -35,52 +35,7 @@ mysqli_close($conn);
 <script>
   $(document).ready(function(){
   })
-  //문의사항 도넛 차트
-  var ctx_inquiry = document.getElementById("inquiry_chart");
-  var inquiry_chart = new Chart(ctx_inquiry, {
-    type: 'doughnut',
-    plugins: [{
-      afterDraw: function(chart) {
-      var width = chart.chart.width,
-      height = chart.chart.height,
-      ctx = chart.chart.ctx;
-      ctx.restore();
-      var fontSize = (height / 250).toFixed(2);
-      ctx.font = fontSize + "em sans-serif";
-      ctx.textBaseline = "middle";
-      var percent = Math.ceil(100*($("#inquiry_Y").val()/($("#inquiry_N").val()+$("#inquiry_Y").val())));
-      var text = "답변율 "+percent+"%",
-        textX = Math.round((width - ctx.measureText(text).width) / 2),
-        textY = height / 2;
-      ctx.fillText(text, textX, textY);
-      ctx.save();    
-  }
-    }],
-    data: {
-      labels: ['처리완료', '처리미완료'],
-      datasets: [{
-      label: 'dataset_inquiry',
-      data: [$("#inquiry_Y").val(), $("#inquiry_N").val()],
-      backgroundColor: [
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 99, 132, 0.5)'        
-      ],
-      borderColor: [
-        'rgba(54, 162, 235, 1)',
-        'rgba(255,99,132,1)'
-      ],
-      borderWidth: 1
-    }]
-    },
-    options: {
-      //cutoutPercentage: 40,
-      title: {
-        display: true,
-        text: '문의사항 처리율'
-      },
-      responsive: false,
-    }
-  });
+ 
 
   //방문자 수 차트
   var ctx_visit = document.getElementById("visit_chart");
