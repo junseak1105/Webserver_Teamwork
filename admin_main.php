@@ -19,9 +19,6 @@
 <body>
 
     <div class="admin_main_chart">
-        <canvas id="inquiry_chart" width="400" height="400"></canvas>
-        <input type="hidden" id="inquiry_Y" value='<?php inquiry_Y_count(); ?>'/>
-        <input type="hidden" id="inquiry_N" value='<?php inquiry_N_count(); ?>'/>
         <canvas id="visit_chart" width="400" height="400"></canvas>
         <input type="hidden" id="visit_today" value='<?php visit_today(); ?>'/>
         <input type="hidden" id="visit_total" value='<?php visit_total(); ?>'/>
@@ -34,8 +31,6 @@ mysqli_close($conn);
 ?>
 <script>
   $(document).ready(function(){
-  })
- 
 
   //방문자 수 차트
   var ctx_visit = document.getElementById("visit_chart");
@@ -81,5 +76,8 @@ mysqli_close($conn);
       responsive: false,
     }
   });
+
+  })
+ 
 
 </script>
