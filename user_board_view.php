@@ -27,7 +27,7 @@
 	mysqli_query($conn,$sql);
 
     $userID = $_COOKIE["userID"];
-    $userName = $_SESSION['userName'];
+	
 ?>
 
 <!DOCTYPE html>
