@@ -26,7 +26,7 @@ while ($row = mysqli_fetch_array($result_user)) {
                 echo "window.location.href='../revise.php';</script>";
             }else{
                 echo "<script>alert('비밀번호 변경이 완료되었습니다..');";
-                mysqli_query($conn, "update member SET userPW = '$new_userPW' WHERE idx = '$idx'");
+                mysqli_query($conn, "update member SET userPW = md5('$new_userPW') WHERE idx = '$idx'");
                 echo "window.location.href='/my_page_main.php';</script>";
 
             }

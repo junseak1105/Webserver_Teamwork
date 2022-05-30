@@ -13,6 +13,9 @@ header('P3P: CP="NOI CURa ADMa DEVa TAIa OUR DELa BUS IND PHY ONL UNI COM NAV IN
         // echo $_COOKIE["userID"];
         // echo $_COOKIE["class"];
     ?>
+    <?php
+        include_once "include/visitor_count.php" //추후 index.php에만 적용
+    ?>
 </head>
 <body style="overflow-x:hidden; overflow-y:auto;">
 <div>

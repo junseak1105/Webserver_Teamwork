@@ -10,8 +10,6 @@
 
 	$idx = $_POST['idx'];
 
-	$userName = $_SESSION['userName']; //세션에서 닉네임 가져오기
-
 	$sql = "select * from post where idx=$idx";
 	$result = mysqli_query($conn,$sql);
 	$row = mysqli_fetch_row($result);

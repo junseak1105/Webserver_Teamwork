@@ -17,9 +17,7 @@
     include "include/admin_sidemenu.php";?>
 </head>
 <body>
-<?php
-  include_once "include/visitor_count.php" //추후 index.php에만 적용
-?>
+
     <div class="admin_main_chart">
         <canvas id="inquiry_chart" width="400" height="400"></canvas>
         <input type="hidden" id="inquiry_Y" value='<?php inquiry_Y_count(); ?>'/>
