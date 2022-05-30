@@ -14,7 +14,7 @@
 <head>
   <?php 
     include "include/head.php"; 
-    include "include/admin_head_side.php"?>
+    include "include/admin_sidemenu.php";?>
 </head>
 <body>
 <?php

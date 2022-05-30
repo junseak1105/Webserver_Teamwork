@@ -33,7 +33,7 @@
 <head>
     <?php 
         include "include/head.php"; 
-        include "include/admin_head_side.php"?>
+        include "include/admin_sidemenu.php";?>
 </head>
 <body>
     <table class="admin_table" border="1">
@@ -42,7 +42,6 @@
                 <th class="admin_table_name">이름</th>
                 <th class="admin_table_id">ID</th>
                 <th class="admin_table_pw">PW</th>
-                <th class="admin_table_email">Email</th>
                 <th class="admin_table_delete">삭제</th>
             </tr>
         </thead>

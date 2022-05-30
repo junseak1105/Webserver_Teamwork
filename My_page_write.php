@@ -33,7 +33,8 @@ $result_write = mysqli_query($conn, $sql);
 <html lang="en">
 <head>
     <?php 
-        include "include/head.php"; 
+        include "include/head.php";
+        include "include/mypage_sidemenu.php"; 
     ?>
 </head>
 <body>

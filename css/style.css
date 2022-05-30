@@ -17,7 +17,7 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
   font-size: 14px;
-  background-color: #f4f4f4;
+  /* background-color: #f4f4f4; */
   align-items: start;
   min-height: 100vh;
 }
@@ -362,8 +362,9 @@ img.ic_close {
 }
 
 .admin_table {
+  position: relative;
+  left: 500px;
   width: 1000px;
-  margin: auto;
   border: 2px solid#888;
   border-collapse: collapse;
 }
@@ -458,7 +459,7 @@ img.ic_close {
 .admin_main_chart {
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  width: 1000px;
   margin: auto;
   margin-top: 100px;
   margin-bottom: 100px;
@@ -492,8 +493,6 @@ img.ic_close {
 
 /* admin_category.php 시작 */
 
-.admin_category {
-}
 
 /* admin_category.php 끝 */
 
@@ -633,7 +632,7 @@ ul.category > li {
   display: inline-block;
   text-align: center;
   position: relative;
-  width: 10%;
+  width: 150px;
   padding: 14px 16px;
 }
 
@@ -1337,13 +1336,13 @@ input.btn_revise[type=submit]:hover {
 /* My_page_wirte.php 시작 */
 
 .my_page_write{
-  width: 80%;
-  margin: auto;
+  width: 1400px;
+  margin-left: 23%;
   margin-top: 10px;
 }
 
 .my_page_write_list {
-  width: 100%;
+  width: 1400px;
   border-collapse: collapse;
   border-top: 2px solid#f36303;
   border-bottom: 2px solid#f36303;
@@ -1387,3 +1386,58 @@ table.my_page_write_list tbody th.title a{
   color: #111;
   text-decoration: none;
 }
+
+
+/* admin_side.php 시작*/
+.left_menu {
+  position: fixed;
+  background-color: transparent;
+  border-collapse: collapse;
+  top: 98px;
+  width: 200px;
+  z-index: 10;
+  left: 200px;
+  bottom: 50px;
+  height: 50%;
+  margin-bottom: -70px;
+  margin-top: 0px;
+  padding-bottom: 0px;
+  color: black;
+  z-index: 1;
+}
+
+.side_title {
+  border: 2px solid#888;
+  text-align: center;
+  font-size: 25px;
+  height: 75px;
+  line-height: 75px;
+  background:#9ab92e;
+}
+
+.side_title a {
+  text-decoration: none;
+  color: #111;
+}
+
+.sub_menu{
+  text-align: center;
+}
+.sub_menu > li {
+  border: 2px solid#888;
+  margin-top: -2px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+.sub_menu > li:hover{
+  background-color: rgb(214, 214, 214);;
+}
+
+.sub_menu > li a {
+  text-decoration: none;
+  color: #111;
+}
+
+/* admin_side.php 끝 */

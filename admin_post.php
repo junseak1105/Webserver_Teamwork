@@ -69,7 +69,7 @@ $category_val = isset($_POST["category_val"])? $_POST["category_val"] : "";
 <head>
     <?php 
         include "include/head.php"; 
-        include "include/admin_head_side.php"?>
+        include "include/admin_sidemenu.php";?>
 </head>
 <body>
 <form class="user_board_searchbox" id="search_box" method="post" action="admin_post.php"> <!-- 게시글 검색 창 -->
