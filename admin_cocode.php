@@ -9,7 +9,7 @@
     //검색값 설정
     $sb_val =isset($_POST["sb_val"])? $_POST["sb_val"] : "";
 
-    $query = "select count(*) as count from category";
+    $query = "select count(*) as count from commoncode";
     $data = $conn->query($query)->fetch_array();
     $num = $data['count']; //조회된 값 갯수
     // //페이징,검색 끝
@@ -50,10 +50,10 @@
     $start = ($page - 1) * $list_num;
 
     /* paging : 쿼리 작성 - limit 몇번부터, 몇개 */
-    $sql = "select * from category ";
+    $sql = "select * from commoncode ";
 
     if($sb_val != ""){
-        $sql = $sql."where co_code like '%$sb_val%' or ca_name like '%$sb_val%'";
+        $sql = $sql."where co_code like '%$sb_val%'";
     }
     $sql = $sql."order by idx desc limit $start, $list_num ;";
     //echo $sql;
@@ -93,7 +93,7 @@
             </tr>
             <?php
             while($row = mysqli_fetch_array($result)){
-                echo '<tr><td><input class="category_inputbox" id="code_row_'.$row['idx'].'" value=' . $row[ 'co_code' ] . '></td><td><input class="category_inputbox" id=name_row_'.$row['idx'].' value='. $row[ 'ca_name' ] . '></td><td>
+                echo '<tr><td><input class="category_inputbox" id="code_row_'.$row['idx'].'" value=' . $row[ 'co_code' ] . '></td><td><input class="category_inputbox" id=name_row_'.$row['idx'].' value='. $row[ 'co_name' ] . '></td><td>
                 <button class="btn_edit" value='.$row['idx'].'>수정</button><button class="btn_delete" value='.$row['idx'].'>삭제</button>
                 </td></tr>';
             }
@@ -160,22 +160,22 @@ mysqli_close($conn);
     })
 
     function delete_code(idx){
-        if(confirm("카테고리를 삭제하시겠습니까?")==true){
-            location.href="include/common_function.php?func=db_delete&db=category&idx="+idx;
+        if(confirm("공통코드를 삭제하시겠습니까?")==true){
+            location.href="include/common_function.php?func=db_delete&db=commoncode&idx="+idx;
         }else{
             return;
         }
     };
     function edit_code(idx,co_code,co_name){
-        if(confirm("카테고리를 수정하시겠습니까?")==true){
-            location.href="include/common_function.php?func=db_update&db=category&idx="+idx+"&co_code="+co_code+"&co_name="+co_name;
+        if(confirm("공통코드를 수정하시겠습니까?")==true){
+            location.href="include/common_function.php?func=db_update&db=commoncode&idx="+idx+"&co_code="+co_code+"&co_name="+co_name;
         }else{
             return;
         }
     };
     function add_code(co_code,co_name){
         if(confirm("공통코드를 추가하시겠습니까?")==true){
-            location.href="include/common_function.php?func=db_insert&db=category&co_code="+co_code+"&co_name="+co_name;
+            location.href="include/common_function.php?func=db_insert&db=commoncode&co_code="+co_code+"&co_name="+co_name;
         }else{
             return;
         }

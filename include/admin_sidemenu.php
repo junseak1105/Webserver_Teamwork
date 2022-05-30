@@ -7,5 +7,3 @@
         <li><a id="sidenav_3" href="admin_category.php">카테고리</a></li>
     </ul>
 </div>
-    
-   

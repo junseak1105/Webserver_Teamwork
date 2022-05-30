@@ -5,5 +5,3 @@
         <li><a href="my_page_prefer.php">좋아요 목록</a></li>
     </ul>
 </div>
-    
-   

@@ -106,6 +106,12 @@ function db_update($func,$db,$idx,$prevPage){
         $sql = "update $db set co_code = '$co_code',co_name = '$co_name' where idx = $idx";
         echo $sql;
     }
+    if($db == "category"){
+        $co_code = $_GET['co_code'];
+        $co_name = $_GET['co_name'];
+        $sql = "update $db set co_code = '$co_code',ca_name = '$co_name' where idx = $idx";
+        echo $sql;
+    }
     
     if ($conn->query($sql) === TRUE) {
         echo "Record deleted successfully";
@@ -127,7 +133,13 @@ function db_insert($func,$db,$prevPage){
         $sql = "insert into commoncode(co_code,co_name) values('$co_code','$co_name')";
         echo $sql;
     }
-    
+    if($db == "category"){
+        $co_code = $_GET['co_code'];
+        $co_name = $_GET['co_name'];
+        $sql = "insert into category(co_code,ca_name) values('$co_code','$co_name')";
+        echo $sql;
+    }
+
     if ($conn->query($sql) === TRUE) {
         echo "Record deleted successfully";
         header('location:'.$prevPage);
