@@ -19,6 +19,7 @@ $result_user = mysqli_query($conn, $sql_user);
 <head>
     <?php 
         include "include/head.php";
+        include "include/mypage_sidemenu.php";
     ?>
 </head>
 <body>

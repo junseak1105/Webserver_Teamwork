@@ -71,12 +71,10 @@ $cnt = $start + 1;
     <head>
         <?php
         include "include/head.php";
+        include "include/mypage_sidemenu.php";
         ?>
     </head>
     <body>
-    <?php
-    include "include/sidenav.php";
-    ?>
     <section>
         <div class="user_board_list" id="user_board_box">
             <h1>추천 게시판 > 글 목록</h1>

@@ -72,6 +72,7 @@ $cnt = $start + 1;
 <head>
     <?php
     include "include/head.php";
+    include "include/mypage_sidemenu.php";
     ?>
 </head>
 <body>
