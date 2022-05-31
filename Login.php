@@ -11,16 +11,16 @@
 ?>
 </head>
     <body>
-        <div>
-            <h2 class="login_header">Login</h2>
-            <form class="login_form" action="chk_login.php" method="POST">
+        <div class="login_form">
+            <h2 class="login_title">Login</h2>
+            <form action="chk_login.php" method="POST">
                 <div class="login_inputbox">
-                    <input id="userID" type="text" name="userID" placeholder="아이디">
-                    <label for="userID">아이디</label>
+                    <input class="login_input" id="userID" type="text" name="userID" placeholder="아이디">
+                    <label class="label_id:" for="userID">아이디</label>
                 </div>
                 <div class="login_inputbox">
-                    <input id="userPW" type="password" name="userPW" placeholder="비밀번호">
-                    <label for="userPW">비밀번호</label>
+                    <input class="login_input" id="userPW" type="password" name="userPW" placeholder="비밀번호">
+                    <label class="label_pw" for="userPW">비밀번호</label>
                 </div>
                 <div class="login_register"><a href="register.php">회원가입</a></div>
                 <input class="btn_login" type="submit" onclick="login_(this.form)" value="로그인">

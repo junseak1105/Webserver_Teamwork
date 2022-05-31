@@ -77,14 +77,14 @@ $cnt = $start + 1;
 </head>
 <body>
 <div class="my_page_write">
-    <h2>마이페이지 > 내 글 관리</h2>
+    <h2>마이페이지 > 게시글 관리</h2>
     <table class="my_page_write_list">
         <thead>
         <tr>
-            <th>번호</th>
+            <th class="idx">번호</th>
             <th class='title'>제목</th>
-            <th>작성일</th>
-            <th>추천</th>
+            <th class="date">작성일</th>
+            <th class="recommend">추천</th>
         </tr>
         </thead>
         <?php
@@ -96,13 +96,13 @@ $cnt = $start + 1;
                             href="user_board_view.php?idx=<?php echo $row['idx'] ?>"><?php echo $row['title'] ?></th>
                 <td><?php echo $row['date']; ?></td>
                 <td><?php echo $row['recommend_Y']; ?></td>
-                <td>
+                <td class="edit">
                     <form method="post" action="user_board_modify_form.php">
-                        <button class="btn_modify" type='submit' value="<?= $row['idx'] ?>" name='idx'>수정</button>
+                        <button  type='submit' value="<?= $row['idx'] ?>" name='idx'>수정</button>
                     </form>
                 </td>
-                <td>
-                    <button class="btn_list" onclick="location.href='user_board_delete.php?idx=<?= $row['idx'] ?>'">삭제
+                <td class="delete">
+                    <button  onclick="location.href='user_board_delete.php?idx=<?= $row['idx'] ?>'">삭제
                     </button>
                 </td>
             </tr>

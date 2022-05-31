@@ -22,10 +22,9 @@
 	?>
     <section>
         <div class="user_board">
-            <h1>추천 게시판 > 글 쓰기</h1>
             <form class="user_board_form" name="user_board_form" method="post" action="user_board_insert.php" enctype="multipart/form-data">
                 <div class="user_board_title">
-                    <select id = "user_board_category" name = "category">
+                    <select class="user_board_category" id = "user_board_category" name = "category">
                     <?php
                         $sql_ca = "select * from category where co_code = 'ca_Post';";
                         $result_ca = mysqli_query($conn,$sql_ca);

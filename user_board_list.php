@@ -78,22 +78,23 @@
     ?>
     <section>
         <div class="user_board_list" id="user_board_box">
-            <h1>추천 게시판 > 글 목록</h1>
-            
-            <form class="user_board_searchbox" id="search_box" method="post" action="user_board_list.php"> <!-- 게시글 검색 창 -->
-                <select name="category_val" id = "select_box">
-                    <option value="">전체</option>
-                    <?php
-                        $sql_ca = "select * from category where co_code = 'ca_Post';";
-                        $result_ca = mysqli_query($conn,$sql_ca);
-                        while($row_ca=mysqli_fetch_array($result_ca)){
-                            echo '<option value="'.$row_ca['ca_name'].'">'.$row_ca['ca_name'].'</option>';
-                        }
-                    ?>
-                </select>
-                <input id="searchbox" name="sb_val" value="<?=$sb_val?>"/>
-                <button type="submit" class="btn_search" id="btn_sb">검색</button>
-            </form>
+            <h1><a href="user_board_list.php">전체 게시판</a> > 글 목록</h1>
+            <div class="user_board_searchbox_area">
+                <form class="user_board_searchbox" id="search_box" method="post" action="user_board_list.php"> <!-- 게시글 검색 창 -->
+                    <select name="category_val" id = "select_box">
+                        <option value="">전체</option>
+                        <?php
+                            $sql_ca = "select * from category where co_code = 'ca_Post';";
+                            $result_ca = mysqli_query($conn,$sql_ca);
+                            while($row_ca=mysqli_fetch_array($result_ca)){
+                                echo '<option value="'.$row_ca['ca_name'].'">'.$row_ca['ca_name'].'</option>';
+                            }
+                        ?>
+                    </select>
+                    <input id="searchbox" name="sb_val" value="<?=$sb_val?>"/>
+                    <button type="submit" class="btn_search" id="btn_sb">검색</button>
+                </form>
+            </div>
             <form method="POST" action="user_board_view">
                 <table class="board_list">
                     <thead>

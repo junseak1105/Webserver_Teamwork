@@ -5,5 +5,6 @@
         <li><a id="sidenav_1" href="admin_post.php">게시글</a></li>
         <li><a id="sidenav_2" href="admin_member.php">사용자</a></li>
         <li><a id="sidenav_3" href="admin_category.php">카테고리</a></li>
+        <li><a href="admin_cocode.php">공통코드</a></li>
     </ul>
 </div>

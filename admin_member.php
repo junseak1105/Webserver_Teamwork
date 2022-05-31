@@ -36,49 +36,50 @@
         include "include/admin_sidemenu.php";?>
 </head>
 <body>
-    <table class="admin_table" border="1">
-        <thead>
-            <tr>
-                <th class="admin_table_name">이름</th>
-                <th class="admin_table_id">ID</th>
-                <th class="admin_table_pw">PW</th>
-                <th class="admin_table_delete">삭제</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php
-        while($row = mysqli_fetch_array($result)){
-            echo '<tr>
-                    <td>' . $row[ 'userName' ] . '</td>
-                    <td>'. $row[ 'userID' ] . '</td>
-                    <td>'. $row['userPW']. '</td>
-                    <td> <button class="btn_admin_delete" value='.$row['idx'].'><img class="ic_close" src="images/ic_close.png"></button> </td>
-                </tr>';
-            }
-        ?>
-        </tbody>
-    </table>
-
-    <div class="page1">
-        <table class="page2">
-            <tr>
-                <?php
-                    $i = 0;
-                    while($i<$list_page_no){
-                        echo '<td><a href="admin_member.php?member_page_no_selected='.$i.'">' . $i+1 . '</a></td>';
-                        $i++;
-                    }
-                ?>
-            </tr>
-            <div class="member_searchbox">
-                <input id="searchbox"/>
-                <button class="btn_search" id="btn_sb">검색</button>
-            </div>
+    <div class="admin_member">
+        <div class="admin_member_searchbox">
+            <input id="searchbox"/>
+            <button class="btn_search" id="btn_sb">검색</button>
+        </div>
+        <table class="admin_table" border="1">
+            <thead>
+                <tr>
+                    <th class="admin_table_name">이름</th>
+                    <th class="admin_table_id">ID</th>
+                    <th class="admin_table_pw">PW</th>
+                    <th class="admin_table_delete">삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
+            while($row = mysqli_fetch_array($result)){
+                echo '<tr>
+                        <td>' . $row[ 'userName' ] . '</td>
+                        <td>'. $row[ 'userID' ] . '</td>
+                        <td>'. $row['userPW']. '</td>
+                        <td> <button class="btn_admin_delete" value='.$row['idx'].'><img class="ic_close" src="images/ic_close.png"></button> </td>
+                    </tr>';
+                }
+            ?>
+            </tbody>
         </table>
+
+        <div class="page1">
+            <table class="page2">
+                <tr>
+                    <?php
+                        $i = 0;
+                        while($i<$list_page_no){
+                            echo '<td><a href="admin_member.php?member_page_no_selected='.$i.'">' . $i+1 . '</a></td>';
+                            $i++;
+                        }
+                    ?>
+                </tr>
+            </table>
+        </div>
     </div>
-    </div>
-    
     <?php include "include/footer.php" ?>
+                
 </body>
 </html>
 <?php

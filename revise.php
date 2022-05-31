@@ -28,15 +28,15 @@ $user_PW = isset($_POST['userPW']) ? $_POST['userPW'] : "";
                     /* echo "$idx"; 없어도 되는 부분같은데 체크 바람 */
                 } ?>
             <div class="revise_inputbox">
-                <input type='password' name='userPW' placeholder='현재 비밀번호'>
+                <input class="revise_input" type='password' name='userPW' placeholder='현재 비밀번호'>
                 <label for="userPW">현재 비밀번호</label>
             </div>
             <div class="revise_inputbox">
-                <input type='password' name='new_userPW' placeholder='새 비밀번호'>
+                <input class="revise_input" type='password' name='new_userPW' placeholder='새 비밀번호'>
                 <label for="new_userPW">새 비밀번호</label>
             </div>
             <div class="revise_inputbox">
-                <input type='password' name='new_userPW_confirm' placeholder='새 비밀번호 확인'>
+                <input class="revise_input" type='password' name='new_userPW_confirm' placeholder='새 비밀번호 확인'>
                 <label for="new_userPW_confirm">새 비밀번호 확인</label>
             </div>
             <input class="btn_revise" type='submit' value='수정하기'/>

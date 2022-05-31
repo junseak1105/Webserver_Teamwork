@@ -12,6 +12,8 @@ html {
 }
 
 body {
+  overflow-x:hidden; 
+  overflow-y:auto;
   font-family: acumin-pro, system-ui, sans-serif;
   margin: 0;
   display: grid;
@@ -422,7 +424,7 @@ img.ic_close {
 
 /* 전체 공용 */
 
-/* paper <-- 페이징 */
+/* paper 페이징 */
 .paper {
   display: flex;
   justify-content: center;
@@ -457,129 +459,195 @@ img.ic_close {
 }
 
 .admin_main_chart {
-  display: flex;
-  justify-content: space-between;
-  width: 1000px;
-  margin: auto;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  position: relative;
+  width: 1400px;
+  top: -200px;
+  left: 450px;
 }
 
 /* admin_main.php 끝 */
 
 /* admin_post.php 시작 */
 
-.post_searchbox {
-  text-align: center;
-  margin-bottom: 30px;
+.admin_post {
+  position: relative;
+  top: -180px;
+}
+
+.admin_board_searchbox {
+  position: relative;
+  left: 750px;
+  margin-bottom: 50px;
+}
+
+.admin_board_searchbox select {
+  width: 100px;
+  height: 35px;
+  margin-left: 10px;
+}
+
+.admin_board_searchbox input {
+  line-height: 35px;
+  width: 300px;
+  height: 35px;
+  margin-left: 10px;
+}
+
+.admin_board_searchbox button {
+  height: 35px;
+  margin-left: 10px;
 }
 
 /* admin_post.php 끝 */
 
-/* admin_inquiry.php 시작 */
-.btn_qa_ans {
-  border: none;
-  width: 100%;
-  height: 50px;
-  background-color: #888;
+/* admin_member.php 시작 */
+
+.admin_member {
+  position: relative;
+  top: -220px;
 }
 
-.btn_qa_ans:hover {
-  cursor: pointer;
+.admin_member_searchbox {
+  position: relative;
+  left: 800px;
+  margin-bottom: 50px;
 }
 
-/* admin_inquiry.php 끝 */
+.admin_member_searchbox select {
+  width: 100px;
+  height: 35px;
+  margin-left: 10px;
+}
 
+.admin_member_searchbox input {
+  line-height: 35px;
+  width: 300px;
+  height: 35px;
+  margin-left: 10px;
+}
+
+.admin_member_searchbox button {
+  height: 35px;
+  margin-left: 10px;
+}
+/* admin_member.php 끝 */
 
 /* admin_category.php 시작 */
 
+ .admin_category {
+  position: relative;
+  left: 480px;
+  top: -225px;
+}
 
+ .admin_category_searchbox {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.admin_category_searchbox input {
+  line-height: 35px;
+  width: 300px;
+  height: 35px;
+  margin-left: 10px;
+}
+
+.admin_category_searchbox button {
+  height: 35px;
+  margin-left: 10px;
+}
 /* admin_category.php 끝 */
 
-.category_searchbox {
-  display: flex;
+/* admin_cocode.php 시작*/
+.admin_cocode {
+  position: relative;
+  left: 480px;
+  top: -225px;
+}
+
+.admin_cocode_searchbox {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.admin_cocode_searchbox input {
+  line-height: 35px;
+  width: 300px;
+  height: 35px;
+  margin-left: 10px;
+}
+
+.admin_cocode_searchbox button {
+  height: 35px;
+  margin-left: 10px;
+}
+
+.admin_category_paper, .admin_cocode_paper {
   position: absolute;
-  left: 3px;
 }
 
-.category_searchbox1 {
-  width: 390px;
-}
-
-.member_searchbox {
-  display: flex;
-  position: absolute;
-  right: 4%;
-}
-/* 페이징 css 끝 */
-
-/* 버튼 기본 css */
-/* button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  
-  background: var(--button-bg-color);
-  color: var(--button-color);
-  
-  margin: 0;
-  padding: 0.5rem 1rem;
-  
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
-  text-align: center;
+.admin_category_paper p a, .admin_cocode_paper p a{
+  color: #111;
   text-decoration: none;
-  
-  border: none;
-  border-radius: 4px;
-  
-  display: inline-block;
-  width: auto;
-  
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  
-  cursor: pointer;
-  
-  transition: 0.5s;
 }
-
-button:active, button:hover, button:focus {
-  background: var(--button-hover-bg-color);
-  outline: 0;
-}
-button:disabled {
-  opacity: 0.5;
-} */
-/* 버튼 기본 css 끝 */
+/* admin_cocode.php 끝 */
 
 /* 버튼 개별 css */
+
 button.btn_search {
-  --button-bg-color: #312dee;
-  --button-hover-bg-color: #5451ee;
+  background-color: #312dee;
+  border: none;
+  border-radius: 4px;
+  width: 60px;
   color: white;
   margin-left: 10px;
 }
 
-button.btn_add {
-  --button-bg-color: rgb(52, 238, 83);
-  --button-hover-bg-color: rgb(28, 221, 60);
-  margin-left: 5px;
-  margin-top: 5px;
+button.btn_search:hover {
+  background-color: #5451ee;
 }
+
+button.btn_add {
+  border: 1px solid#888;
+  border-radius: 4px;
+  height: 35px;
+  width: 50px;
+  background-color: rgb(52, 238, 83);
+  margin-left: 5px;
+}
+
+button.btn_add:hover {
+  background-color: rgb(28, 221, 60);
+}
+
+button.btn_delete {
+  border: 1px solid#888;
+  border-radius: 4px;
+  height: 35px;
+  width: 50px;
+  background-color: rgb(252, 9, 9);
+}
+
+button.btn_delete:hover {
+  background-color: rgb(200, 9, 9);
+}
+
 button.btn_edit {
-  --button-bg-color: rgb(216, 213, 213);
+  border: 1px solid#888;
+  border-radius: 4px;
+  height: 35px;
+  width: 50px;
+  background-color: rgb(216, 213, 213);
   --button-hover-bg-color: #eee;
   margin-right: 10px;
   margin-left: 5px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
-
-button.btn_qa_ans {
-  --button-bg-color: rgb(216, 213, 213);
-  --button-hover-bg-color: #eee;
+button.btn_edit:hover {
+  background-color: rgb(180, 180, 180);
 }
+
 /* 버튼 개별 css 끝 */
 
 .category_inputbox {
@@ -587,21 +655,120 @@ button.btn_qa_ans {
 }
 /* nav_main.php 작성 */
 
-.index_head{
-  text-align: right;
+.nav_top{
+  position: relative;
+  height: 20px;
+  background-color: rgb(240, 240, 240);
 }
-.index_head a{
-  display: inline-block;
+.nav_top2{
+  position: absolute;
+  left: 1600px;
+  text-align: right;
+  word-spacing: 10px;
+}
+
+.nav_top2 a{
   color: #111;
   text-decoration: none;
 }
 
-.index_head a:hover {
+.nav_top2 a:hover {
   color: #312dee;
 }
 
+.nav_title {
+  position: relative;
+  height: 110px;
+  border-bottom: 1px solid#888;
+  border-top:1px solid#888
+}
+
+.nav_title2 {
+  position: absolute;
+  left: 252px;
+}
+
+.nav_title_img{
+  height: 100px;
+  width: 200px;
+}
+
+.nav_bottom {
+  position: relative;
+  height: 47px;
+  border-collapse: collapse;
+  background-color: #f17019;
+}
+
+.nav_bottom2 {
+  position: absolute;
+  margin-top: -1px;
+  left: 225px;
+}
+
+ul, ol, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav_category > li {
+  display: inline-block;
+  width: 150px; 
+  height: 48px;
+  line-height: 48px;
+  margin-left: -6px;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* .nav_category > li:hover > ul > li.subcategory {
+  display: inline-block;
+} */
+
+.subcategory {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  font-size: 16px;
+  width: 150px;
+  top: 48px;
+  z-index: 1001;
+  /* left: 0; */
+}
+
+.subcategory > li {
+  display: inline-block;
+  color: rgb(161, 161, 161);
+  border: 1px solid#888;
+  margin-top: -1px;
+  width: 150px;
+  text-align: center;
+}
+
+.nav_category > li a {
+  color: #111;
+  text-decoration: none;
+}
+
+.nav_category > li:hover ul.subcategory {
+  display: block;
+  background-color: #fff
+}
+
+.subcategory > li:hover {
+  color:#f17019 ;
+}
+
+
+
+
+
+
 .topnav {
-  background-color: #333;
+  /* background-color: #333; */
+  border-top: 1px solid#888;
+  border-bottom: 1px solid #888;
   font-size: 17px;
   color: #f2f2f2;
   padding: 14px 16px;
@@ -618,53 +785,11 @@ button.btn_qa_ans {
 }
 
 .topnav2 {
-  width: 80%;
+  width: 1525px;
   margin: auto;
 }
 
-ul, ol, li {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
 
-ul.category > li {
-  display: inline-block;
-  text-align: center;
-  position: relative;
-  width: 150px;
-  padding: 14px 16px;
-}
-
-ul.category > li:hover {
-  background: #fff;
-  color: black;
-}
-
-ul.category > li ul.subitem {
-  display: none;
-  position: absolute;
-  top:50px; 
-  left:0;
-}
-
-ul.category > li ul.subitem > li {
-  display: inline-block;
-  text-align: center;
-  position: relative;
-  width: 100%;
-  padding: 14px 16px;
-}
-
-ul.category > li:hover ul.subitem { 
-  display:block; 
-  z-index: 2;
-  background: #ddd;
-}
-
-ul.category > li ul.subitem > li:hover { 
-  background:#fff; 
-}
 
 /* nav_main.php 끝 */
 
@@ -684,12 +809,21 @@ ul.category > li ul.subitem > li:hover {
 }
 .h_title {
   position: relative;
-  z-index: 1;
-  left: 10%;
+  left: 252px;
 }
 
 li.img_wrapper {
-  width: 10%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 110px;
+  height: 130px;
+}
+
+.index_img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
 
 /* img {
@@ -700,11 +834,12 @@ li.img_wrapper {
 /* 추천 아이템 */
 
 .recommend_list {
-  width: 80%;
-  height: 500px;
+  position: relative;
+  width: 1400px;
+  height: 450px;
+  left: 252px;
   overflow: hidden;
   border: 1px solid #888;
-  margin: 10px auto;
   padding: 5px;
 }
 
@@ -737,8 +872,9 @@ li.img_wrapper {
 .main_post {
   border: 1px solid #888;
   position: relative;
-  margin: 10px auto;
-  width: 80%;
+  width: 1400px;
+  left: 252px;
+  /* margin: auto; */
   border-collapse: collapse;
 }
 
@@ -809,8 +945,10 @@ li.img_wrapper {
 
 /*user_board_form.php 시작 */
 .user_board {
-  width: 80%;
-  margin: auto;
+  position: relative;
+  width: 1400px;
+  top: 50px;
+  left: 252px;
 }
 
 form.user_board_form {
@@ -826,7 +964,12 @@ form.user_board_form {
   margin-bottom: 20px;
 }
 
-form.user_board_form input.user_board_input {
+.user_board_category {
+  height: 35px;
+  width: 100px;
+}
+
+.user_board_input {
   width: 45%;
   line-height: 35px;
   height: 35px;
@@ -864,13 +1007,17 @@ form.user_board_form input.user_board_input {
 /*user_board_list.php 시작 */
 
 .user_board_list {
-  width: 80%;
-  margin: auto;
+  position: relative;
+  width: 1400px;
+  left: 252px;
 }
 
+.user_board_list h1 a {
+  color: #111;
+  text-decoration: none;
+}
 
-
-table.board_list {
+.board_list {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 5px;
@@ -878,42 +1025,42 @@ table.board_list {
   border-top: 2px solid#f36303;
 }
 
-table.board_list thead th {
+.board_list thead th {
   width: 3%;
   margin-bottom: 5px;
 }
 
-table.board_list thead th.title {
+.board_list thead th.title {
   width: 50%;
 }
 
-table.board_list thead th.category {
+.board_list thead th.category {
   width: 6%;
 }
 
-table.board_list thead th.date {
+.board_list thead th.date {
   white-space: nowrap;
   width: 6%;
 }
 
-table.board_list thead tr {
+.board_list thead tr {
   border-bottom: 1px solid#f36303;
 }
 
-table.board_list tbody tr {
+.board_list tbody tr {
   border-bottom: 1px solid rgb(202, 200, 200);
 }
 
-table.board_list tbody td {
+.board_list tbody td {
   text-align: center;
   height: 30px;
 }
 
-table.board_list tbody th.title {
+.board_list tbody th.title {
   text-align: left;
 }
 
-table.board_list tbody th.title a{
+.board_list tbody th.title a{
   color: #111;
   text-decoration: none;
 }
@@ -930,9 +1077,14 @@ button.btn_write {
   margin-bottom: 10px;
 }
 
+.user_board_searchbox_area {
+  height: 70px;
+}
+
 .user_board_searchbox {
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  left: 252px;
+  transform:translateX(50%); 
   margin-bottom: 50px;
 }
 
@@ -1056,58 +1208,72 @@ button.btn_up, button.btn_down img {
 /* user_board_view.php 끝 */
 
 /* 로그인 폼 */
-.login_header {
-  display: flex;
-  justify-content: center;
+
+.login_form {
+  position: relative;
+  width: 1000px;
+  left: 500px;
+}
+
+.login_title {
+  position: relative;
+  font-size: 30px;
+  left: 450px;
 }
 
 .login_inputbox {
-  display: flex;
-  justify-content: center;
   position: relative;
+  left: 300px;
   margin: 10px 0;
 }
 
-.login_inputbox > input {
+.login_input {
+  position: relative;
   background: transparent;
   border: none;
   border-bottom: 1px solid #ccc;
   padding: 20px 0px 5px 0px;
   font-size: 14px;
-  width: 30%;
+  width: 400px;
+  left: 0;
 }
 
-.login_inputbox > input::placeholder {
+.login_input::placeholder {
   color: transparent;
 }
 
-.login_inputbox > input:placeholder-shown + label {
+
+.login_input:placeholder-shown + label {
+  position: absolute;
+  left: 0;
   color: #aaa;
   font-size:16px;
   top:15px;
 }
 
-.login_inputbox > input:focus + label, label {
+
+.login_input:focus + label, label {
   color:#8aa1a1;
   font-size: 10pt;
   pointer-events: none;
   position: absolute;
-  left: 35%;
-  top: 0px;
+  left: 0;
+  top: 0;
   transition: all 0.2s ease;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
 }
 
-.login_inputbox > input:focus, input:not(:placeholder-shown){ 
+
+.login_input:focus, input.login_input:not(:placeholder-shown){ 
   border-bottom: solid 1px #8aa1a1; outline:none;
 }
 
+
 .login_register {
-    text-align: right;
-    margin-right: 35%;
-    margin-top: 5px;
+  position: relative;
+  left: 640px;
 }
 
 .login_register a {
@@ -1121,16 +1287,15 @@ button.btn_up, button.btn_down img {
 }
 
 input.btn_login[type=submit]{
-  display: flex;
-  justify-content: center;
+  position: relative;
+  left: 300px;
   background-color: #8aa1a1;
   border:none;
   color:white;
   border-radius: 5px;
-  width:30%;
+  width:400px;
   height:35px;
   font-size: 14pt;
-  margin: auto;
   margin-top: 10px;
 }
 
@@ -1140,79 +1305,82 @@ input.btn_login[type=submit]:hover {
 
 /* register.php 시작*/
 
-.register_header {
-  display: flex;
-  justify-content: center;
+.register_form {
+  position: relative;
+  width: 1000px;
+  left: 500px;
+}
+
+.register_title {
+  position: relative;
+  font-size: 30px;
+  left: 435px;
 }
 
 .register_inputbox {
-  display: flex;
-  justify-content: center;
   position: relative;
+  left: 300px;
   margin: 10px 0;
 }
 
-.register_inputbox > input {
+.register_input {
   position: relative;
   background: transparent;
   border: none;
   border-bottom: 1px solid #ccc;
   padding: 20px 0px 5px 0px;
   font-size: 14px;
-  width: 30%;
-  margin: auto;
+  width: 400px;
+  left: 0;
 }
 
-.register_inputbox > input::placeholder {
+.register_input::placeholder {
   color: transparent;
 }
 
-.register_inputbox > input:placeholder-shown + label {
+
+.register_input:placeholder-shown + label {
+  position: absolute;
+  left: 0;
   color: #aaa;
   font-size:16px;
   top:15px;
 }
 
-.register_inputbox > input:focus + label, label {
+
+.register_input:focus + label, label {
   color:#8aa1a1;
   font-size: 10pt;
   pointer-events: none;
   position: absolute;
-  left: 35%;
-  top: 0px;
+  left: 0;
+  top: 0;
   transition: all 0.2s ease;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
 }
 
+
+.register_input:focus, .register_input:not(:placeholder-shown){ 
+  border-bottom: solid 1px #8aa1a1; outline:none;
+}
+
 input.btn_register[type=submit]{
-  display: flex;
-  justify-content: center;
+  position: relative;
+  left: 300px;
   background-color: #8aa1a1;
   border:none;
   color:white;
   border-radius: 5px;
-  width:30%;
+  width:400px;
   height:35px;
   font-size: 14pt;
-  margin: auto;
   margin-top: 10px;
 }
 
-.register_item {
-  width: 30%;
-  margin: auto;
-  margin-top: 30px;
-}
-
-.register_item b{
-  font-size: 25px;
-}
-
-.register_radiobox {
-  margin-top: 10px;
-  font-size: 15px;
+input.btn_register[type=submit]:hover {
+  background-color: #617575;
 }
 
 /* register.php 끝*/
@@ -1220,9 +1388,10 @@ input.btn_register[type=submit]{
 /* My_page_main.php 시작 */
 
 .my_page_main{
+  position: relative;
   width: 1000px;
-  margin: auto;
-  
+  top: -225px;
+  left: 500px;
 }
 
 .my_page_info {
@@ -1259,15 +1428,22 @@ input.btn_register[type=submit]{
 /* revise.php 시작 */
 
 .revise {
-  width: 30%;
-  margin: auto;
-  margin-top: 20px;
+  position: relative;
+  width: 500px;
+  left: 715px; 
+}
+
+.revise h2 {
+  position: relative;
+  font-size: 30px;
+  left: 150px;
 }
 
 .revise_info {
   border: 1px solid#888;
   border-radius: 10px;
 }
+
 .revise_inputbox {
   display: flex;
   justify-content: left;
@@ -1276,7 +1452,7 @@ input.btn_register[type=submit]{
   margin: 10px 0;
 }
 
-.revise_inputbox > input {
+.revise_input {
   background: transparent;
   border: none;
   border-bottom: 1px solid #ccc;
@@ -1285,17 +1461,17 @@ input.btn_register[type=submit]{
   width: 80%;
 }
 
-.revise_inputbox > input::placeholder {
+.revise_input::placeholder {
   color: transparent;
 }
 
-.revise_inputbox > input:placeholder-shown + label {
+.revise_input:placeholder-shown + label {
   color: #aaa;
   font-size:16px;
   top:15px;
 }
 
-.revise_inputbox > input:focus + label, label {
+.revise_input:focus + label, label {
   color:#8aa1a1;
   font-size: 10pt;
   pointer-events: none;
@@ -1308,27 +1484,26 @@ input.btn_register[type=submit]{
   -o-transition: all 0.2s ease;
 }
 
-.revise_inputbox > input:focus, input:not(:placeholder-shown){ 
+.revise_input:focus, .revise_input:not(:placeholder-shown){ 
   border-bottom: solid 1px #8aa1a1; outline:none;
 }
 
 input.btn_revise[type=submit]{
   display: flex;
-  justify-items: right;
   justify-content: center;
-  background-color: #8aa1a1;
+  background-color: #5451ee;
   border:none;
   color:white;
   border-radius: 5px;
-  width:25%;
+  width:150px;
   height:40px;
   font-size: 20px;
-  margin-left: 70%;
+  margin-left: 300px;
   margin-bottom: 20px;
 }
 
 input.btn_revise[type=submit]:hover {
-  background-color: #617575;
+  background-color: #3331da;
 }
 
 /* revise.php 끝 */
@@ -1336,67 +1511,152 @@ input.btn_revise[type=submit]:hover {
 /* My_page_wirte.php 시작 */
 
 .my_page_write{
-  width: 1400px;
-  margin-left: 23%;
-  margin-top: 10px;
+  position: relative;
+  width: 1200px;
+  top: -270px;
+  left: 500px;
 }
 
 .my_page_write_list {
-  width: 1400px;
+  width: 1200px;
   border-collapse: collapse;
   border-top: 2px solid#f36303;
   border-bottom: 2px solid#f36303;
 }
 
-table.my_page_write_list thead th {
-  width: 3%;
-  margin-bottom: 5px;
+.my_page_write_list thead th.idx {
+  width: 80px;
 }
 
-table.my_page_write_list thead th.title {
-  width: 50%;
+.my_page_write_list thead th.title{
+  width: 740px;
 }
 
-table.my_page_write_list thead th.category {
-  width: 6%;
+.my_page_write_list thead th.date {
+  width: 200px;
 }
 
-table.my_page_write_list thead th.date {
-  width: 6%;
+.my_page_write_list thead th.recommend {
+  width: 80px;
 }
 
-table.my_page_write_list thead tr {
+.my_page_write_list thead tr {
   border-bottom: 1px solid#f36303;
 }
 
-table.my_page_write_list tbody tr {
+.my_page_write_list tbody tr {
   border-bottom: 1px solid rgb(202, 200, 200);
 }
 
-table.my_page_write_list tbody td {
+.my_page_write_list tbody td {
   text-align: center;
   height: 30px;
 }
 
-table.my_page_write_list tbody th.title {
+.my_page_write_list tbody th.title {
   text-align: left;
 }
 
-table.my_page_write_list tbody th.title a{
+.my_page_write_list tbody th.title a{
   color: #111;
   text-decoration: none;
 }
 
+.my_page_write_list tbody td.edit {
+  width: 50px;
+}
+
+.my_page_wirte_list tbody td.delete {
+  width: 50px;
+}
+/* My_page_write.php 끝 */
+
+/* My_page_prefer.php 시작 */
+
+.my_page_prefer {
+  position: relative;
+  width: 1200px;
+  top: -100px;
+  left: 500px;
+}
+
+.my_page_prefer_list {
+  width: 1200px;
+  border-collapse: collapse;
+  border-top: 2px solid#f36303;
+  border-bottom: 2px solid#f36303;
+}
+
+.my_page_prefer_searchbox_area {
+  height: 70px;
+}
+
+.my_page_prefer_searchbox {
+  position: absolute;
+  height: 50px;
+  transform:translateX(50%); 
+  margin-bottom: 50px;
+}
+
+.my_page_prefer_searchbox select {
+  width: 100px;
+  height: 35px;
+  margin-left: 10px;
+}
+
+.my_page_prefer_searchbox input {
+  line-height: 35px;
+  width: 300px;
+  height: 35px;
+  margin-left: 10px;
+}
+
+.my_page_prefer_searchbox button {
+  height: 35px;
+  margin-left: 10px;
+}
+
+.my_page_prefer_list thead tr {
+  border-bottom: 1px solid#f36303;
+}
+
+.my_page_prefer_list tbody tr {
+  border-bottom: 1px solid rgb(202, 200, 200);
+}
+
+.my_page_prefer_list thead th{
+  width: 80px;
+}
+
+.my_page_prefer_list thead th.title {
+  width: 600px;
+}
+
+.my_page_prefer_list thead th.category {
+  width: 100px;
+}
+
+.my_page_prefer_list tbody td {
+  text-align: center;
+  height: 30px;
+}
+
+.my_page_prefer_list tbody td.title {
+  text-align: left;
+}
+
+
+
+/* My_page_prefer.php 끝 */
 
 /* admin_side.php 시작*/
 .left_menu {
-  position: fixed;
+  position: relative;
   background-color: transparent;
   border-collapse: collapse;
-  top: 98px;
+  top: 20px;
   width: 200px;
-  z-index: 10;
-  left: 200px;
+  left: 225px;
   bottom: 50px;
   height: 50%;
   margin-bottom: -70px;

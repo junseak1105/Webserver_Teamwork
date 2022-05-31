@@ -72,62 +72,61 @@
         include "include/admin_sidemenu.php";?>
 </head>
 <body>
-    <div>
-    
-    <div class="category_searchbox">
-         <form class="searchbox" id="search_box" method="post" action="admin_category.php"> <!-- 게시글 검색 창 -->
+    <div class="admin_category">
+        <div class="admin_category_searchbox">
+            <form class="searchbox" id="search_box" method="post" action="admin_category.php"> <!-- 게시글 검색 창 -->
                 <input id="searchbox" name="sb_val" value="<?=$sb_val?>"/>
                 <button type="submit" class="btn_search" id="btn_sb">검색</button>
             </form>
-    <table>
-            <tr>
-                <th >공통코드</th>
-                <th >코드내용</th>
-                <th >버튼</th>
-            </tr>
-        <div>
-            <tr>
-                <td><input class="category_inputbox" id="co_code_add"></td>
-                <td><input class="category_inputbox" id="co_name_add"></td>
-                <td><button class="btn_add">추가</button></td>
-            </tr>
-            <?php
-            while($row = mysqli_fetch_array($result)){
-                echo '<tr><td><input class="category_inputbox" id="code_row_'.$row['idx'].'" value=' . $row[ 'co_code' ] . '></td><td><input class="category_inputbox" id=name_row_'.$row['idx'].' value='. $row[ 'ca_name' ] . '></td><td>
-                <button class="btn_edit" value='.$row['idx'].'>수정</button><button class="btn_delete" value='.$row['idx'].'>삭제</button>
-                </td></tr>';
-            }
-            ?>
         </div>
-    </table>
-    <div class="paper">
-                <p>
-                    <?php
-                        /* paging : 이전 페이지 */
-                        if($page <= 1){
-                    ?>
-                    <a href="user_board_list.php?page=1">이전</a>
-                    <?php } else{ ?>
-                    <a href="user_board_list.php?page=<?php echo ($page-1); ?>">이전</a>
-                    <?php };?>
+            <table>
+                <tr>
+                    <th >공통코드</th>
+                    <th >코드내용</th>
+                </tr>
+            <div>
+                <tr>
+                    <td><input class="category_inputbox" id="co_code_add"></td>
+                    <td><input class="category_inputbox" id="co_name_add"></td>
+                    <td><button class="btn_add">추가</button></td>
+                </tr>
+                <?php
+                while($row = mysqli_fetch_array($result)){
+                    echo '<tr><td><input class="category_inputbox" id="code_row_'.$row['idx'].'" value=' . $row[ 'co_code' ] . '></td><td><input class="category_inputbox" id=name_row_'.$row['idx'].' value='. $row[ 'ca_name' ] . '></td><td>
+                    <button class="btn_edit" value='.$row['idx'].'>수정</button><button class="btn_delete" value='.$row['idx'].'>삭제</button>
+                    </td></tr>';
+                }
+                ?>
+            </div>
+        </table>
+        <div class="admin_category_paper">
+            <p>
+                <?php
+                    /* paging : 이전 페이지 */
+                    if($page <= 1){
+                ?>
+                <a href="admin_category.php?page=1">이전</a>
+                <?php } else{ ?>
+                    <a href="admin_category.php?page=<?php echo ($page-1); ?>">이전</a>
+                <?php };?>
 
-                    <?php
+                <?php
                     /* pager : 페이지 번호 출력 */
                     for($print_page = $s_pageNum; $print_page <= $e_pageNum; $print_page++){
-                    ?>
-                    <a href="user_board_list.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
-                    <?php };?>
+                ?>
+                    <a href="admin_category.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
+                <?php };?>
 
-                    <?php
+                <?php
                     /* paging : 다음 페이지 */
                     if($page >= $total_page){
-                    ?>
-                    <a href="user_board_list.php?page=<?php echo $total_page; ?>">다음</a>
-                    <?php } else{ ?>
-                    <a href="user_board_list.php?page=<?php echo ($page+1); ?>">다음</a>
-                    <?php };?>
-                </p>
-            </div>
+                ?>
+                    <a href="admin_category.php?page=<?php echo $total_page; ?>">다음</a>
+                <?php } else{ ?>
+                    <a href="admin_category.php?page=<?php echo ($page+1); ?>">다음</a>
+                <?php };?>
+            </p>
+        </div>
     </div>
     
     <?php include "include/footer.php" ?>

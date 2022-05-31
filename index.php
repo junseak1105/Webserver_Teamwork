@@ -17,7 +17,7 @@ header('P3P: CP="NOI CURa ADMa DEVa TAIa OUR DELa BUS IND PHY ONL UNI COM NAV IN
         include_once "include/visitor_count.php" //추후 index.php에만 적용
     ?>
 </head>
-<body style="overflow-x:hidden; overflow-y:auto;">
+<body>
 <div>
         <h2 class="h_title">최신 게시글</h2>
         <div class="post_list">
@@ -53,17 +53,18 @@ header('P3P: CP="NOI CURa ADMa DEVa TAIa OUR DELa BUS IND PHY ONL UNI COM NAV IN
                 <a href="./user_board_list.php">더보기</a>
             </div>
         </div>
-        <h2 class="h_title">추천 아이템</h2>
-        <ul class="recommend_list">
-            <?php
-                $sql = 'select * from post order by recommend_Y desc limit 0,10';
-                $result = mysqli_query($conn,$sql);
-                while($row = mysqli_fetch_array($result)){
-                    echo '<li class="img_wrapper"> <a href="user_board_view.php?idx='. $row['idx'] .'"> <img src='.$row['image'].'> <b> '.$row['title'].' </b> </a> </li>';
-                }
-            ?>
-        </ul>
-    </div>
+        <div>
+            <h2 class="h_title">추천 아이템</h2>
+            <ul class="recommend_list">
+                <?php
+                    $sql = 'select * from post order by recommend_Y desc limit 0,10';
+                    $result = mysqli_query($conn,$sql);
+                    while($row = mysqli_fetch_array($result)){
+                        echo '<li class="img_wrapper"> <a href="user_board_view.php?idx='. $row['idx'] .'"> <img class="index_img" src='.$row['image'].'> <b> '.$row['title'].' </b> </a> </li>';
+                    }
+                ?>
+            </ul>
+        </div>
     
     <?php include "include/footer.php"; ?>
 </body>

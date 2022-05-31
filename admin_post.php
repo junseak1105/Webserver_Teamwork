@@ -71,74 +71,76 @@ $category_val = isset($_POST["category_val"])? $_POST["category_val"] : "";
         include "include/admin_sidemenu.php";?>
 </head>
 <body>
-<form class="user_board_searchbox" id="search_box" method="post" action="admin_post.php"> <!-- 게시글 검색 창 -->
-                <select name="category_val" id = "select_box">
-                    <option value="">전체</option>
-                    <?php
-                        $sql_ca = "select * from category where co_code = 'ca_Post';";
-                        $result_ca = mysqli_query($conn,$sql_ca);
-                        while($row_ca=mysqli_fetch_array($result_ca)){
-                            echo '<option value="'.$row_ca['ca_name'].'">'.$row_ca['ca_name'].'</option>';
-                        }
-                    ?>
-                </select>
-                <input id="searchbox" name="sb_val" value="<?=$sb_val?>"/>
-                <button type="submit" class="btn_search" id="btn_sb">검색</button>
-            </form>
+    <div class="admin_post">
+        <form class="admin_board_searchbox" id="search_box" method="post" action="admin_post.php"> <!-- 게시글 검색 창 -->
+            <select name="category_val" id = "select_box">
+                <option value="">전체</option>
+                <?php
+                    $sql_ca = "select * from category where co_code = 'ca_Post';";
+                    $result_ca = mysqli_query($conn,$sql_ca);
+                    while($row_ca=mysqli_fetch_array($result_ca)){
+                        echo '<option value="'.$row_ca['ca_name'].'">'.$row_ca['ca_name'].'</option>';
+                    }
+                ?>
+            </select>
+            <input id="searchbox" name="sb_val" value="<?=$sb_val?>"/>
+            <button type="submit" class="btn_search" id="btn_sb">검색</button>
+        </form>
         <table class="admin_table" border="1">
-        <thead>    
-            <tr>   
-                <th class="admin_table_title">글제목</th>
-                <th class="admin_table_id">작성자</th>
-                <th class="admin_table_date">작성일자</th>
-                <th class="admin_table_hit">조회수</th>
-                <th class="admin_table_delete">삭제</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            while($row = mysqli_fetch_array($result)){
-                echo '<tr class="table_hober">
-                        <th>' . $row[ 'title' ] . '</th>
-                        <td>'. $row['writer_id'] . '</td>
-                        <td>'. $row['date']. '</td>
-                        <td>'. $row[ 'hit' ] . '</td>
-                        <td class="post_delete">
-                        <button class="btn_admin_delete" value='.$row['idx'].'><img class="ic_close" src="images/ic_close.png"></button>
-                        </td>
-                    </tr>';
-            }
-            ?>
-        </tbody>
+            <thead>    
+                <tr>   
+                    <th class="admin_table_title">글제목</th>
+                    <th class="admin_table_id">작성자</th>
+                    <th class="admin_table_date">작성일자</th>
+                    <th class="admin_table_hit">조회수</th>
+                    <th class="admin_table_delete">삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                while($row = mysqli_fetch_array($result)){
+                    echo '<tr class="table_hober">
+                            <th>' . $row[ 'title' ] . '</th>
+                            <td>'. $row['writer_id'] . '</td>
+                            <td>'. $row['date']. '</td>
+                            <td>'. $row[ 'hit' ] . '</td>
+                            <td class="post_delete">
+                            <button class="btn_admin_delete" value='.$row['idx'].'><img class="ic_close" src="images/ic_close.png"></button>
+                            </td>
+                        </tr>';
+                }
+                ?>
+            </tbody>
         </table>
         <div class="paper">
-                <p>
-                    <?php
-                        /* paging : 이전 페이지 */
-                        if($page <= 1){
-                    ?>
-                    <a href="user_board_list.php?page=1">이전</a>
-                    <?php } else{ ?>
-                    <a href="user_board_list.php?page=<?php echo ($page-1); ?>">이전</a>
-                    <?php };?>
+            <p>
+                <?php
+                    /* paging : 이전 페이지 */
+                    if($page <= 1){
+                ?>
+                <a href="admin_post.php?page=1">이전</a>
+                <?php } else{ ?>
+                <a href="admin_post.php?page=<?php echo ($page-1); ?>">이전</a>
+                <?php };?>
 
-                    <?php
-                    /* pager : 페이지 번호 출력 */
+                <?php
+                /* pager : 페이지 번호 출력 */
                     for($print_page = $s_pageNum; $print_page <= $e_pageNum; $print_page++){
-                    ?>
-                    <a href="user_board_list.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
-                    <?php };?>
+                ?>
+                <a href="admin_post.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
+                <?php };?>
 
-                    <?php
-                    /* paging : 다음 페이지 */
+                <?php
+                /* paging : 다음 페이지 */
                     if($page >= $total_page){
-                    ?>
-                    <a href="user_board_list.php?page=<?php echo $total_page; ?>">다음</a>
-                    <?php } else{ ?>
-                    <a href="user_board_list.php?page=<?php echo ($page+1); ?>">다음</a>
-                    <?php };?>
-                </p>
-            </div>
+                ?>
+                <a href="admin_post.php?page=<?php echo $total_page; ?>">다음</a>
+                <?php } else{ ?>
+                    <a href="admin_post.php?page=<?php echo ($page+1); ?>">다음</a>
+                <?php };?>
+            </p>
+        </div>
+    </div>
     
     <?php include "include/footer.php"; ?>
 </body>

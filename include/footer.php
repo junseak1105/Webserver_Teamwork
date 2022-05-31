@@ -1,18 +1,13 @@
 <footer class="footer">
   <div class="footer__addr">
-    <h1 class="footer__logo">Something</h1>
+    <h1 class="footer__logo">동서대학교</h1>
         
-    <h2>Contact</h2>
-    
-    <address>
-      5534 Somewhere In. The World 22193-10212<br>
-          
-      <a class="footer__btn" href="mailto:example@gmail.com">Email Us</a>
-    </address>
+    <h2>웹서버프로그래밍</h2>
+  
   </div>
   
   <ul class="footer__nav">
-    <li class="nav__item">
+   <!-- <li class="nav__item">
       <h2 class="nav__title">Media</h2>
 
       <ul class="nav__ul">
@@ -58,22 +53,22 @@
           <a href="#">IoT</a>
         </li>
       </ul>
-    </li>
+    </li>  -->
     
     <li class="nav__item">
-      <h2 class="nav__title">Legal</h2>
+      <h2 class="nav__title">팀원</h2>
       
       <ul class="nav__ul">
         <li>
-          <a href="#">Privacy Policy</a>
+          김재훈
         </li>
         
         <li>
-          <a href="#">Terms of Use</a>
+          김재훈
         </li>
         
         <li>
-          <a href="#">Sitemap</a>
+          전우강
         </li>
       </ul>
     </li>
