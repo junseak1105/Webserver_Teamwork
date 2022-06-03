@@ -40,15 +40,16 @@
 	?>
 <section>
    	<div class="user_board_box" id="user_board_box">
-	    <h1> 추천 게시판 > 내용 보기 </h1>
-		
+
 		<table class="view_board_title">
-			<b>[<?=$category?>]</b> 
-			<b> <?=$title?></b>
+			<div class="board_title">
+				<b>[<?=$category?>]</b> 
+				<b> <?=$title?></b>
+			</div>
 			<tr class="view_board_title_tr">
-				<td class="id">작성자: <?=$writer_id?></td>
-				<td class="data">작성일: <?=$data?></td>
-				<td class="hit">조회수<?=$hit?></td>
+				<td class="id"><?=$writer_id?></td>
+				<td class="data"><?=$data?></td>
+				<td class="hit">조회수 <?=$hit?></td>
 				<td class="recommend">추천 <?=$recommend_Y?></td>
 			</tr>
 		</table>

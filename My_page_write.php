@@ -116,25 +116,25 @@ $cnt = $start + 1;
             /* paging : 이전 페이지 */
             if ($page <= 1) {
                 ?>
-                <a href="My_page_wrrite.php?page=1">이전</a>
+                <a href="My_page_write.php?page=1">이전</a>
             <?php } else { ?>
-                <a href="My_page_wrrite.php?page=<?php echo($page - 1); ?>">이전</a>
+                <a href="My_page_write.php?page=<?php echo($page - 1); ?>">이전</a>
             <?php }; ?>
 
             <?php
             /* pager : 페이지 번호 출력 */
             for ($print_page = $s_pageNum; $print_page <= $e_pageNum; $print_page++) {
                 ?>
-                <a href="My_page_wrrite.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
+                <a href="My_page_write.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
             <?php }; ?>
 
             <?php
             /* paging : 다음 페이지 */
             if ($page >= $total_page) {
                 ?>
-                <a href="My_page_wrrite.php?page=<?php echo $total_page; ?>">다음</a>
+                <a href="My_page_write.php?page=<?php echo $total_page; ?>">다음</a>
             <?php } else { ?>
-                <a href="My_page_wrrite.php?page=<?php echo($page + 1); ?>">다음</a>
+                <a href="My_page_write.php?page=<?php echo($page + 1); ?>">다음</a>
             <?php }; ?>
         </p>
     </div>

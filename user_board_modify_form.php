@@ -33,7 +33,7 @@
 <body> 
 <section>
    	<div class="user_board">
-	    <h1 id="user_board_title">게시판 > 글 수정하기</h1>
+	    <h1 id="user_board_title">글 수정하기</h1>
 	    <form class="user_board_form" name="user_board_modify_form" method="post" action="user_board_modify.php?idx=<?=$idx?>" enctype="multipart/form-data">
 			<div class="user_board_title">
                 <select class="user_board_category" name = "category" value = "<?=$category?>">

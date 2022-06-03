@@ -121,7 +121,7 @@ $cnt = $start + 1;
                             <td><?php echo $row['date']; ?></td>
                             <td><?php echo $row['recommend_Y']; ?></td>
                             <td><?php echo $row['hit']; ?></td>
-                            <td><a href="recommend_cancel.php?title=<?=$row['title']?>">취소
+                            <td class="cancle" ><a href="recommend_cancel.php?title=<?=$row['title']?>">취소
                             </td>
                         </tr>
                         <?php
@@ -142,25 +142,25 @@ $cnt = $start + 1;
                     /* paging : 이전 페이지 */
                     if($page <= 1){
                         ?>
-                        <a href="user_board_list.php?page=1">이전</a>
+                        <a href="my_page_prefer.php?page=1">이전</a>
                     <?php } else{ ?>
-                        <a href="user_board_list.php?page=<?php echo ($page-1); ?>">이전</a>
+                        <a href="my_page_prefer.php?page=<?php echo ($page-1); ?>">이전</a>
                     <?php };?>
 
                     <?php
                     /* pager : 페이지 번호 출력 */
                     for($print_page = $s_pageNum; $print_page <= $e_pageNum; $print_page++){
                         ?>
-                        <a href="user_board_list.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
+                        <a href="my_page_prefer.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
                     <?php };?>
 
                     <?php
                     /* paging : 다음 페이지 */
                     if($page >= $total_page){
                         ?>
-                        <a href="user_board_list.php?page=<?php echo $total_page; ?>">다음</a>
+                        <a href="my_page_prefer.php?page=<?php echo $total_page; ?>">다음</a>
                     <?php } else{ ?>
-                        <a href="user_board_list.php?page=<?php echo ($page+1); ?>">다음</a>
+                        <a href="my_page_prefer.php?page=<?php echo ($page+1); ?>">다음</a>
                     <?php };?>
                 </p>
             </div>
