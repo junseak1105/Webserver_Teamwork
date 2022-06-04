@@ -5,8 +5,9 @@
     include "include/db.php";
     include "include/common_function.php";
     
-    $category_val = isset($_GET["category_val"])? $_GET["category_val"] : "";
     $category_val = isset($_POST["category_val"])? $_POST["category_val"] : "";
+    
+    $category_val = isset($_GET["category_val"])? $_GET["category_val"] : "";
     $sb_val =isset($_POST["sb_val"])? $_POST["sb_val"] : "";
 
     $query = "select count(*) as count from post";

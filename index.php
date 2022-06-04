@@ -57,7 +57,7 @@ header('P3P: CP="NOI CURa ADMa DEVa TAIa OUR DELa BUS IND PHY ONL UNI COM NAV IN
             <h2 class="h_title">추천 아이템</h2>
             <ul class="recommend_list">
                 <?php
-                    $sql = 'select * from post order by recommend_Y desc limit 0,10';
+                    $sql = 'select * from post order by recommend_Y desc limit 0,14';
                     $result = mysqli_query($conn,$sql);
                     while($row = mysqli_fetch_array($result)){
                         echo '<li class="img_wrapper"> <a href="user_board_view.php?idx='. $row['idx'] .'"> <img class="index_img" src='.$row['image'].'> <b> '.$row['title'].' </b> </a> </li>';
