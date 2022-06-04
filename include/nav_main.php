@@ -60,27 +60,15 @@
             <ul class="nav_category">
                 <li><b><a href="user_board_list.php">전체 게시판</a></b>
                 </li>
-                <li> <b>생활/리빙</b>
-                    <ul class="subcategory">
-                        <li>test1</li>
-                    </ul>
-                </li>
-                <li><b>디지털/가전</b>
-                    <ul class="subcategory">
-                        <li>test1</li>
-                    </ul>
-                </li>
-                <li><b>패션/잡화</b>
-                    <ul class="subcategory">
-                        <li>test1</li>
-                        <li>test1</li>
-                    </ul>
-                </li>
-                <li><b>음식</b>
-                    <ul class="subcategory">
-                        <li>test1</li>
-                    </ul>
-                </li>
+                <?php
+                    include "include/db.php";
+                    $sql_ca = "select * from category where co_code = 'ca_Post';";
+                    $result_ca = mysqli_query($conn,$sql_ca);
+                    while($row_ca=mysqli_fetch_array($result_ca)){
+                        echo '<li value="'.$row_ca['ca_name'].'"><a href = "./user_board_list.php?category_val='.$row_ca['ca_name'].'"><b>'.$row_ca['ca_name'].'</b></a></li>';
+                    }
+                    mysqli_close($conn);
+                ?>
             </ul>
         </div>
     </div>

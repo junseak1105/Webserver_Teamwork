@@ -83,6 +83,7 @@ $cnt = $start + 1;
                     <select name="category_val" id = "select_box">
                         <option value="">전체</option>
                         <?php
+                        include "include/db.php";
                         $sql_ca = "select * from category where co_code = 'ca_Post';";
                         $result_ca = mysqli_query($conn,$sql_ca);
                         while($row_ca=mysqli_fetch_array($result_ca)){

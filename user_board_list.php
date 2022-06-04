@@ -5,6 +5,7 @@
     include "include/db.php";
     include "include/common_function.php";
     
+    $category_val = isset($_GET["category_val"])? $_GET["category_val"] : "";
     $category_val = isset($_POST["category_val"])? $_POST["category_val"] : "";
     $sb_val =isset($_POST["sb_val"])? $_POST["sb_val"] : "";
 
@@ -76,14 +77,16 @@
     <?php
         include "include/sidenav.php";
     ?>
+    
     <section>
         <div class="user_board_list" id="user_board_box">
             <h1><a href="user_board_list.php">전체 게시판</a> > 글 목록</h1>
             <div class="user_board_searchbox_area">
-                <form class="user_board_searchbox" id="search_box" method="post" action="user_board_list.php"> <!-- 게시글 검색 창 -->
+                <form class="user_board_searchbox" id="search_box" method="post" action="user_board_list.php">
                     <select name="category_val" id = "select_box">
                         <option value="">전체</option>
                         <?php
+                            include "include/db.php";
                             $sql_ca = "select * from category where co_code = 'ca_Post';";
                             $result_ca = mysqli_query($conn,$sql_ca);
                             while($row_ca=mysqli_fetch_array($result_ca)){
