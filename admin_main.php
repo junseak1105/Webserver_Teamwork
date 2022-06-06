@@ -14,7 +14,8 @@
 <head>
   <?php 
     include "include/head.php"; 
-    include "include/admin_sidemenu.php";?>
+    include "include/admin_sidemenu.php";
+    include "include/db.php"?>;
 </head>
 <body>
 
