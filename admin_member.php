@@ -82,9 +82,6 @@
                 
 </body>
 </html>
-<?php
-mysqli_close($conn);
-?>
 <script>
     $(document).ready(function(){
         $(".btn_admin_delete").on("click",function(){
