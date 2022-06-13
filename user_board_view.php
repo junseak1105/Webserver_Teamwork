@@ -26,7 +26,8 @@
 	$sql = "update post set hit = '$hit' where idx=$idx";
 	mysqli_query($conn,$sql);
 
-	$userID = $_COOKIE["userID"];
+	
+	$userID =isset($_COOKIE["userID"])? $_COOKIE["userID"] : "";
 
 ?>
 

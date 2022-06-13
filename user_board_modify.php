@@ -102,7 +102,8 @@
 
 	
     $prevPage = $_SERVER['HTTP_REFERER'];
-    header('location:'.$prevPage);
+    // header('location:'.$prevPage);
+    Header("Location: ./user_board_view.php?idx=".$idx);
 ?>
 
   
