@@ -7,7 +7,11 @@
 ?>
 
 <?php 
-    $userID = $_COOKIE["userID"];
+    $userID =isset($_COOKIE["userID"])? $_COOKIE["userID"] : "";
+    if($userID===''){
+        $prevPage = $_SERVER['HTTP_REFERER'];
+        header('location:'.$prevPage);
+    }
 ?>
 
 <!DOCTYPE html>
