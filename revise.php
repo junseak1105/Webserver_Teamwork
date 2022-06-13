@@ -46,5 +46,4 @@ $user_PW = isset($_POST['userPW']) ? $_POST['userPW'] : "";
 </body>
 </html>
 <?php
-mysqli_close($conn);
 ?>
