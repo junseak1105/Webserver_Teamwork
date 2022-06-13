@@ -18,7 +18,9 @@ $new_userPW_confirm = $_POST['new_userPW_confirm'];
 
 $sql_user = "select * from member where userID = '$userID'";
 
- 
+$query = "select md5('$userPW') as newpw";
+    $data = $conn->query($query)->fetch_array();
+    $inquiry_N_count = $data['newpw']; 
 
 $result_user = mysqli_query($conn, $sql_user);
 
@@ -28,7 +30,7 @@ $result_user = mysqli_query($conn, $sql_user);
 
 while ($row = mysqli_fetch_array($result_user)) {
 
-    if($row['userPW'] != md5('$userPW',False)){
+    if($row['userPW'] != $inquiry_N_count){
 
         echo "<script>alert('현재 비밀번호가 틀립니다');";
 
